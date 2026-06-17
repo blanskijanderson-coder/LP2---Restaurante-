@@ -12,8 +12,8 @@ public class Cliente{
     private int mesa;
     private int cpf;
     private double bonus = 0;
+    private Conta conta_final;
     private Pedido pedido_atual;
-    
     
     public Cliente(String nome, String email, int mesa, int cpf){
     this.nome = nome;

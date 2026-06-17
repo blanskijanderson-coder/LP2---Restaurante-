@@ -6,29 +6,29 @@ import java.util.ArrayList;
 
 public class Cozinha {
     private static ArrayList<Cardapio> lista_produto = new ArrayList<>();
-    private static ArrayList<Pedido> lista_pedido = new ArrayList<>();
+    private static ArrayList<Pedido> lista_PedidosGerais = new ArrayList<>();
     
     public static void addProduto(Cardapio outro){
         lista_produto.add(outro);
     }
     
     public static void addPedido(Pedido outro){
-        lista_pedido.add(outro);
+        lista_PedidosGerais.add(outro);
     }
     
     public static void listarPedido(){
         System.out.println("Segue lista com todos os pedidos dos clientes:");
         
-        for (Pedido p : lista_pedido) {
+        for (Pedido p : lista_PedidosGerais) {
         System.out.println(p); 
         System.out.println("--------------------------");
         }   
     }
     
     public static void entregarPedido(int indice) {
-        if (indice >= 0 && indice < lista_pedido.size()) {
+        if (indice >= 0 && indice < lista_PedidosGerais.size()) {
             
-            Pedido pedidoPronto = lista_pedido.get(indice);
+            Pedido pedidoPronto = lista_PedidosGerais.get(indice);
 
             pedidoPronto.setStatus("A pagar");
             
@@ -40,6 +40,6 @@ public class Cozinha {
     
     public static ArrayList<Cardapio> getListaProduto(){return lista_produto;}
     
-    public static ArrayList<Pedido> getListaPedido(){return lista_pedido;}
+    public static ArrayList<Pedido> getListaPedido(){return lista_PedidosGerais;}
 
 }
