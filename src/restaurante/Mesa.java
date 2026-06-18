@@ -16,6 +16,7 @@ public class Mesa {
     }
     
     
+    
     public void selectMesa(){
         int numero;
         Scanner scanner = new Scanner(System.in);
@@ -35,13 +36,9 @@ public class Mesa {
             System.out.println("Mesa invalida");
         }
     }
-     
     
-    public int getMesaNumero(){
-    return mesa_numero;
-    }
     
-    public void setQtdMesa(int quantidade){
-    qtd_mesa = quantidade;
-    }
+    public int getMesaNumero(){return mesa_numero;}
+    
+    public void setQtdMesa(int quantidade){qtd_mesa = quantidade;}
 }

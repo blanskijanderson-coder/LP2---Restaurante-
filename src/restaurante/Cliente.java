@@ -12,7 +12,7 @@ public class Cliente{
     private int cpf;
     private double bonus = 0;
     private Conta conta_atual;
-    private Pedido pedido_atual;
+    private Pedido pedido_novo;
     private Mesa mesa_atual;
     private ArrayList<Conta> historico_contasCliente = new ArrayList<>();
     
@@ -22,8 +22,7 @@ public class Cliente{
     this.cpf = cpf;
     }    
     
-    
-    
+     
     public void escolherMesa(){ // quando encerrar a conta, a mesa nulificar mesa atual
         if(this.mesa_atual == null){
             this.mesa_atual = new Mesa(this);
@@ -45,15 +44,15 @@ public class Cliente{
     public void solicitarPedido(Cardapio item) {
         if(this.mesa_atual != null){
             if(this.conta_atual != null){
-                if (this.pedido_atual == null) {
-                    this.pedido_atual = new Pedido(this, this.mesa_atual);
+                if (this.pedido_novo == null) {
+                    this.pedido_novo = new Pedido(this, this.mesa_atual);
                 }
             }
             else{
                 this.conta_atual = new Conta(this);
-                this.pedido_atual = new Pedido(this, this.mesa_atual);
+                this.pedido_novo = new Pedido(this, this.mesa_atual);
             }
-            this.pedido_atual.produtoSolicitado(item); 
+            this.pedido_novo.produtoSolicitado(item); 
         }
         else{
             System.out.println("Escolha uma mesa primeiro.");
@@ -61,9 +60,12 @@ public class Cliente{
     }
 
     public void enviarPedido() {
-    if (this.pedido_atual != null) {
-        this.pedido_atual.setStatus("Em preparo");
-        this.pedido_atual.finalizarPedido(); 
+    if (this.pedido_novo != null) {
+        this.pedido_novo.setStatus("Em preparo");
+        this.pedido_novo.finalizarPedido();
+        
+        this.pedido_novo = null; //o pedido atual tem que ficar nulo pra ele fazer outro pedido, mas se ele para de apontar para  pedido atual, como a cozinha pode devolver ?
+        
         System.out.println("Pedido enviado para a cozinha!");
     } else {
         System.out.println("Você ainda não adicionou itens ao seu pedido.");
@@ -71,11 +73,11 @@ public class Cliente{
 }
     
     public void pagarConta() {
-    if (this.pedido_atual != null && this.pedido_atual.getStatus().equals("A pagar")) {
+    if (this.pedido_novo != null && this.pedido_novo.getStatus().equals("A pagar")) {
         
         Scanner scanner = new Scanner(System.in);
         
-        double valor = this.pedido_atual.calcularTotal();
+        double valor = this.pedido_novo.calcularTotal();
         
         double valorComDesconto = valor - this.bonus;
         this.bonus = 0;
@@ -86,13 +88,12 @@ public class Cliente{
         
         
         System.out.println(this.nome + " pagou R$ " + valorComDesconto + " utilizando o modo de pagamento " + pagamentoModo + ". Obrigado!");
-        this.pedido_atual = null; 
-        this.mesa = 0;
+        this.pedido_novo = null; 
+        this.mesa_atual = null;
         } else {
         System.out.println("O pedido ainda não está pronto para pagamento ou não existe.");
         }
     }
-    
     
     
     public String getNome(){return nome;}
@@ -101,7 +102,9 @@ public class Cliente{
     
     public int getCpf(){return cpf;}
     
-    public int getMesa(){return mesa;}
+    public Mesa getMesa(){return mesa_atual;}
+    
+    public Conta getContaAtual (){return conta_atual;}
     
     public double getBonus(){return bonus;}
 }

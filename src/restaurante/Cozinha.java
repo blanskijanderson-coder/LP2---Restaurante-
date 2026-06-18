@@ -13,6 +13,8 @@ public class Cozinha {
         lista_produto.add(outro);
     }
     
+    
+    
     public static void addPedidoGeral(Pedido outro){
         lista_pedidosGerais.add(outro);
     }

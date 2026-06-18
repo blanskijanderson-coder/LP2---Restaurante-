@@ -21,7 +21,7 @@ public class Pedido {
     
     public void finalizarPedido(){
         Cozinha.addPedidoGeral(this);
-        Conta.addPedidoCliente(this);
+        cliente.getContaAtual().addPedidoCliente(this);
     }    
     
     public double calcularTotal() {
