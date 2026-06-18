@@ -24,7 +24,7 @@ public class Main {
         Cozinha.entregarPedido(0); 
 
         System.out.println("\n--- Área de Pagamento ---");
-        c1.pagarPedido(); 
+        c1.pagarConta(); 
 
         System.out.println("\n======= FIM DA SIMULAÇÃO =======");
     }

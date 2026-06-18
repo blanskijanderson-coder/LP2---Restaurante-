@@ -9,6 +9,7 @@ public class Conta {
     private double bonus = 0;
     private ArrayList<Pedido> lista_PedidosCliente = new ArrayList<>();
     
+        public Conta(Cliente cliente)
     
         public void addPedidoCliente(Pedido outro){
         lista_PedidosCliente.add(outro);

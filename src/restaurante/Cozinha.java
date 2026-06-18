@@ -12,7 +12,7 @@ public class Cozinha {
         lista_produto.add(outro);
     }
     
-    public static void addPedido(Pedido outro){
+    public static void addPedidoGeral(Pedido outro){
         lista_PedidosGerais.add(outro);
     }
     

@@ -9,16 +9,16 @@ import java.util.Scanner;
 public class Cliente{
     private String nome;
     private String email;
-    private int mesa;
     private int cpf;
     private double bonus = 0;
-    private Conta conta_final;
+    private Conta conta_atual;
     private Pedido pedido_atual;
+    private Mesa mesa_atual;
+    private ArrayList<Conta> historico_contas = new ArrayList<>();
     
-    public Cliente(String nome, String email, int mesa, int cpf){
+    public Cliente(String nome, String email, int cpf){
     this.nome = nome;
     this.email = email;
-    this.mesa = mesa;
     this.cpf = cpf;
     }    
     
@@ -32,17 +32,23 @@ public class Cliente{
     }
     
     public void solicitarPedido(Cardapio item) {
-        if (this.pedido_atual == null) {
-            this.pedido_atual = new Pedido(this);
-            escolherMesa();
+        if(this.mesa_atual != null){
+            if(this.conta_atual != null){
+                if (this.pedido_atual == null) {
+                    this.pedido_atual = new Pedido(this);
+                }
+            }
         }
     this.pedido_atual.produtoSolicitado(item); 
     }
     
-    public void escolherMesa(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("digite o número da mesa escolhida");
-        this.mesa = scanner.nextInt();
+    public void escolherMesa(){ // quando encerrar a conta, a mesa virará zero de novo.
+        if(this.mesa_atual == null){
+            this.mesa_atual = new Mesa(this);
+        }
+        else{
+            System.out.println("você ja possui uma mesa.");
+        }
     }
 
     public void enviarPedido() {
@@ -55,7 +61,7 @@ public class Cliente{
     }
 }
     
-    public void pagarPedido() {
+    public void pagarConta() {
     if (this.pedido_atual != null && this.pedido_atual.getStatus().equals("A pagar")) {
         
         Scanner scanner = new Scanner(System.in);

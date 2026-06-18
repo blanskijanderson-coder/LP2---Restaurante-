@@ -3,12 +3,14 @@ package restaurante;
 import java.util.ArrayList;
 
 public class Pedido {
-    private Cliente cliente;
-    private ArrayList<Cardapio> itensSolicitados;
     private String status;
+    private Cliente cliente;
+    private Mesa mesa_cliente;
+    private ArrayList<Cardapio> itensSolicitados;
 
-    public Pedido(Cliente cliente) {
+    public Pedido(Cliente cliente, Mesa mesa_cliente) {
         this.cliente = cliente;
+        this.mesa_cliente = mesa_cliente;
         this.itensSolicitados = new ArrayList<>();
         this.status = "A fazer";
     }
@@ -18,7 +20,8 @@ public class Pedido {
     }
     
     public void encerrarPedido(){
-        Cozinha.addPedido(this);
+        Cozinha.addPedidoGeral(this);
+        Conta.addPedidoCliente(this);
     }
 
     public double calcularTotal() {
