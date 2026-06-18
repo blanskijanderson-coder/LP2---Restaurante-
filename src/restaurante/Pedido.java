@@ -3,7 +3,7 @@ package restaurante;
 import java.util.ArrayList;
 
 public class Pedido {
-    private String status;
+    private String status_pedido;
     private Cliente cliente;
     private Mesa mesa_cliente;
     private ArrayList<Cardapio> itensSolicitados;
@@ -12,40 +12,38 @@ public class Pedido {
         this.cliente = cliente;
         this.mesa_cliente = mesa_cliente;
         this.itensSolicitados = new ArrayList<>();
-        this.status = "A fazer";
+        this.status_pedido = "A fazer";
     }
     
     public void produtoSolicitado(Cardapio item) {
         this.itensSolicitados.add(item);
     }
     
-    public void encerrarPedido(){
+    public void finalizarPedido(){
         Cozinha.addPedidoGeral(this);
         Conta.addPedidoCliente(this);
-    }
-
+    }    
+    
     public double calcularTotal() {
-    double total = 0;
+        double total = 0;
         for (Cardapio item : itensSolicitados) {
             total += item.getCusto(); 
         }
     return total;
-    }   
-    
-    
-    public String getStatus() {return this.status;}
+    }       
+    public String getStatus() {return this.status_pedido;}
 
     public Cliente getCliente() {return this.cliente;}
     
     
-    public void setStatus(String status) {this.status = status;}
+    public void setStatus(String status) {this.status_pedido = status;}
     
     
     
     @Override
     public String toString() {
         String resumo = "Pedido do Cliente: " + this.cliente.getNome() + "\n";
-        resumo += "Status: " + this.status + "\n";
+        resumo += "Status: " + this.status_pedido + "\n";
         resumo += "Itens:\n";
 
         for (Cardapio item : itensSolicitados) {
@@ -55,5 +53,4 @@ public class Pedido {
         resumo += "Total: R$ " + this.calcularTotal() + "\n";
         return resumo;
     }
-
 }

@@ -14,12 +14,23 @@ public class Cliente{
     private Conta conta_atual;
     private Pedido pedido_atual;
     private Mesa mesa_atual;
-    private ArrayList<Conta> historico_contas = new ArrayList<>();
+    private ArrayList<Conta> historico_contasCliente = new ArrayList<>();
     
     public Cliente(String nome, String email, int cpf){
     this.nome = nome;
     this.email = email;
     this.cpf = cpf;
+    }    
+    
+    
+    
+    public void escolherMesa(){ // quando encerrar a conta, a mesa nulificar mesa atual
+        if(this.mesa_atual == null){
+            this.mesa_atual = new Mesa(this);
+        }
+        else{
+            System.out.println("você ja possui uma mesa.");
+        }
     }    
     
     public void verCardapio() {
@@ -35,26 +46,24 @@ public class Cliente{
         if(this.mesa_atual != null){
             if(this.conta_atual != null){
                 if (this.pedido_atual == null) {
-                    this.pedido_atual = new Pedido(this);
+                    this.pedido_atual = new Pedido(this, this.mesa_atual);
                 }
             }
-        }
-    this.pedido_atual.produtoSolicitado(item); 
-    }
-    
-    public void escolherMesa(){ // quando encerrar a conta, a mesa virará zero de novo.
-        if(this.mesa_atual == null){
-            this.mesa_atual = new Mesa(this);
+            else{
+                this.conta_atual = new Conta(this);
+                this.pedido_atual = new Pedido(this, this.mesa_atual);
+            }
+            this.pedido_atual.produtoSolicitado(item); 
         }
         else{
-            System.out.println("você ja possui uma mesa.");
+            System.out.println("Escolha uma mesa primeiro.");
         }
     }
 
     public void enviarPedido() {
     if (this.pedido_atual != null) {
         this.pedido_atual.setStatus("Em preparo");
-        this.pedido_atual.encerrarPedido(); 
+        this.pedido_atual.finalizarPedido(); 
         System.out.println("Pedido enviado para a cozinha!");
     } else {
         System.out.println("Você ainda não adicionou itens ao seu pedido.");
