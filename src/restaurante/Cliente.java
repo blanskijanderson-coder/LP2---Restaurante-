@@ -64,7 +64,7 @@ public class Cliente{
         this.pedido_novo.setStatus("Em preparo");
         this.pedido_novo.finalizarPedido();
         
-        this.pedido_novo = null; //o pedido atual tem que ficar nulo pra ele fazer outro pedido, mas se ele para de apontar para  pedido atual, como a cozinha pode devolver ?
+        this.pedido_novo = null;
         
         System.out.println("Pedido enviado para a cozinha!");
     } else {
@@ -73,11 +73,10 @@ public class Cliente{
 }
     
     public void pagarConta() {
-    if (this.conta_atual != null && this.conta_atual.getStatus().equals("Aberta")) {
+    if (this.conta_atual != null && this.conta_atual.getStatusConta().equals("Aberta")) {
         
         Scanner scanner = new Scanner(System.in);
-        
-        double valor = this.pedido_novo.calcularTotal();
+        double valor = this.conta_atual.pagarConta();
         
         double valorComDesconto = valor - this.bonus;
         this.bonus = 0;

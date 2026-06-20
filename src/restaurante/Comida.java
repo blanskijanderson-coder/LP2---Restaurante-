@@ -7,8 +7,8 @@ public class Comida extends Cardapio{
     private String desc;
     private String ingred;
     
-    public Comida(String nome, double custo, String desc, String ingred){
-        super(nome, custo);
+    public Comida(String nome, double custo, int qtd, String desc, String ingred){
+        super(nome, custo, qtd);
         this.desc = desc;
         this.ingred = ingred;
         Cozinha.addProduto(this);

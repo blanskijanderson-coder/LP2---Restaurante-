@@ -4,10 +4,12 @@ package restaurante;
 public abstract class Cardapio {
     protected String nome;
     protected double custo;
+    protected int qtd;
     
-    public Cardapio(String nome, double custo){
+    public Cardapio(String nome, double custo, int qtd){
         this.nome = nome;
         this.custo = custo;
+        this.qtd = qtd;
     }
     
     
