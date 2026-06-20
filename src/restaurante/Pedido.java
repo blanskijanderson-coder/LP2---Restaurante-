@@ -31,10 +31,13 @@ public class Pedido {
         }
     return total;
     }       
+    
+    
     public String getStatus() {return this.status_pedido;}
 
     public Cliente getCliente() {return this.cliente;}
     
+    public ArrayList<Cardapio> getListaItensSolicitados(){return this.itensSolicitados;}
     
     public void setStatus(String status) {this.status_pedido = status;}
     

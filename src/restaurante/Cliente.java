@@ -73,7 +73,7 @@ public class Cliente{
 }
     
     public void pagarConta() {
-    if (this.pedido_novo != null && this.pedido_novo.getStatus().equals("A pagar")) {
+    if (this.conta_atual != null && this.conta_atual.getStatus().equals("Aberta")) {
         
         Scanner scanner = new Scanner(System.in);
         
@@ -107,4 +107,9 @@ public class Cliente{
     public Conta getContaAtual (){return conta_atual;}
     
     public double getBonus(){return bonus;}
+    
+        
+    public void setBonus(double valorBonus){this.bonus = valorBonus;}
+    
+    public void setContaAtual(Conta mudada){this.conta_atual = mudada;}
 }
