@@ -25,8 +25,15 @@ public class Conta {
         }
         
         return this.valor;
-        
     }
     
+    public void finalizarConta(){
+        this.setStatusConta("Encerrada");
+        Cozinha.addContaHistorico(this);
+    }    
+    
     public String getStatusConta(){return this.status_conta;}
+    
+    public void setStatusConta(String status){this.status_conta = status;}
+
 }

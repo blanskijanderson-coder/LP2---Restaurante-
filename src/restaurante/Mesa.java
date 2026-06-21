@@ -7,7 +7,6 @@ public class Mesa {
     private static int qtd_mesa = 40;
     private static ArrayList<Integer> lista_MesasOcupds = new ArrayList<>();
     private int mesa_numero;
-    private Pedido pedido;
     private Cliente cliente;
     
     public Mesa(Cliente cliente){

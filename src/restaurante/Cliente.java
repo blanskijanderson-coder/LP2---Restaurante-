@@ -42,12 +42,13 @@ public class Cliente{
         }
     }
     
-    public void solicitarPedido(Cardapio item) {
+    //conta está sendo adicionada em historicos ?
+    
+    public void solicitarPedido() {
         if(this.mesa_atual != null){
             if(this.conta_atual != null){
                 if (this.pedido_novo == null) {
                     this.pedido_novo = new Pedido(this, this.mesa_atual);
-                    this.pedido_novo.setStatus
                 }
                 else{
                     System.out.println("Ja possui um pedido aberto.");
@@ -56,6 +57,7 @@ public class Cliente{
             else{
                 this.conta_atual = new Conta(this);
                 this.pedido_novo = new Pedido(this, this.mesa_atual);
+                this.historico_contasCliente.add(this.conta_atual); 
             }
         }
         else{
@@ -63,48 +65,50 @@ public class Cliente{
         }
     }
     
-    //metodo pedido: tornar possivel solicitar novas coisas com o pedido em aberto.
-    public void PedirNovosItens(){
+
+    public void PedirNovosItens(Cardapio item){
         if(this.pedido_novo != null){
             this.pedido_novo.produtoSolicitado(item); 
         }
         else{
-            System.out.println("abra um pedido primeiro");
+            System.out.println("Abra um pedido primeiro");
         }
     }
     
-
+//conta é adicionada nos historicos ?
     public void enviarPedido() {
-    if (this.pedido_novo != null) {
-        this.pedido_novo.setStatusPedido("Em preparo");
-        this.pedido_novo.finalizarPedido();
-        
-        this.pedido_novo = null;
-        
-        System.out.println("Pedido enviado para a cozinha!");
-    } else {
-        System.out.println("Você ainda não adicionou itens ao seu pedido.");
+        if (this.pedido_novo != null) {
+            this.pedido_novo.finalizarPedido();
+
+            this.pedido_novo = null;
+
+            System.out.println("Pedido enviado para a cozinha!");
+        }else {
+            System.out.println("Você ainda não adicionou itens ao seu pedido.");
+        }
     }
-}
     
     public void pagarConta() {
-    if (this.conta_atual != null && this.conta_atual.getStatusConta().equals("Aberta")) {
-        
-        Scanner scanner = new Scanner(System.in);
-        double valor = this.conta_atual.pagarConta();
-        
-        double valorComDesconto = valor - this.bonus;
-        this.bonus = 0;
-        
-        
-        System.out.println("deseja pagar com crédito ou débito? (digite C para crédito ou D para débito");
-        String pagamentoModo = scanner.nextLine();
-        
-        
-        System.out.println(this.nome + " pagou R$ " + valorComDesconto + " utilizando o modo de pagamento " + pagamentoModo + ". Obrigado!");
-        this.bonus = valor/10;
-        this.conta_atual = null; 
-        this.mesa_atual = null;
+        if (this.conta_atual != null && this.conta_atual.getStatusConta().equals("Aberta")) {
+
+            Scanner scanner = new Scanner(System.in);
+            double valor = this.conta_atual.pagarConta();
+
+            double valorComDesconto = valor - this.bonus;
+            this.bonus = 0;
+
+
+            System.out.println("deseja pagar com crédito ou débito? (digite C para crédito ou D para débito");
+            String pagamentoModo = scanner.nextLine();
+
+
+            System.out.println(this.nome + " pagou R$ " + valorComDesconto + " utilizando o modo de pagamento " + pagamentoModo + ". Obrigado!");
+            
+            this.conta_atual.finalizarConta();
+            
+            this.bonus = valor/10;
+            this.conta_atual = null; 
+            this.mesa_atual = null;
         }
     }
     

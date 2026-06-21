@@ -9,15 +9,7 @@ public class Cozinha {
     private static ArrayList<Pedido> lista_pedidosGerais = new ArrayList<>();
     private static ArrayList<Conta> historico_contasGerais = new ArrayList<>();
     
-    public static void addProduto(Cardapio outro){
-        lista_produto.add(outro);
-    }
-    
-    
-    
-    public static void addPedidoGeral(Pedido outro){
-        lista_pedidosGerais.add(outro);
-    }
+ 
     
     public static void listarPedido(){
         System.out.println("Segue lista com todos os pedidos dos clientes:");
@@ -33,12 +25,24 @@ public class Cozinha {
             
             Pedido pedidoPronto = lista_pedidosGerais.get(indice);
 
-            pedidoPronto.setStatusPedido("A pagar");
+            pedidoPronto.setStatusPedido("Entregue");
             
             System.out.println("Pedido entregue para: " + pedidoPronto.getCliente().getNome());
         } else {
             System.out.println("Índice de pedido inválido!");
         }
+    }
+    
+    public static void addProduto(Cardapio outro){
+        lista_produto.add(outro);
+    }
+    
+    public static void addPedidoGeral(Pedido outro){
+        lista_pedidosGerais.add(outro);
+    }
+    
+    public static void addContaHistorico(Conta outro){
+        historico_contasGerais.add(outro);
     }
     
     public static ArrayList<Cardapio> getListaProduto(){return lista_produto;}

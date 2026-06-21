@@ -20,6 +20,7 @@ public class Pedido {
     }
     
     public void finalizarPedido(){
+        this.setStatusPedido("Em preparo");
         Cozinha.addPedidoGeral(this);
         cliente.getContaAtual().addPedidoCliente(this);
     }    

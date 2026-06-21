@@ -13,9 +13,10 @@ public class Main {
         c1.verCardapio();
 
         System.out.println("\n--- Realizando o Pedido ---");
-        c1.solicitarPedido(prato1); 
-        c1.solicitarPedido(suco1);  
         
+        c1.solicitarPedido(); 
+        c1.PedirNovosItens(prato1); 
+        c1.PedirNovosItens(suco1);
         c1.enviarPedido(); 
         
         System.out.println("\n--- Painel da Cozinha ---");
