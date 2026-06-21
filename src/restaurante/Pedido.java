@@ -39,7 +39,7 @@ public class Pedido {
     
     public ArrayList<Cardapio> getListaItensSolicitados(){return this.itensSolicitados;}
     
-    public void setStatus(String status) {this.status_pedido = status;}
+    public void setStatusPedido(String status) {this.status_pedido = status;}
     
     
     

@@ -23,9 +23,10 @@ public class Cliente{
     }    
     
      
-    public void escolherMesa(){ // quando encerrar a conta, a mesa nulificar mesa atual
+    public void escolherMesa(){
         if(this.mesa_atual == null){
             this.mesa_atual = new Mesa(this);
+            this.mesa_atual.selectMesa();
         }
         else{
             System.out.println("você ja possui uma mesa.");
@@ -46,22 +47,36 @@ public class Cliente{
             if(this.conta_atual != null){
                 if (this.pedido_novo == null) {
                     this.pedido_novo = new Pedido(this, this.mesa_atual);
+                    this.pedido_novo.setStatus
+                }
+                else{
+                    System.out.println("Ja possui um pedido aberto.");
                 }
             }
             else{
                 this.conta_atual = new Conta(this);
                 this.pedido_novo = new Pedido(this, this.mesa_atual);
             }
-            this.pedido_novo.produtoSolicitado(item); 
         }
         else{
             System.out.println("Escolha uma mesa primeiro.");
         }
     }
+    
+    //metodo pedido: tornar possivel solicitar novas coisas com o pedido em aberto.
+    public void PedirNovosItens(){
+        if(this.pedido_novo != null){
+            this.pedido_novo.produtoSolicitado(item); 
+        }
+        else{
+            System.out.println("abra um pedido primeiro");
+        }
+    }
+    
 
     public void enviarPedido() {
     if (this.pedido_novo != null) {
-        this.pedido_novo.setStatus("Em preparo");
+        this.pedido_novo.setStatusPedido("Em preparo");
         this.pedido_novo.finalizarPedido();
         
         this.pedido_novo = null;
@@ -87,10 +102,9 @@ public class Cliente{
         
         
         System.out.println(this.nome + " pagou R$ " + valorComDesconto + " utilizando o modo de pagamento " + pagamentoModo + ". Obrigado!");
-        this.pedido_novo = null; 
+        this.bonus = valor/10;
+        this.conta_atual = null; 
         this.mesa_atual = null;
-        } else {
-        System.out.println("O pedido ainda não está pronto para pagamento ou não existe.");
         }
     }
     

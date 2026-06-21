@@ -33,7 +33,7 @@ public class Cozinha {
             
             Pedido pedidoPronto = lista_pedidosGerais.get(indice);
 
-            pedidoPronto.setStatus("A pagar");
+            pedidoPronto.setStatusPedido("A pagar");
             
             System.out.println("Pedido entregue para: " + pedidoPronto.getCliente().getNome());
         } else {

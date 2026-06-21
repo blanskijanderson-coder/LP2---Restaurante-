@@ -19,13 +19,10 @@ public class Conta {
     lista_PedidosCliente.add(outro);
     }
 
-    public void pagarConta(){
+    public double pagarConta(){
         for(Pedido feito : lista_PedidosCliente){
             this.valor += feito.calcularTotal();
         }
-        //pagar conta retorna um valor e não altera cliente diretamente
-        //this.status_conta = "Encerrada";
-        //this.cliente.setContaAtual(null);
         
         return this.valor;
         
