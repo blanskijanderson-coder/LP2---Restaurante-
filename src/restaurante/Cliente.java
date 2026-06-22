@@ -59,8 +59,14 @@ public class Cliente {
     }
 
     public void PedirNovosItens(Cardapio item) {
+        Scanner scanner = new Scanner(System.in);
         if (this.pedido_novo != null) {
-            this.pedido_novo.produtoSolicitado(item);
+            System.out.println("insira quantidade do item escolhido");
+            int qtd = 1;
+            qtd = scanner.nextInt();
+            
+            this.pedido_novo.produtoSolicitado(item, qtd);
+            
         } else {
             System.out.println("Abra um pedido primeiro");
         }

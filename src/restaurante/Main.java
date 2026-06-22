@@ -6,10 +6,10 @@ public class Main {
 
     public static void main(String[] args) {
         // Criando alguns produtos iniciais
-        new Comida("Lasanha à Bolonhesa", 45.0, 1, "Massa artesanal", "Trigo, carne, queijo e molho");
-        new Comida("Filé com Fritas", 38.0, 1, "Carne suculenta", "Carne bovina, batata, sal");
-        new Bebida("Suco de Uva", 12.0, 1, "Fazenda Videira");
-        new Bebida("Coca-Cola 350ml", 7.0, 1, "Distribuidora Regional");
+        new Comida("Lasanha à Bolonhesa", 45.0, "Massa artesanal", "Trigo, carne, queijo e molho");
+        new Comida("Filé com Fritas", 38.0, "Carne suculenta", "Carne bovina, batata, sal");
+        new Bebida("Suco de Uva", 12.0, "Fazenda Videira");
+        new Bebida("Coca-Cola 350ml", 7.0, "Distribuidora Regional");
 
         Cliente c1 = new Cliente("Janderson", "janderson@uneb.br", 123456789);
 
