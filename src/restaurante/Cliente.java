@@ -7,17 +7,19 @@ import java.util.Scanner;
 public class Cliente {
     private String nome;
     private String email;
-    private int cpf;
+    private String cpf;
+    private char[] senha;
     private double bonus = 0;
     private Conta conta_atual;
     private Pedido pedido_novo;
     private Mesa mesa_atual;
     private ArrayList<Conta> historico_contasCliente = new ArrayList<>();
 
-    public Cliente(String nome, String email, int cpf) {
+    public Cliente(String nome, String email, String cpf, char[] senha) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;
+        this.senha = senha;
     }
 
     public void escolherMesa() {
@@ -118,7 +120,7 @@ public class Cliente {
         return email;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
