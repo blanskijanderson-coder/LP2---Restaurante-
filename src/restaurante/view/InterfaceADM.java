@@ -30,12 +30,12 @@ public class InterfaceADM extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        bttGerenciarCozinha = new javax.swing.JButton();
+        bttMudarCardapio = new javax.swing.JButton();
+        bttInterfaceADMHistoricos = new javax.swing.JButton();
+        bttAtualizarQtdMesas = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 22)); // NOI18N
         jLabel1.setText("Bem vindo, Administrador (Nome)");
@@ -43,13 +43,13 @@ public class InterfaceADM extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel2.setText("O que deseja fazer ?");
 
-        jButton1.setText("Gerenciar a cozinha");
+        bttGerenciarCozinha.setText("Gerenciar a cozinha");
 
-        jButton2.setText("Gerenciar itens do cardápio");
+        bttMudarCardapio.setText("Gerenciar itens do cardápio");
 
-        jButton3.setText("Checar históricos do restaurante");
+        bttInterfaceADMHistoricos.setText("Checar históricos do restaurante");
 
-        jButton5.setText("Atualizar quantidade de mesas");
+        bttAtualizarQtdMesas.setText("Atualizar quantidade de mesas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,10 +62,10 @@ public class InterfaceADM extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1)
+                    .addComponent(bttAtualizarQtdMesas)
+                    .addComponent(bttInterfaceADMHistoricos)
+                    .addComponent(bttMudarCardapio)
+                    .addComponent(bttGerenciarCozinha)
                     .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -77,13 +77,13 @@ public class InterfaceADM extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(bttGerenciarCozinha)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(bttMudarCardapio)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(bttAtualizarQtdMesas)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(bttInterfaceADMHistoricos)
                 .addContainerGap(134, Short.MAX_VALUE))
         );
 
@@ -116,10 +116,10 @@ public class InterfaceADM extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton bttAtualizarQtdMesas;
+    private javax.swing.JButton bttGerenciarCozinha;
+    private javax.swing.JButton bttInterfaceADMHistoricos;
+    private javax.swing.JButton bttMudarCardapio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
