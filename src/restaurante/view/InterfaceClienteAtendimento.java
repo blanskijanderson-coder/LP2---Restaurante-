@@ -28,21 +28,56 @@ public class InterfaceClienteAtendimento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        CamopoMesaEscolhida = new javax.swing.JTextField();
+        bttConfirmarMesa = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel2.setText("Selecione sua mesa entre 0 e (qtd):");
+
+        CamopoMesaEscolhida.addActionListener(this::CamopoMesaEscolhidaActionPerformed);
+
+        bttConfirmarMesa.setText("Confirmar");
+        bttConfirmarMesa.addActionListener(this::bttConfirmarMesaActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(CamopoMesaEscolhida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(236, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bttConfirmarMesa)
+                .addGap(132, 132, 132))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jLabel2)
+                .addGap(50, 50, 50)
+                .addComponent(CamopoMesaEscolhida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addComponent(bttConfirmarMesa)
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CamopoMesaEscolhidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CamopoMesaEscolhidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CamopoMesaEscolhidaActionPerformed
+
+    private void bttConfirmarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttConfirmarMesaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttConfirmarMesaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +105,8 @@ public class InterfaceClienteAtendimento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CamopoMesaEscolhida;
+    private javax.swing.JButton bttConfirmarMesa;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
