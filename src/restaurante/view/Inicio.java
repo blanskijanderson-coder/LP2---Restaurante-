@@ -50,7 +50,7 @@ public class Inicio extends javax.swing.JFrame {
 
         CampoSenha.addActionListener(this::CampoSenhaActionPerformed);
 
-        jButton1.setText("Não possui Cadastro?");
+        jButton1.setText("Não possui cadastro?");
 
         jLabel4.setText("Nome:");
 
