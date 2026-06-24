@@ -52,7 +52,6 @@ public class InterfaceADMCardapio extends javax.swing.JFrame {
         bttADMRemoverGenerico = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("ADM - Gerenciamento do cardápio disponível");
 
         jLabel1.setText("Aqui está o cardápio atual:");
 

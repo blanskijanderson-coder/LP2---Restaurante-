@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package restaurante.view;
+import restaurante.Cliente;
 
 /**
  *
@@ -11,12 +12,14 @@ package restaurante.view;
 public class InterfaceClienteInicio extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(InterfaceClienteInicio.class.getName());
-
+    
+    private Cliente UsuarioLogado;
     /**
      * Creates new form InterfaceCliente
      */
-    public InterfaceClienteInicio() {
+    public InterfaceClienteInicio(Cliente pessoaLogada) {
         initComponents();
+        this.UsuarioLogado = pessoaLogada;
     }
 
     /**
@@ -33,6 +36,9 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
         bttClienteInicioAtendimento = new javax.swing.JButton();
         bttClienteInicioHistorico = new javax.swing.JButton();
         bttClienteInicioDeslogar = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cliente - Interface inicial");
@@ -50,6 +56,14 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
 
         bttClienteInicioDeslogar.setText("Deslogar");
         bttClienteInicioDeslogar.addActionListener(this::bttClienteInicioDeslogarActionPerformed);
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,18 +95,24 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
                 .addComponent(bttClienteInicioHistorico)
                 .addGap(73, 73, 73)
                 .addComponent(bttClienteInicioDeslogar)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttClienteInicioAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteInicioAtendimentoActionPerformed
-        // TODO add your handling code here:
+        InterfaceClienteMesa ClMesa = new InterfaceClienteMesa();
+        ClMesa.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_bttClienteInicioAtendimentoActionPerformed
 
     private void bttClienteInicioDeslogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteInicioDeslogarActionPerformed
-        // TODO add your handling code here:
+        if(UsuarioLogado.getContaAtual() != null){
+            //mensagem de erro: você ainda possui contas em aberto.
+        }
+        else{
+            this.dispose();
+        }
     }//GEN-LAST:event_bttClienteInicioDeslogarActionPerformed
 
     private void bttClienteInicioHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteInicioHistoricoActionPerformed
@@ -121,7 +141,7 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new InterfaceClienteInicio().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new InterfaceClienteInicio(null).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -130,5 +150,8 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
     private javax.swing.JButton bttClienteInicioHistorico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

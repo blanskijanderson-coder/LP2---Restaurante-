@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package restaurante.view;
+import java.util.Arrays;
+import restaurante.Cadastrado;
+import restaurante.Cliente;
+import restaurante.Administrador;
 
 /**
  *
@@ -32,10 +36,10 @@ public class Inicio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtLogarNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtLogarSenha = new javax.swing.JTextField();
         bttLogarCadastrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         bttLogarGenerico = new javax.swing.JButton();
+        txtLogarSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cleber Lanches - Interface de login");
@@ -47,45 +51,46 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel3.setText("Senha:");
 
-        txtLogarSenha.addActionListener(this::txtLogarSenhaActionPerformed);
-
         bttLogarCadastrar.setText("Não possui cadastro?");
+        bttLogarCadastrar.addActionListener(this::bttLogarCadastrarActionPerformed);
 
         jLabel4.setText("Nome:");
 
         bttLogarGenerico.setText("Login");
+        bttLogarGenerico.addActionListener(this::bttLogarGenericoActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bttLogarGenerico)
+                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtLogarNome, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                            .addComponent(txtLogarSenha))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(jLabel1))
-                    .addComponent(jLabel8))
-                .addGap(53, 53, 53))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bttLogarCadastrar)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(bttLogarGenerico)
-                                .addGap(36, 36, 36))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtLogarNome)
-                                    .addComponent(txtLogarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(105, 105, 105)
+                                .addComponent(jLabel1))
+                            .addComponent(jLabel8))
+                        .addGap(53, 53, 53))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bttLogarCadastrar)
+                        .addGap(161, 161, 161))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,17 +109,44 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(txtLogarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bttLogarGenerico)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bttLogarCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtLogarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLogarSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLogarSenhaActionPerformed
+    private void bttLogarCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttLogarCadastrarActionPerformed
+        Cadastro cd = new Cadastro();
+        cd.setVisible(true);
+    }//GEN-LAST:event_bttLogarCadastrarActionPerformed
+
+    private void bttLogarGenericoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttLogarGenericoActionPerformed
+        
+        for(Cadastrado pessoa : Cadastrado.getListaCadastrados()){
+            if(txtLogarNome.getText().equals(pessoa.getNome())){
+                if(Arrays.equals(txtLogarSenha.getPassword(),pessoa.getSenha())){
+                    if(pessoa.getPoderesADM() == false){
+                        
+                        InterfaceClienteInicio ClInicio = new InterfaceClienteInicio((Cliente) pessoa);
+                        ClInicio.setVisible(true);
+                    }
+                    else{
+                        //interface admin
+                        InterfaceADMInicio ADMinicio = new InterfaceADMInicio((Administrador)pessoa);
+                        ADMinicio.setVisible(true);
+                    }
+                }
+                else{
+                   //senha incorreta 
+                }
+            }
+            else{
+                //Conta não cadastrada
+            }
+        }
+    }//GEN-LAST:event_bttLogarGenericoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,6 +181,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField txtLogarNome;
-    private javax.swing.JTextField txtLogarSenha;
+    private javax.swing.JPasswordField txtLogarSenha;
     // End of variables declaration//GEN-END:variables
 }
