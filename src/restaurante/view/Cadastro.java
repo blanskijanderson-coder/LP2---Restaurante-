@@ -5,6 +5,7 @@
 package restaurante.view;
 
 import restaurante.Cliente;
+import restaurante.Administrador;
 
 /**
  *
@@ -188,12 +189,22 @@ public class Cadastro extends javax.swing.JFrame {
             System.out.println("Preencha todos os campos antes de prosseguir");
         }
         else{
-            Cliente c1 = new Cliente(txtCadastrarNome.getText(),
+            if(bttCadastrarBooleanADM.isSelected() == false){
+                Cliente c1 = new Cliente(txtCadastrarNome.getText(),
                                     txtCadastrarEmail.getText(), 
                                     txtCadastrarCpf.getText(), 
                                     txtCadastrarSenha.getPassword(),
                                     false);
             this.dispose();
+            }
+            else{
+                Administrador ADM1 = new Administrador(txtCadastrarNome.getText(),
+                                    txtCadastrarEmail.getText(), 
+                                    txtCadastrarCpf.getText(), 
+                                    txtCadastrarSenha.getPassword(),
+                                    true);
+            this.dispose();
+            }
         }
     }//GEN-LAST:event_bttCadastrarFinalizarActionPerformed
 

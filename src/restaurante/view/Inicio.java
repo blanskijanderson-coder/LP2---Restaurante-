@@ -121,15 +121,6 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_bttLogarCadastrarActionPerformed
 
     private void bttLogarGenericoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttLogarGenericoActionPerformed
-        // Checar o nome dos cadastros existentes em listacadastro
-        //se existe algum cadastro com nome igual->
-        // Checar se a senha do cadastro está correta
-        //se estiver correta->
-        // Checar valor booleano de ADM
-        //se ADM true->
-        //abrir ide de ADM
-        //else->
-        //abrir ide de cliente
         
         for(Cadastrado pessoa : Cadastrado.getListaCadastrados()){
             if(txtLogarNome.getText().equals(pessoa.getNome())){
