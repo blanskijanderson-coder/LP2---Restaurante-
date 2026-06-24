@@ -23,11 +23,17 @@ public class Cadastrado {
     
     public Cadastrado getCadastrado(){return this;}
     
+    public boolean getPoderesADM(){return poderes_adm;};
+    
+    public char[] getSenha(){return senha;}
+    
     public String getNome(){return nome;}
 
     public String getEmail(){return email;}
 
     public String getCpf(){return cpf;}
     
-    public ArrayList<Cadastrado> getClientesCadastrados(){return lista_Cadastrados;}
+    public void addListaCadastrados(){lista_Cadastrados.add(this);}
+    
+    public static ArrayList<Cadastrado> getListaCadastrados(){return lista_Cadastrados;}
 }

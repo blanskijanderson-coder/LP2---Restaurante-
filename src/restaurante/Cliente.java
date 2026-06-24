@@ -16,6 +16,7 @@ public class Cliente extends Cadastrado  { //falta acesso ao historico de contas
                         char[] senha, boolean poderes_adm){
         
         super(nome, email, cpf, senha, poderes_adm);
+        addListaCadastrados();
     }
 
     public void escolherMesa() {
