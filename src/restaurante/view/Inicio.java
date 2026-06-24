@@ -30,14 +30,15 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        campoNomeLog = new javax.swing.JTextField();
+        txtLogarNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        CampoSenhaLog = new javax.swing.JTextField();
-        bttCadastrar = new javax.swing.JButton();
+        txtLogarSenha = new javax.swing.JTextField();
+        bttLogarCadastrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        bttLogarGenerico = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cleber Lanches - Interface de login");
 
         jLabel8.setFont(new java.awt.Font("Liberation Sans", 1, 50)); // NOI18N
         jLabel8.setText(" Cleber Lanches");
@@ -46,13 +47,13 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel3.setText("Senha:");
 
-        CampoSenhaLog.addActionListener(this::CampoSenhaLogActionPerformed);
+        txtLogarSenha.addActionListener(this::txtLogarSenhaActionPerformed);
 
-        bttCadastrar.setText("Não possui cadastro?");
+        bttLogarCadastrar.setText("Não possui cadastro?");
 
         jLabel4.setText("Nome:");
 
-        jButton1.setText("Login");
+        bttLogarGenerico.setText("Login");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,15 +68,14 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addGap(53, 53, 53))
             .addGroup(layout.createSequentialGroup()
+                .addGap(164, 164, 164)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bttLogarCadastrar)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(bttCadastrar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
+                        .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(bttLogarGenerico)
                                 .addGap(36, 36, 36))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -83,8 +83,8 @@ public class Inicio extends javax.swing.JFrame {
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(campoNomeLog)
-                                    .addComponent(CampoSenhaLog, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txtLogarNome)
+                                    .addComponent(txtLogarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -96,25 +96,25 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoNomeLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLogarNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(CampoSenhaLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLogarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(bttLogarGenerico)
                 .addGap(18, 18, 18)
-                .addComponent(bttCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bttLogarCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(92, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CampoSenhaLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoSenhaLogActionPerformed
+    private void txtLogarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLogarSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoSenhaLogActionPerformed
+    }//GEN-LAST:event_txtLogarSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,13 +142,13 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField CampoSenhaLog;
-    private javax.swing.JButton bttCadastrar;
-    private javax.swing.JTextField campoNomeLog;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bttLogarCadastrar;
+    private javax.swing.JButton bttLogarGenerico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField txtLogarNome;
+    private javax.swing.JTextField txtLogarSenha;
     // End of variables declaration//GEN-END:variables
 }

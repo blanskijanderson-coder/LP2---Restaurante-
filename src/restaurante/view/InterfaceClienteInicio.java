@@ -30,25 +30,26 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bttClienteInicioAtendimento = new javax.swing.JButton();
+        bttClienteInicioHistorico = new javax.swing.JButton();
+        bttClienteInicioDeslogar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cliente - Interface inicial");
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 22)); // NOI18N
         jLabel1.setText("Bem vindo, Cliente (Nome)");
 
         jLabel3.setText("O que deseja realizar hoje ?");
 
-        jButton1.setText("Iniciar atendimento");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        bttClienteInicioAtendimento.setText("Iniciar atendimento");
+        bttClienteInicioAtendimento.addActionListener(this::bttClienteInicioAtendimentoActionPerformed);
 
-        jButton2.setText("Checar historico ");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        bttClienteInicioHistorico.setText("Checar historico ");
+        bttClienteInicioHistorico.addActionListener(this::bttClienteInicioHistoricoActionPerformed);
 
-        jButton3.setText("Deslogar");
-        jButton3.addActionListener(this::jButton3ActionPerformed);
+        bttClienteInicioDeslogar.setText("Deslogar");
+        bttClienteInicioDeslogar.addActionListener(this::bttClienteInicioDeslogarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,9 +63,9 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jButton1)
-                            .addComponent(jButton3)
-                            .addComponent(jButton2))))
+                            .addComponent(bttClienteInicioAtendimento)
+                            .addComponent(bttClienteInicioDeslogar)
+                            .addComponent(bttClienteInicioHistorico))))
                 .addContainerGap(211, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -75,28 +76,28 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addGap(26, 26, 26)
-                .addComponent(jButton1)
+                .addComponent(bttClienteInicioAtendimento)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(bttClienteInicioHistorico)
                 .addGap(73, 73, 73)
-                .addComponent(jButton3)
+                .addComponent(bttClienteInicioDeslogar)
                 .addContainerGap(104, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bttClienteInicioAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteInicioAtendimentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bttClienteInicioAtendimentoActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void bttClienteInicioDeslogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteInicioDeslogarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_bttClienteInicioDeslogarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void bttClienteInicioHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteInicioHistoricoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_bttClienteInicioHistoricoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,9 +125,9 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton bttClienteInicioAtendimento;
+    private javax.swing.JButton bttClienteInicioDeslogar;
+    private javax.swing.JButton bttClienteInicioHistorico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables

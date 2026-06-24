@@ -20,6 +20,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="Cleber Lanches - Interface de cadastro"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -48,7 +49,7 @@
                       <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="bttFimCadastro" min="-2" max="-2" attributes="0"/>
+                      <Component id="bttCadastrarFinalizar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -56,7 +57,7 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel10" min="-2" pref="155" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="bttADMCadastro" min="-2" max="-2" attributes="0"/>
+                              <Component id="bttCadastrarBooleanADM" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -71,10 +72,10 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="campoEmailCa" max="32767" attributes="0"/>
-                                  <Component id="campoSenhaCa" max="32767" attributes="0"/>
-                                  <Component id="campoNomeCa" max="32767" attributes="0"/>
-                                  <Component id="campoCpfCa" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                                  <Component id="txtCadastrarEmail" max="32767" attributes="0"/>
+                                  <Component id="txtCadastrarSenha" max="32767" attributes="0"/>
+                                  <Component id="txtCadastrarNome" max="32767" attributes="0"/>
+                                  <Component id="txtCadastrarCpf" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -87,7 +88,7 @@
               </Group>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
@@ -104,31 +105,31 @@
               <Component id="jLabel2" min="-2" pref="24" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="campoNomeCa" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCadastrarNome" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="campoCpfCa" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCadastrarCpf" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="campoEmailCa" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="txtCadastrarEmail" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="campoSenhaCa" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCadastrarSenha" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="bttADMCadastro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bttCadastrarBooleanADM" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-              <Component id="bttFimCadastro" min="-2" max="-2" attributes="0"/>
+              <Component id="bttCadastrarFinalizar" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="56" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -140,14 +141,14 @@
         <Property name="text" type="java.lang.String" value="Bem vindo ao Restaurante"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="campoSenhaCa">
+    <Component class="javax.swing.JPasswordField" name="txtCadastrarSenha">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoSenhaCaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCadastrarSenhaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="campoNomeCa">
+    <Component class="javax.swing.JTextField" name="txtCadastrarNome">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoNomeCaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCadastrarNomeActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -155,14 +156,14 @@
         <Property name="text" type="java.lang.String" value="Cadastre-se:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="campoCpfCa">
+    <Component class="javax.swing.JTextField" name="txtCadastrarCpf">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoCpfCaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCadastrarCpfActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="campoEmailCa">
+    <Component class="javax.swing.JTextField" name="txtCadastrarEmail">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoEmailCaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCadastrarEmailActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -193,15 +194,15 @@
         <Property name="text" type="java.lang.String" value=" Cleber Lanches"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="bttFimCadastro">
+    <Component class="javax.swing.JButton" name="bttCadastrarFinalizar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Finalizar cadastro"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttFimCadastroActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttCadastrarFinalizarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="bttADMCadastro">
+    <Component class="javax.swing.JToggleButton" name="bttCadastrarBooleanADM">
       <Properties>
         <Property name="text" type="java.lang.String" value="Sim"/>
       </Properties>

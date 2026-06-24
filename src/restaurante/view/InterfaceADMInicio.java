@@ -8,14 +8,14 @@ package restaurante.view;
  *
  * @author janderson
  */
-public class InterfaceADM extends javax.swing.JFrame {
+public class InterfaceADMInicio extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(InterfaceADM.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(InterfaceADMInicio.class.getName());
 
     /**
      * Creates new form InterfaceADM
      */
-    public InterfaceADM() {
+    public InterfaceADMInicio() {
         initComponents();
     }
 
@@ -30,12 +30,14 @@ public class InterfaceADM extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        bttGerenciarCozinha = new javax.swing.JButton();
-        bttMudarCardapio = new javax.swing.JButton();
-        bttInterfaceADMHistoricos = new javax.swing.JButton();
-        bttAtualizarQtdMesas = new javax.swing.JButton();
+        bttInicioADMGerenciarCozinha = new javax.swing.JButton();
+        bttInicioADMMudarCardapio = new javax.swing.JButton();
+        bttInicioADMHistoricos = new javax.swing.JButton();
+        bttInicioADMAtualizarQtdMesas = new javax.swing.JButton();
+        bttInicioADMDeslogar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("ADM - Interface inicial");
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 22)); // NOI18N
         jLabel1.setText("Bem vindo, Administrador (Nome)");
@@ -43,31 +45,39 @@ public class InterfaceADM extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel2.setText("O que deseja fazer ?");
 
-        bttGerenciarCozinha.setText("Gerenciar a cozinha");
+        bttInicioADMGerenciarCozinha.setText("Gerenciar a cozinha");
 
-        bttMudarCardapio.setText("Gerenciar itens do cardápio");
+        bttInicioADMMudarCardapio.setText("Gerenciar itens do cardápio");
 
-        bttInterfaceADMHistoricos.setText("Checar históricos do restaurante");
+        bttInicioADMHistoricos.setText("Checar históricos do restaurante");
 
-        bttAtualizarQtdMesas.setText("Atualizar quantidade de mesas");
+        bttInicioADMAtualizarQtdMesas.setText("Atualizar quantidade de mesas");
+
+        bttInicioADMDeslogar.setText("Deslogar");
+        bttInicioADMDeslogar.addActionListener(this::bttInicioADMDeslogarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bttAtualizarQtdMesas)
-                    .addComponent(bttInterfaceADMHistoricos)
-                    .addComponent(bttMudarCardapio)
-                    .addComponent(bttGerenciarCozinha)
+                    .addComponent(bttInicioADMAtualizarQtdMesas)
+                    .addComponent(bttInicioADMHistoricos)
+                    .addComponent(bttInicioADMMudarCardapio)
+                    .addComponent(bttInicioADMGerenciarCozinha)
                     .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(45, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bttInicioADMDeslogar)
+                        .addGap(45, 45, 45))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,18 +87,24 @@ public class InterfaceADM extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bttGerenciarCozinha)
+                .addComponent(bttInicioADMGerenciarCozinha)
                 .addGap(18, 18, 18)
-                .addComponent(bttMudarCardapio)
+                .addComponent(bttInicioADMMudarCardapio)
                 .addGap(18, 18, 18)
-                .addComponent(bttAtualizarQtdMesas)
+                .addComponent(bttInicioADMAtualizarQtdMesas)
                 .addGap(18, 18, 18)
-                .addComponent(bttInterfaceADMHistoricos)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addComponent(bttInicioADMHistoricos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(bttInicioADMDeslogar)
+                .addGap(63, 63, 63))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bttInicioADMDeslogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttInicioADMDeslogarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttInicioADMDeslogarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,14 +128,15 @@ public class InterfaceADM extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new InterfaceADM().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new InterfaceADMInicio().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bttAtualizarQtdMesas;
-    private javax.swing.JButton bttGerenciarCozinha;
-    private javax.swing.JButton bttInterfaceADMHistoricos;
-    private javax.swing.JButton bttMudarCardapio;
+    private javax.swing.JButton bttInicioADMAtualizarQtdMesas;
+    private javax.swing.JButton bttInicioADMDeslogar;
+    private javax.swing.JButton bttInicioADMGerenciarCozinha;
+    private javax.swing.JButton bttInicioADMHistoricos;
+    private javax.swing.JButton bttInicioADMMudarCardapio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

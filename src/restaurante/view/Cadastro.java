@@ -34,18 +34,18 @@ public class Cadastro extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        campoSenhaCa = new javax.swing.JPasswordField();
-        campoNomeCa = new javax.swing.JTextField();
+        txtCadastrarSenha = new javax.swing.JPasswordField();
+        txtCadastrarNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        campoCpfCa = new javax.swing.JTextField();
-        campoEmailCa = new javax.swing.JTextField();
+        txtCadastrarCpf = new javax.swing.JTextField();
+        txtCadastrarEmail = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        bttFimCadastro = new javax.swing.JButton();
-        bttADMCadastro = new javax.swing.JToggleButton();
+        bttCadastrarFinalizar = new javax.swing.JButton();
+        bttCadastrarBooleanADM = new javax.swing.JToggleButton();
         jLabel10 = new javax.swing.JLabel();
 
         jLabel6.setText("Digite seu nome:");
@@ -55,18 +55,19 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel9.setText("jLabel9");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cleber Lanches - Interface de cadastro");
 
         jLabel1.setText("Bem vindo ao Restaurante");
 
-        campoSenhaCa.addActionListener(this::campoSenhaCaActionPerformed);
+        txtCadastrarSenha.addActionListener(this::txtCadastrarSenhaActionPerformed);
 
-        campoNomeCa.addActionListener(this::campoNomeCaActionPerformed);
+        txtCadastrarNome.addActionListener(this::txtCadastrarNomeActionPerformed);
 
         jLabel2.setText("Cadastre-se:");
 
-        campoCpfCa.addActionListener(this::campoCpfCaActionPerformed);
+        txtCadastrarCpf.addActionListener(this::txtCadastrarCpfActionPerformed);
 
-        campoEmailCa.addActionListener(this::campoEmailCaActionPerformed);
+        txtCadastrarEmail.addActionListener(this::txtCadastrarEmailActionPerformed);
 
         jLabel3.setText("Digite seu nome:");
 
@@ -79,10 +80,10 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Liberation Sans", 1, 50)); // NOI18N
         jLabel8.setText(" Cleber Lanches");
 
-        bttFimCadastro.setText("Finalizar cadastro");
-        bttFimCadastro.addActionListener(this::bttFimCadastroActionPerformed);
+        bttCadastrarFinalizar.setText("Finalizar cadastro");
+        bttCadastrarFinalizar.addActionListener(this::bttCadastrarFinalizarActionPerformed);
 
-        bttADMCadastro.setText("Sim");
+        bttCadastrarBooleanADM.setText("Sim");
 
         jLabel10.setText("Cadastrar com Admin?");
 
@@ -97,14 +98,14 @@ public class Cadastro extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(161, 161, 161))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bttFimCadastro)
+                        .addComponent(bttCadastrarFinalizar)
                         .addGap(170, 170, 170))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(bttADMCadastro))
+                                .addComponent(bttCadastrarBooleanADM))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,16 +116,16 @@ public class Cadastro extends javax.swing.JFrame {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(campoEmailCa)
-                                    .addComponent(campoSenhaCa)
-                                    .addComponent(campoNomeCa)
-                                    .addComponent(campoCpfCa, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtCadastrarEmail)
+                                    .addComponent(txtCadastrarSenha)
+                                    .addComponent(txtCadastrarNome)
+                                    .addComponent(txtCadastrarCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(72, 72, 72)))
                         .addGap(135, 135, 135))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(53, 53, 53)
                 .addComponent(jLabel8)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -139,64 +140,64 @@ public class Cadastro extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoNomeCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCadastrarNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoCpfCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCadastrarCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoEmailCa, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCadastrarEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoSenhaCa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCadastrarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bttADMCadastro)
+                    .addComponent(bttCadastrarBooleanADM)
                     .addComponent(jLabel10))
                 .addGap(13, 13, 13)
-                .addComponent(bttFimCadastro)
+                .addComponent(bttCadastrarFinalizar)
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campoSenhaCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoSenhaCaActionPerformed
+    private void txtCadastrarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCadastrarSenhaActionPerformed
 
-    }//GEN-LAST:event_campoSenhaCaActionPerformed
+    }//GEN-LAST:event_txtCadastrarSenhaActionPerformed
 
-    private void campoNomeCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeCaActionPerformed
+    private void txtCadastrarNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCadastrarNomeActionPerformed
 
-    }//GEN-LAST:event_campoNomeCaActionPerformed
+    }//GEN-LAST:event_txtCadastrarNomeActionPerformed
 
-    private void campoCpfCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCpfCaActionPerformed
+    private void txtCadastrarCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCadastrarCpfActionPerformed
 
-    }//GEN-LAST:event_campoCpfCaActionPerformed
+    }//GEN-LAST:event_txtCadastrarCpfActionPerformed
 
-    private void campoEmailCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoEmailCaActionPerformed
+    private void txtCadastrarEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCadastrarEmailActionPerformed
 
-    }//GEN-LAST:event_campoEmailCaActionPerformed
+    }//GEN-LAST:event_txtCadastrarEmailActionPerformed
 
-    private void bttFimCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttFimCadastroActionPerformed
-        if(campoNomeCa.getText().trim().isEmpty() ||
-           campoCpfCa.getText().trim().isEmpty() ||
-           campoEmailCa.getText().trim().isEmpty() ||
-           campoSenhaCa.getPassword().length == 0){ 
+    private void bttCadastrarFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttCadastrarFinalizarActionPerformed
+        if(txtCadastrarNome.getText().trim().isEmpty() ||
+           txtCadastrarCpf.getText().trim().isEmpty() ||
+           txtCadastrarEmail.getText().trim().isEmpty() ||
+           txtCadastrarSenha.getPassword().length == 0){ 
             System.out.println("Preencha todos os campos antes de prosseguir");
         }
         else{
-            Cliente c1 = new Cliente(campoNomeCa.getText(),
-                                    campoEmailCa.getText(), 
-                                    campoCpfCa.getText(), 
-                                    campoSenhaCa.getPassword(),
+            Cliente c1 = new Cliente(txtCadastrarNome.getText(),
+                                    txtCadastrarEmail.getText(), 
+                                    txtCadastrarCpf.getText(), 
+                                    txtCadastrarSenha.getPassword(),
                                     false);
             
         }
-    }//GEN-LAST:event_bttFimCadastroActionPerformed
+    }//GEN-LAST:event_bttCadastrarFinalizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,12 +225,8 @@ public class Cadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton bttADMCadastro;
-    private javax.swing.JButton bttFimCadastro;
-    private javax.swing.JTextField campoCpfCa;
-    private javax.swing.JTextField campoEmailCa;
-    private javax.swing.JTextField campoNomeCa;
-    private javax.swing.JPasswordField campoSenhaCa;
+    private javax.swing.JToggleButton bttCadastrarBooleanADM;
+    private javax.swing.JButton bttCadastrarFinalizar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -241,5 +238,9 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField txtCadastrarCpf;
+    private javax.swing.JTextField txtCadastrarEmail;
+    private javax.swing.JTextField txtCadastrarNome;
+    private javax.swing.JPasswordField txtCadastrarSenha;
     // End of variables declaration//GEN-END:variables
 }
