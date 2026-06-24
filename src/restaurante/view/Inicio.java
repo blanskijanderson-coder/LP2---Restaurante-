@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package restaurante.view;
-import restaurante.Cadastrado;
 import java.util.Arrays;
+import restaurante.Cadastrado;
+import restaurante.Cliente;
+import restaurante.Administrador;
 
 /**
  *
@@ -126,14 +128,14 @@ public class Inicio extends javax.swing.JFrame {
             if(txtLogarNome.getText().equals(pessoa.getNome())){
                 if(Arrays.equals(txtLogarSenha.getPassword(),pessoa.getSenha())){
                     if(pessoa.getPoderesADM() == false){
-                        //interface cliente
-                        InterfaceClienteInicio ClInicio = new InterfaceClienteInicio();
+                        
+                        InterfaceClienteInicio ClInicio = new InterfaceClienteInicio((Cliente) pessoa);
                         ClInicio.setVisible(true);
                     }
                     else{
                         //interface admin
-                        InterfaceADMInicio adminicio = new InterfaceADMInicio();
-                        adminicio.setVisible(true);
+                        InterfaceADMInicio ADMinicio = new InterfaceADMInicio((Administrador)pessoa);
+                        ADMinicio.setVisible(true);
                     }
                 }
                 else{

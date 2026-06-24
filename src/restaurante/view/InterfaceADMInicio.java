@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package restaurante.view;
-
+import restaurante.Administrador;
 /**
  *
  * @author janderson
@@ -11,12 +11,15 @@ package restaurante.view;
 public class InterfaceADMInicio extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(InterfaceADMInicio.class.getName());
-
+    
+    private Administrador usuarioLogado;
     /**
      * Creates new form InterfaceADM
      */
-    public InterfaceADMInicio() {
+    public InterfaceADMInicio(Administrador pessoaLogada) {
         initComponents();
+        this.usuarioLogado = pessoaLogada;
+        
     }
 
     /**
@@ -128,7 +131,7 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new InterfaceADMInicio().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new InterfaceADMInicio(null).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

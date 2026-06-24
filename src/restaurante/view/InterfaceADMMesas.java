@@ -91,7 +91,8 @@ public class InterfaceADMMesas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtADMMesasAtualizarActionPerformed
 
     private void bttADMMesaConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMMesaConfirmarActionPerformed
-        // TODO add your handling code here:
+        InterfaceClientePedido ClPedido = new InterfaceClientePedido();
+        ClPedido.setVisible(true);  
     }//GEN-LAST:event_bttADMMesaConfirmarActionPerformed
 
     /**

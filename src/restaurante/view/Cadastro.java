@@ -195,7 +195,7 @@ public class Cadastro extends javax.swing.JFrame {
                                     txtCadastrarCpf.getText(), 
                                     txtCadastrarSenha.getPassword(),
                                     false);
-            this.dispose();
+                this.dispose();
             }
             else{
                 Administrador ADM1 = new Administrador(txtCadastrarNome.getText(),
@@ -203,7 +203,7 @@ public class Cadastro extends javax.swing.JFrame {
                                     txtCadastrarCpf.getText(), 
                                     txtCadastrarSenha.getPassword(),
                                     true);
-            this.dispose();
+                this.dispose();
             }
         }
     }//GEN-LAST:event_bttCadastrarFinalizarActionPerformed
