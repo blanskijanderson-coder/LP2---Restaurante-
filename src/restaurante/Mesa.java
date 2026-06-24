@@ -44,11 +44,7 @@ public class Mesa {
         }
     }
 
-    public int getMesaNumero() {
-        return mesa_numero;
-    }
+    public int getMesaNumero(){return mesa_numero;}
 
-    public static void setQtdMesa(int quantidade) {
-        qtd_mesa = quantidade;
-    }
+    public static void setQtdMesa(int quantidade){qtd_mesa = quantidade;}
 }

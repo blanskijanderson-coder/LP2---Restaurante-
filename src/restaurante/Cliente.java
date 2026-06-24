@@ -4,22 +4,18 @@ package restaurante;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Cliente {
-    private String nome;
-    private String email;
-    private String cpf;
-    private char[] senha;
+public class Cliente extends Cadastrado  { //falta acesso ao historico de contas
+    
     private double bonus = 0;
-    private Conta conta_atual;
-    private Pedido pedido_novo;
     private Mesa mesa_atual;
+    private Pedido pedido_novo;
+    private Conta conta_atual;
     private ArrayList<Conta> historico_contasCliente = new ArrayList<>();
 
-    public Cliente(String nome, String email, String cpf, char[] senha) {
-        this.nome = nome;
-        this.email = email;
-        this.cpf = cpf;
-        this.senha = senha;
+    public Cliente(String nome, String email, String cpf, 
+                        char[] senha, boolean poderes_adm){
+        
+        super(nome, email, cpf, senha, poderes_adm);
     }
 
     public void escolherMesa() {
@@ -39,8 +35,6 @@ public class Cliente {
             i++;
         }
     }
-
-    // conta está sendo adicionada em historicos ?
 
     public void solicitarPedido() {
         if (this.mesa_atual != null) {
@@ -74,7 +68,6 @@ public class Cliente {
         }
     }
 
-    // conta é adicionada nos historicos ?
     public void enviarPedido() {
         if (this.pedido_novo != null) {
             this.pedido_novo.finalizarPedido();
@@ -99,7 +92,7 @@ public class Cliente {
             System.out.println("deseja pagar com crédito ou débito? (digite C para crédito ou D para débito");
             String pagamentoModo = scanner.nextLine();
 
-            System.out.println(this.nome + " pagou R$ " + valorComDesconto + " utilizando o modo de pagamento "
+            System.out.println(this.getNome() + " pagou R$ " + valorComDesconto + " utilizando o modo de pagamento "
                     + pagamentoModo + ". Obrigado!");
 
             this.conta_atual.finalizarConta();
@@ -111,36 +104,16 @@ public class Cliente {
             Mesa.liberarMesa(numMesa);
         }
     }
+    
+    
+    
+    public double getBonus(){return bonus;}
 
-    public String getNome() {
-        return nome;
-    }
+    public Mesa getMesa(){return mesa_atual;}
 
-    public String getEmail() {
-        return email;
-    }
+    public Conta getContaAtual(){return conta_atual;}
 
-    public String getCpf() {
-        return cpf;
-    }
+    public void setBonus(double valorBonus){this.bonus = valorBonus;}
 
-    public Mesa getMesa() {
-        return mesa_atual;
-    }
-
-    public Conta getContaAtual() {
-        return conta_atual;
-    }
-
-    public double getBonus() {
-        return bonus;
-    }
-
-    public void setBonus(double valorBonus) {
-        this.bonus = valorBonus;
-    }
-
-    public void setContaAtual(Conta mudada) {
-        this.conta_atual = mudada;
-    }
+    public void setContaAtual(Conta mudada){this.conta_atual = mudada;}
 }

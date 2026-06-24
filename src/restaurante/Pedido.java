@@ -38,13 +38,13 @@ public class Pedido {
     }       
     
     
-    public String getStatus() {return this.status_pedido;}
+    public String getStatus(){return this.status_pedido;}
 
-    public Cliente getCliente() {return this.cliente;}
+    public Cliente getCliente(){return this.cliente;}
     
     public ArrayList<Cardapio> getListaItensSolicitados(){return this.itensSolicitados;}
     
-    public void setStatusPedido(String status) {this.status_pedido = status;}
+    public void setStatusPedido(String status){this.status_pedido = status;}
     
     
     
