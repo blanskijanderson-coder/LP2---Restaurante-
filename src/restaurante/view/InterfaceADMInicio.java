@@ -44,6 +44,8 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ADM - Interface inicial");
 
+        BarraTarefas.setPreferredSize(new java.awt.Dimension(600, 600));
+
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel3.setText("O que deseja fazer ?");
 
@@ -70,45 +72,37 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bttInicioADMAtualizarQtdMesas)
+                    .addComponent(bttInicioADMHistoricos)
+                    .addComponent(bttInicioADMMudarCardapio)
+                    .addComponent(bttInicioADMGerenciarCozinha)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(73, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(446, 446, 446)
-                            .addComponent(bttInicioADMDeslogar1))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(50, 50, 50)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(bttInicioADMAtualizarQtdMesas)
-                                .addComponent(bttInicioADMHistoricos)
-                                .addComponent(bttInicioADMMudarCardapio)
-                                .addComponent(bttInicioADMGerenciarCozinha)
-                                .addComponent(jLabel3))))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bttInicioADMDeslogar1)
+                .addGap(62, 62, 62))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(79, 79, 79)
                 .addComponent(jLabel5)
-                .addContainerGap(285, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(94, 94, 94)
-                    .addComponent(jLabel3)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(bttInicioADMGerenciarCozinha)
-                    .addGap(18, 18, 18)
-                    .addComponent(bttInicioADMMudarCardapio)
-                    .addGap(18, 18, 18)
-                    .addComponent(bttInicioADMAtualizarQtdMesas)
-                    .addGap(18, 18, 18)
-                    .addComponent(bttInicioADMHistoricos)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bttInicioADMDeslogar1)
-                    .addGap(57, 57, 57)))
+                .addGap(43, 43, 43)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bttInicioADMGerenciarCozinha)
+                .addGap(18, 18, 18)
+                .addComponent(bttInicioADMMudarCardapio)
+                .addGap(18, 18, 18)
+                .addComponent(bttInicioADMAtualizarQtdMesas)
+                .addGap(18, 18, 18)
+                .addComponent(bttInicioADMHistoricos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bttInicioADMDeslogar1)
+                .addGap(171, 171, 171))
         );
 
         BarraTarefas.addTab("Menu", jPanel1);
@@ -117,11 +111,13 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BarraTarefas)
+            .addComponent(BarraTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BarraTarefas, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(BarraTarefas, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
