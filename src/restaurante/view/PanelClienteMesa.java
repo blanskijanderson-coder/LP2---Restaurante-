@@ -107,7 +107,11 @@ public class PanelClienteMesa extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttClienteMesaConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteMesaConfirmarActionPerformed
-
+        PanelClientePedido novopedido = new PanelClientePedido(usuarioLogado, BarraTarefas);
+        
+        BarraTarefas.addTab("Novo pedido", novopedido);
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        
         BarraTarefas.remove(this);
     }//GEN-LAST:event_bttClienteMesaConfirmarActionPerformed
 

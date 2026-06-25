@@ -4,17 +4,21 @@
  */
 package restaurante.view;
 
+import restaurante.Cliente;
+
 /**
  *
  * @author janderson
  */
 public class PanelClientePagamentoConta extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelClientePagamentoConta
-     */
-    public PanelClientePagamentoConta() {
+    private javax.swing.JTabbedPane BarraTarefas;
+    private Cliente usuarioLogado;
+    
+    public PanelClientePagamentoConta(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
         initComponents();
+        this.BarraTarefas = BarraTarefas;
+        this.usuarioLogado = pessoaLogada;
     }
 
     /**
@@ -31,63 +35,112 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         bttClienteContaVisualizarPedido = new javax.swing.JButton();
         bttClienteContaPagar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        bttClienteContaNovoPedido = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 22)); // NOI18N
         jLabel1.setText("Sua conta atual:");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null}
+                {null, null, null}
             },
             new String [] {
-                "Pedido", "Custo"
+                "Pedido", "Status", "Custo"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
         bttClienteContaVisualizarPedido.setText("Visualizar");
+        bttClienteContaVisualizarPedido.addActionListener(this::bttClienteContaVisualizarPedidoActionPerformed);
 
         bttClienteContaPagar.setText("Pagar");
+
+        jLabel2.setText("Deseja fazer um novo pedido ?");
+
+        bttClienteContaNovoPedido.setText("Fazer novo pedido!");
+        bttClienteContaNovoPedido.addActionListener(this::bttClienteContaNovoPedidoActionPerformed);
+
+        jLabel3.setText("Obs: Enquanto seu pedido não for entregue, você pode desfaze-lo!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bttClienteContaPagar)
+                .addGap(47, 47, 47))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bttClienteContaVisualizarPedido)
-                    .addComponent(bttClienteContaPagar))
-                .addGap(26, 26, 26))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(bttClienteContaNovoPedido))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel1)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addComponent(bttClienteContaVisualizarPedido)
+                        .addGap(37, 37, 37))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bttClienteContaVisualizarPedido)
-                .addGap(131, 131, 131)
-                .addComponent(bttClienteContaPagar)
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bttClienteContaVisualizarPedido)
+                        .addGap(88, 88, 88)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bttClienteContaPagar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bttClienteContaNovoPedido)))
                 .addGap(28, 28, 28))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(167, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bttClienteContaVisualizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteContaVisualizarPedidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttClienteContaVisualizarPedidoActionPerformed
+
+    private void bttClienteContaNovoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteContaNovoPedidoActionPerformed
+        PanelClientePedido novopedido = new PanelClientePedido(usuarioLogado, BarraTarefas);
+        
+        BarraTarefas.addTab("Novo pedido", novopedido);
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        
+    }//GEN-LAST:event_bttClienteContaNovoPedidoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bttClienteContaNovoPedido;
     private javax.swing.JButton bttClienteContaPagar;
     private javax.swing.JButton bttClienteContaVisualizarPedido;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package restaurante.view;
+import restaurante.Cliente;
 
 /**
  *
@@ -10,11 +11,13 @@ package restaurante.view;
  */
 public class PanelClientePedido extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelClientePedido
-     */
-    public PanelClientePedido() {
+    private javax.swing.JTabbedPane BarraTarefas;
+    private Cliente usuarioLogado;
+    
+    public PanelClientePedido(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
         initComponents();
+        this.BarraTarefas = BarraTarefas;
+        this.usuarioLogado = pessoaLogada;
     }
 
     /**
@@ -180,7 +183,12 @@ public class PanelClientePedido extends javax.swing.JPanel {
     }//GEN-LAST:event_bttAdicionarItemPedidoActionPerformed
 
     private void bttFinalizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttFinalizarPedidoActionPerformed
-        // TODO add your handling code here:
+        PanelClientePagamentoConta conta = new PanelClientePagamentoConta(usuarioLogado, BarraTarefas);
+        
+        BarraTarefas.addTab("Sua conta", conta);
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        
+        BarraTarefas.remove(this);
     }//GEN-LAST:event_bttFinalizarPedidoActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
