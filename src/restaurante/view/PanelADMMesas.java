@@ -4,17 +4,21 @@
  */
 package restaurante.view;
 
+import restaurante.Administrador;
+
 /**
  *
  * @author janderson
  */
 public class PanelADMMesas extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelADMMesas
-     */
-    public PanelADMMesas() {
+    private javax.swing.JTabbedPane BarraTarefas;
+    private Administrador usuarioLogado;
+    
+    public PanelADMMesas(Administrador pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
         initComponents();
+        this.BarraTarefas = BarraTarefas;
+        this.usuarioLogado = pessoaLogada;
     }
 
     /**
@@ -31,18 +35,23 @@ public class PanelADMMesas extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtADMMesasAtualizar = new javax.swing.JTextField();
         bttADMMesaConfirmar = new javax.swing.JButton();
+        bttADMMesaEncerrar = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 22)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 30)); // NOI18N
         jLabel1.setText("Atualizar quantidade de mesas");
 
         jLabel2.setText("Aviso: Fazer isso modificará não alterará as mesas atuais dos clientes.");
 
+        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel3.setText("Insira o numero que atualizará a quantidade de mesas:");
 
         txtADMMesasAtualizar.addActionListener(this::txtADMMesasAtualizarActionPerformed);
 
         bttADMMesaConfirmar.setText("Confirmar");
         bttADMMesaConfirmar.addActionListener(this::bttADMMesaConfirmarActionPerformed);
+
+        bttADMMesaEncerrar.setText("Encerrar atividades");
+        bttADMMesaEncerrar.addActionListener(this::bttADMMesaEncerrarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -51,17 +60,22 @@ public class PanelADMMesas extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(73, 73, 73)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)))
+                            .addComponent(jLabel1)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
+                        .addGap(165, 165, 165)
                         .addComponent(txtADMMesasAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(76, 76, 76)
-                        .addComponent(bttADMMesaConfirmar)))
-                .addContainerGap(86, Short.MAX_VALUE))
+                        .addComponent(bttADMMesaConfirmar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(216, 216, 216)
+                        .addComponent(bttADMMesaEncerrar)))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,9 +88,11 @@ public class PanelADMMesas extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtADMMesasAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bttADMMesaConfirmar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(48, 48, 48))
+                .addGap(18, 18, 18)
+                .addComponent(bttADMMesaEncerrar)
+                .addGap(39, 39, 39))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -88,9 +104,14 @@ public class PanelADMMesas extends javax.swing.JPanel {
         
     }//GEN-LAST:event_bttADMMesaConfirmarActionPerformed
 
+    private void bttADMMesaEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMMesaEncerrarActionPerformed
+        BarraTarefas.remove(this);
+    }//GEN-LAST:event_bttADMMesaEncerrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttADMMesaConfirmar;
+    private javax.swing.JButton bttADMMesaEncerrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

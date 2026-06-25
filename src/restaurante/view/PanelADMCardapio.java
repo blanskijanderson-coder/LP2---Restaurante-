@@ -4,17 +4,21 @@
  */
 package restaurante.view;
 
+import restaurante.Administrador;
+
 /**
  *
  * @author janderson
  */
 public class PanelADMCardapio extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelADMCardapio
-     */
-    public PanelADMCardapio() {
+    private javax.swing.JTabbedPane BarraTarefas;
+    private Administrador usuarioLogado;
+    
+    public PanelADMCardapio(Administrador pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
         initComponents();
+        this.BarraTarefas = BarraTarefas;
+        this.usuarioLogado = pessoaLogada;
     }
 
     /**
@@ -48,6 +52,7 @@ public class PanelADMCardapio extends javax.swing.JPanel {
         txtNomeComidaADM = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        bttADMCardapioEncerrar = new javax.swing.JButton();
 
         txtCustoComidaADM.addActionListener(this::txtCustoComidaADMActionPerformed);
 
@@ -99,6 +104,9 @@ public class PanelADMCardapio extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable2);
 
+        bttADMCardapioEncerrar.setText("Encerrar atividades");
+        bttADMCardapioEncerrar.addActionListener(this::bttADMCardapioEncerrarActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,13 +115,8 @@ public class PanelADMCardapio extends javax.swing.JPanel {
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(193, 193, 193)
                         .addComponent(bttADMRemoverGenerico))
-                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -149,14 +152,25 @@ public class PanelADMCardapio extends javax.swing.JPanel {
                                     .addComponent(txtCustoBebidaADM, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtFornBebidaADM, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtNomeBebidaADM, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(bttADMBebidaADD))))
+                            .addComponent(bttADMBebidaADD)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bttADMCardapioEncerrar))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(bttADMCardapioEncerrar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,7 +197,7 @@ public class PanelADMCardapio extends javax.swing.JPanel {
                             .addComponent(txtIngredComidaADM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(bttADMComidaADD)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(10, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -223,9 +237,14 @@ public class PanelADMCardapio extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeComidaADMActionPerformed
 
+    private void bttADMCardapioEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMCardapioEncerrarActionPerformed
+        BarraTarefas.remove(this);
+    }//GEN-LAST:event_bttADMCardapioEncerrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttADMBebidaADD;
+    private javax.swing.JButton bttADMCardapioEncerrar;
     private javax.swing.JButton bttADMComidaADD;
     private javax.swing.JButton bttADMRemoverGenerico;
     private javax.swing.JLabel jLabel1;

@@ -77,8 +77,8 @@ public class Cadastro extends javax.swing.JFrame {
 
         jLabel7.setText("Digite sua senha:");
 
-        jLabel8.setFont(new java.awt.Font("Liberation Sans", 1, 50)); // NOI18N
-        jLabel8.setText(" Cleber Lanches");
+        jLabel8.setFont(new java.awt.Font("Liberation Sans", 1, 35)); // NOI18N
+        jLabel8.setText("Restaurante Cleberlícia");
 
         bttCadastrarFinalizar.setText("Finalizar cadastro");
         bttCadastrarFinalizar.addActionListener(this::bttCadastrarFinalizarActionPerformed);
@@ -92,7 +92,7 @@ public class Cadastro extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addGroup(layout.createSequentialGroup()
@@ -159,7 +159,7 @@ public class Cadastro extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addGap(13, 13, 13)
                 .addComponent(bttCadastrarFinalizar)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         pack();

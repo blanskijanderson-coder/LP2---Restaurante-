@@ -31,13 +31,13 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        BarraTarefas = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        bttInicioADMGerenciarCozinha1 = new javax.swing.JButton();
-        bttInicioADMMudarCardapio1 = new javax.swing.JButton();
-        bttInicioADMHistoricos1 = new javax.swing.JButton();
-        bttInicioADMAtualizarQtdMesas1 = new javax.swing.JButton();
+        bttInicioADMGerenciarCozinha = new javax.swing.JButton();
+        bttInicioADMMudarCardapio = new javax.swing.JButton();
+        bttInicioADMHistoricos = new javax.swing.JButton();
+        bttInicioADMAtualizarQtdMesas = new javax.swing.JButton();
         bttInicioADMDeslogar1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
@@ -47,13 +47,16 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel3.setText("O que deseja fazer ?");
 
-        bttInicioADMGerenciarCozinha1.setText("Gerenciar a cozinha");
+        bttInicioADMGerenciarCozinha.setText("Gerenciar a cozinha");
+        bttInicioADMGerenciarCozinha.addActionListener(this::bttInicioADMGerenciarCozinhaActionPerformed);
 
-        bttInicioADMMudarCardapio1.setText("Gerenciar itens do cardápio");
+        bttInicioADMMudarCardapio.setText("Gerenciar itens do cardápio");
+        bttInicioADMMudarCardapio.addActionListener(this::bttInicioADMMudarCardapioActionPerformed);
 
-        bttInicioADMHistoricos1.setText("Checar históricos do restaurante");
+        bttInicioADMHistoricos.setText("Checar históricos do restaurante");
 
-        bttInicioADMAtualizarQtdMesas1.setText("Atualizar quantidade de mesas");
+        bttInicioADMAtualizarQtdMesas.setText("Atualizar quantidade de mesas");
+        bttInicioADMAtualizarQtdMesas.addActionListener(this::bttInicioADMAtualizarQtdMesasActionPerformed);
 
         bttInicioADMDeslogar1.setText("Deslogar");
         bttInicioADMDeslogar1.addActionListener(this::bttInicioADMDeslogar1ActionPerformed);
@@ -70,18 +73,19 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(73, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addGap(446, 446, 446)
-                    .addComponent(bttInicioADMDeslogar1)
-                    .addContainerGap(65, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(50, 50, 50)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(bttInicioADMAtualizarQtdMesas1)
-                        .addComponent(bttInicioADMHistoricos1)
-                        .addComponent(bttInicioADMMudarCardapio1)
-                        .addComponent(bttInicioADMGerenciarCozinha1)
-                        .addComponent(jLabel3))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(446, 446, 446)
+                            .addComponent(bttInicioADMDeslogar1))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(50, 50, 50)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(bttInicioADMAtualizarQtdMesas)
+                                .addComponent(bttInicioADMHistoricos)
+                                .addComponent(bttInicioADMMudarCardapio)
+                                .addComponent(bttInicioADMGerenciarCozinha)
+                                .addComponent(jLabel3))))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,31 +99,29 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
                     .addGap(94, 94, 94)
                     .addComponent(jLabel3)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(bttInicioADMGerenciarCozinha1)
+                    .addComponent(bttInicioADMGerenciarCozinha)
                     .addGap(18, 18, 18)
-                    .addComponent(bttInicioADMMudarCardapio1)
+                    .addComponent(bttInicioADMMudarCardapio)
                     .addGap(18, 18, 18)
-                    .addComponent(bttInicioADMAtualizarQtdMesas1)
+                    .addComponent(bttInicioADMAtualizarQtdMesas)
                     .addGap(18, 18, 18)
-                    .addComponent(bttInicioADMHistoricos1)
+                    .addComponent(bttInicioADMHistoricos)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bttInicioADMDeslogar1)
                     .addGap(57, 57, 57)))
         );
 
-        jTabbedPane1.addTab("Menu", jPanel1);
+        BarraTarefas.addTab("Menu", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(BarraTarefas)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+            .addComponent(BarraTarefas, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -128,6 +130,33 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
     private void bttInicioADMDeslogar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttInicioADMDeslogar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bttInicioADMDeslogar1ActionPerformed
+
+    private void bttInicioADMGerenciarCozinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttInicioADMGerenciarCozinhaActionPerformed
+        PanelADMCozinha cozinha = new PanelADMCozinha(usuarioLogado, BarraTarefas);
+        
+        BarraTarefas.addTab("Cozinha", cozinha);
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        
+        BarraTarefas.remove(this);
+    }//GEN-LAST:event_bttInicioADMGerenciarCozinhaActionPerformed
+
+    private void bttInicioADMMudarCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttInicioADMMudarCardapioActionPerformed
+        PanelADMCardapio cardapio = new PanelADMCardapio(usuarioLogado, BarraTarefas);
+        
+        BarraTarefas.addTab("Cardápio", cardapio);
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        
+        BarraTarefas.remove(this);
+    }//GEN-LAST:event_bttInicioADMMudarCardapioActionPerformed
+
+    private void bttInicioADMAtualizarQtdMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttInicioADMAtualizarQtdMesasActionPerformed
+        PanelADMMesas mesas = new PanelADMMesas(usuarioLogado, BarraTarefas);
+        
+        BarraTarefas.addTab("Mudar mesas", mesas);
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        
+        BarraTarefas.remove(this);
+    }//GEN-LAST:event_bttInicioADMAtualizarQtdMesasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,22 +184,14 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bttInicioADMAtualizarQtdMesas1;
-    private javax.swing.JButton bttInicioADMAtualizarQtdMesas2;
+    private javax.swing.JTabbedPane BarraTarefas;
+    private javax.swing.JButton bttInicioADMAtualizarQtdMesas;
     private javax.swing.JButton bttInicioADMDeslogar1;
-    private javax.swing.JButton bttInicioADMDeslogar2;
-    private javax.swing.JButton bttInicioADMGerenciarCozinha1;
-    private javax.swing.JButton bttInicioADMGerenciarCozinha2;
-    private javax.swing.JButton bttInicioADMHistoricos1;
-    private javax.swing.JButton bttInicioADMHistoricos2;
-    private javax.swing.JButton bttInicioADMMudarCardapio1;
-    private javax.swing.JButton bttInicioADMMudarCardapio2;
+    private javax.swing.JButton bttInicioADMGerenciarCozinha;
+    private javax.swing.JButton bttInicioADMHistoricos;
+    private javax.swing.JButton bttInicioADMMudarCardapio;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
     // End of variables declaration//GEN-END:variables
 }
