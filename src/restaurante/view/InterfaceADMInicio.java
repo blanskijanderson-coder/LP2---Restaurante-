@@ -31,83 +31,103 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        bttInicioADMGerenciarCozinha = new javax.swing.JButton();
-        bttInicioADMMudarCardapio = new javax.swing.JButton();
-        bttInicioADMHistoricos = new javax.swing.JButton();
-        bttInicioADMAtualizarQtdMesas = new javax.swing.JButton();
-        bttInicioADMDeslogar = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        bttInicioADMGerenciarCozinha1 = new javax.swing.JButton();
+        bttInicioADMMudarCardapio1 = new javax.swing.JButton();
+        bttInicioADMHistoricos1 = new javax.swing.JButton();
+        bttInicioADMAtualizarQtdMesas1 = new javax.swing.JButton();
+        bttInicioADMDeslogar1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ADM - Interface inicial");
 
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 22)); // NOI18N
-        jLabel1.setText("Bem vindo, Administrador (Nome)");
+        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel3.setText("O que deseja fazer ?");
 
-        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jLabel2.setText("O que deseja fazer ?");
+        bttInicioADMGerenciarCozinha1.setText("Gerenciar a cozinha");
 
-        bttInicioADMGerenciarCozinha.setText("Gerenciar a cozinha");
+        bttInicioADMMudarCardapio1.setText("Gerenciar itens do cardápio");
 
-        bttInicioADMMudarCardapio.setText("Gerenciar itens do cardápio");
+        bttInicioADMHistoricos1.setText("Checar históricos do restaurante");
 
-        bttInicioADMHistoricos.setText("Checar históricos do restaurante");
+        bttInicioADMAtualizarQtdMesas1.setText("Atualizar quantidade de mesas");
 
-        bttInicioADMAtualizarQtdMesas.setText("Atualizar quantidade de mesas");
+        bttInicioADMDeslogar1.setText("Deslogar");
+        bttInicioADMDeslogar1.addActionListener(this::bttInicioADMDeslogar1ActionPerformed);
 
-        bttInicioADMDeslogar.setText("Deslogar");
-        bttInicioADMDeslogar.addActionListener(this::bttInicioADMDeslogarActionPerformed);
+        jLabel5.setFont(new java.awt.Font("Liberation Sans", 1, 22)); // NOI18N
+        jLabel5.setText("Bem vindo, Administrador (Nome)");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(73, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGap(446, 446, 446)
+                    .addComponent(bttInicioADMDeslogar1)
+                    .addContainerGap(65, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(50, 50, 50)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(bttInicioADMAtualizarQtdMesas1)
+                        .addComponent(bttInicioADMHistoricos1)
+                        .addComponent(bttInicioADMMudarCardapio1)
+                        .addComponent(bttInicioADMGerenciarCozinha1)
+                        .addComponent(jLabel3))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel5)
+                .addContainerGap(285, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(94, 94, 94)
+                    .addComponent(jLabel3)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(bttInicioADMGerenciarCozinha1)
+                    .addGap(18, 18, 18)
+                    .addComponent(bttInicioADMMudarCardapio1)
+                    .addGap(18, 18, 18)
+                    .addComponent(bttInicioADMAtualizarQtdMesas1)
+                    .addGap(18, 18, 18)
+                    .addComponent(bttInicioADMHistoricos1)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bttInicioADMDeslogar1)
+                    .addGap(57, 57, 57)))
+        );
+
+        jTabbedPane1.addTab("Menu", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bttInicioADMAtualizarQtdMesas)
-                    .addComponent(bttInicioADMHistoricos)
-                    .addComponent(bttInicioADMMudarCardapio)
-                    .addComponent(bttInicioADMGerenciarCozinha)
-                    .addComponent(jLabel2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bttInicioADMDeslogar)
-                        .addGap(45, 45, 45))))
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bttInicioADMGerenciarCozinha)
-                .addGap(18, 18, 18)
-                .addComponent(bttInicioADMMudarCardapio)
-                .addGap(18, 18, 18)
-                .addComponent(bttInicioADMAtualizarQtdMesas)
-                .addGap(18, 18, 18)
-                .addComponent(bttInicioADMHistoricos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(bttInicioADMDeslogar)
-                .addGap(63, 63, 63))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bttInicioADMDeslogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttInicioADMDeslogarActionPerformed
+    private void bttInicioADMDeslogar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttInicioADMDeslogar1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bttInicioADMDeslogarActionPerformed
+    }//GEN-LAST:event_bttInicioADMDeslogar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,12 +155,22 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bttInicioADMAtualizarQtdMesas;
-    private javax.swing.JButton bttInicioADMDeslogar;
-    private javax.swing.JButton bttInicioADMGerenciarCozinha;
-    private javax.swing.JButton bttInicioADMHistoricos;
-    private javax.swing.JButton bttInicioADMMudarCardapio;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton bttInicioADMAtualizarQtdMesas1;
+    private javax.swing.JButton bttInicioADMAtualizarQtdMesas2;
+    private javax.swing.JButton bttInicioADMDeslogar1;
+    private javax.swing.JButton bttInicioADMDeslogar2;
+    private javax.swing.JButton bttInicioADMGerenciarCozinha1;
+    private javax.swing.JButton bttInicioADMGerenciarCozinha2;
+    private javax.swing.JButton bttInicioADMHistoricos1;
+    private javax.swing.JButton bttInicioADMHistoricos2;
+    private javax.swing.JButton bttInicioADMMudarCardapio1;
+    private javax.swing.JButton bttInicioADMMudarCardapio2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     // End of variables declaration//GEN-END:variables
 }
