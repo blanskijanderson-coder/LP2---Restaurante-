@@ -197,7 +197,7 @@ public class PanelADMCardapio extends javax.swing.JPanel {
                             .addComponent(txtIngredComidaADM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(bttADMComidaADD)
-                        .addContainerGap(10, Short.MAX_VALUE))
+                        .addContainerGap(49, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

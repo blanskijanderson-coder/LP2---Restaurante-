@@ -38,6 +38,7 @@ public class PanelADMCozinha extends javax.swing.JPanel {
         bttADMCozinhaVisualizar = new javax.swing.JButton();
         bttADMCozinhaEncerrar = new javax.swing.JButton();
 
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel2.setText("Lista de pedidos pendentes:");
 
         bttADMCozinhaEntregar.setText("Entregar");
@@ -81,21 +82,22 @@ public class PanelADMCozinha extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(244, 244, 244)
                         .addComponent(bttADMCozinhaVisualizar)
                         .addGap(18, 18, 18)
                         .addComponent(bttADMCozinhaEntregar))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(38, 38, 38)
+                .addGap(42, 42, 42)
                 .addComponent(bttADMCozinhaEncerrar)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

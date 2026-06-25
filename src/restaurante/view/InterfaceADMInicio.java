@@ -150,9 +150,9 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_bttInicioADMMudarCardapioActionPerformed
 
     private void bttInicioADMAtualizarQtdMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttInicioADMAtualizarQtdMesasActionPerformed
-        PanelADMMesas mesas = new PanelADMMesas(usuarioLogado, BarraTarefas);
+        PanelADMMesas mesa = new PanelADMMesas(usuarioLogado, BarraTarefas);
         
-        BarraTarefas.addTab("Mudar mesas", mesas);
+        BarraTarefas.addTab("Mudar mesa", mesa);
         BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
         
         BarraTarefas.remove(this);
