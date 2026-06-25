@@ -13,15 +13,21 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(InterfaceClienteInicio.class.getName());
     
-    private Cliente UsuarioLogado;
+    private Cliente usuarioLogado;
     /**
      * Creates new form InterfaceCliente
      */
     public InterfaceClienteInicio(Cliente pessoaLogada) {
         initComponents();
-        this.UsuarioLogado = pessoaLogada;
+        
+        this.usuarioLogado = pessoaLogada;
+        if (usuarioLogado != null) {
+            TextoMenuInicial.setText("Bem vindo, Cliente " + usuarioLogado.getNome() + "!");
+        } else {
+            TextoMenuInicial.setText("Bem vindo, Cliente (Modo de Teste)!");
+        }
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,21 +37,24 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        BarraTarefas = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        bttClienteInicioDeslogar = new javax.swing.JButton();
+        TextoMenuInicial = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         bttClienteInicioAtendimento = new javax.swing.JButton();
         bttClienteInicioHistorico = new javax.swing.JButton();
-        bttClienteInicioDeslogar = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cliente - Interface inicial");
 
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 22)); // NOI18N
-        jLabel1.setText("Bem vindo, Cliente (Nome)");
+        bttClienteInicioDeslogar.setText("Deslogar");
+        bttClienteInicioDeslogar.addActionListener(this::bttClienteInicioDeslogarActionPerformed);
 
+        TextoMenuInicial.setFont(new java.awt.Font("Liberation Sans", 1, 28)); // NOI18N
+        TextoMenuInicial.setText("Bem vindo, Cliente (Nome)");
+
+        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel3.setText("O que deseja realizar hoje ?");
 
         bttClienteInicioAtendimento.setText("Iniciar atendimento");
@@ -54,60 +63,62 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
         bttClienteInicioHistorico.setText("Checar historico ");
         bttClienteInicioHistorico.addActionListener(this::bttClienteInicioHistoricoActionPerformed);
 
-        bttClienteInicioDeslogar.setText("Deslogar");
-        bttClienteInicioDeslogar.addActionListener(this::bttClienteInicioDeslogarActionPerformed);
-
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(bttClienteInicioAtendimento)
-                            .addComponent(bttClienteInicioDeslogar)
-                            .addComponent(bttClienteInicioHistorico))))
-                .addContainerGap(211, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TextoMenuInicial)
+                    .addComponent(bttClienteInicioDeslogar)
+                    .addComponent(jLabel3)
+                    .addComponent(bttClienteInicioAtendimento)
+                    .addComponent(bttClienteInicioHistorico))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jLabel1)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(TextoMenuInicial)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
-                .addGap(26, 26, 26)
+                .addGap(44, 44, 44)
                 .addComponent(bttClienteInicioAtendimento)
                 .addGap(18, 18, 18)
                 .addComponent(bttClienteInicioHistorico)
                 .addGap(73, 73, 73)
                 .addComponent(bttClienteInicioDeslogar)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
+        );
+
+        BarraTarefas.addTab("Menu", jPanel1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BarraTarefas)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(BarraTarefas)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttClienteInicioAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteInicioAtendimentoActionPerformed
-        InterfaceClienteMesa ClMesa = new InterfaceClienteMesa();
-        ClMesa.setVisible(true);        // TODO add your handling code here:
+        PanelClienteMesa teste = new PanelClienteMesa(usuarioLogado, BarraTarefas);
+        BarraTarefas.addTab("Seleção da mesa", teste);
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
     }//GEN-LAST:event_bttClienteInicioAtendimentoActionPerformed
 
     private void bttClienteInicioDeslogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteInicioDeslogarActionPerformed
-        if(UsuarioLogado.getContaAtual() != null){
+        if(usuarioLogado.getContaAtual() != null){
             //mensagem de erro: você ainda possui contas em aberto.
         }
         else{
@@ -145,13 +156,12 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane BarraTarefas;
+    private javax.swing.JLabel TextoMenuInicial;
     private javax.swing.JButton bttClienteInicioAtendimento;
     private javax.swing.JButton bttClienteInicioDeslogar;
     private javax.swing.JButton bttClienteInicioHistorico;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
