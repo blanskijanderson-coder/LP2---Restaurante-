@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package restaurante.view;
+import javax.swing.JOptionPane;
 import restaurante.Cliente;
 
 /**
@@ -112,9 +113,12 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttClienteInicioAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteInicioAtendimentoActionPerformed
-        PanelClienteMesa teste = new PanelClienteMesa(usuarioLogado, BarraTarefas);
-        BarraTarefas.addTab("Seleção da mesa", teste);
-        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        if(usuarioLogado.getMesaAtual() == null){
+            usuarioLogado.escolherMesa();
+            PanelClienteMesa teste = new PanelClienteMesa(usuarioLogado, BarraTarefas);
+            BarraTarefas.addTab("Seleção da mesa", teste);
+            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        }
     }//GEN-LAST:event_bttClienteInicioAtendimentoActionPerformed
 
     private void bttClienteInicioDeslogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteInicioDeslogarActionPerformed

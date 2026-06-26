@@ -4,6 +4,7 @@
  */
 package restaurante.view;
 
+import javax.swing.JOptionPane;
 import restaurante.Cliente;
 import restaurante.Administrador;
 

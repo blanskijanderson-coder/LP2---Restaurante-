@@ -3,7 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package restaurante.view;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import restaurante.Cliente;
+import restaurante.Cozinha;
+import restaurante.Pedido;
+import restaurante.Cardapio;
+import restaurante.Comida;
+import restaurante.Bebida;
 
 /**
  *
@@ -18,8 +25,23 @@ public class PanelClientePedido extends javax.swing.JPanel {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
+        new Comida("Filé com Fritas", 38.0, "Carne suculenta", "Carne bovina, batata, sal");
+        new Bebida("Suco de Uva", 12.0, "Fazenda Videira");
+        
+        DefaultTableModel TabelaClientePedidoComida= (DefaultTableModel) tblClientePedidoComida.getModel();
+        DefaultTableModel TabelaClientePedidoBebida = (DefaultTableModel) tblClientePedidoBebida.getModel();
+        
+        for(Comida itens : Comida.getListaComida()){
+            Object[] cardapioComida = new Object[]{itens.getNome(), itens.getCusto()};
+            TabelaClientePedidoComida.addRow(cardapioComida);
+        }
+        for(Bebida itens : Bebida.getListaBebida()){
+            
+            Object[] cardapioBebida = new Object[]{itens.getNome(), itens.getCusto()};
+            TabelaClientePedidoBebida.addRow(cardapioBebida);
+        }
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,23 +52,26 @@ public class PanelClientePedido extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        bttAdicionarItemPedido = new javax.swing.JButton();
+        tblClientePedidoAtual = new javax.swing.JTable();
+        bttClientePedidoAdicionarItem = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        bttFinalizarPedido = new javax.swing.JButton();
+        tblClientePedidoComida = new javax.swing.JTable();
+        bttClientePedidoFinalizar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        txtPedidoQuantidade = new javax.swing.JTextField();
+        txtClientePedidoQuantidade = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        bttClientePedidoVisualizar = new javax.swing.JToggleButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblClientePedidoBebida = new javax.swing.JTable();
+        lblClientePedidoTotal = new javax.swing.JLabel();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblClientePedidoAtual.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null}
+
             },
             new String [] {
                 "Item", "Quantidade", "Custo"
@@ -60,34 +85,34 @@ public class PanelClientePedido extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tblClientePedidoAtual);
 
-        bttAdicionarItemPedido.setText("Adicionar");
-        bttAdicionarItemPedido.addActionListener(this::bttAdicionarItemPedidoActionPerformed);
+        bttClientePedidoAdicionarItem.setText("Adicionar");
+        bttClientePedidoAdicionarItem.addActionListener(this::bttClientePedidoAdicionarItemActionPerformed);
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel1.setText("Selecione item que deseja adicionar ao pedido:");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblClientePedidoComida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+
             },
             new String [] {
-                "Comidas", "Custo", "Bebidas", "Custo"
+                "Comidas", "Custo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(tblClientePedidoComida);
 
-        bttFinalizarPedido.setText("Finalizar");
-        bttFinalizarPedido.addActionListener(this::bttFinalizarPedidoActionPerformed);
+        bttClientePedidoFinalizar.setText("Finalizar");
+        bttClientePedidoFinalizar.addActionListener(this::bttClientePedidoFinalizarActionPerformed);
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 1, 30)); // NOI18N
         jLabel3.setText("Faça seu pedido!");
@@ -102,7 +127,25 @@ public class PanelClientePedido extends javax.swing.JPanel {
 
         jLabel7.setText("Total:");
 
-        jTextField2.addActionListener(this::jTextField2ActionPerformed);
+        bttClientePedidoVisualizar.setText("Visualizar");
+
+        tblClientePedidoBebida.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Bebidas", "Custo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tblClientePedidoBebida);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -111,37 +154,39 @@ public class PanelClientePedido extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
-                            .addComponent(jLabel6)
-                            .addGap(225, 225, 225))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel7)
+                                    .addGap(12, 12, 12)
+                                    .addComponent(jLabel4))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jLabel1))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(23, 23, 23)
-                                    .addComponent(bttFinalizarPedido))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jLabel4))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtPedidoQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(bttAdicionarItemPedido))))
-                            .addGap(0, 70, Short.MAX_VALUE)))
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel5)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtClientePedidoQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(bttClientePedidoAdicionarItem))
+                                        .addComponent(bttClientePedidoVisualizar))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblClientePedidoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(bttClientePedidoFinalizar)))
+                        .addGap(0, 64, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(19, 19, 19))))
@@ -159,46 +204,66 @@ public class PanelClientePedido extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 66, Short.MAX_VALUE)
+                        .addGap(28, 28, 28)
+                        .addComponent(bttClientePedidoVisualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPedidoQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtClientePedidoQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
-                            .addComponent(bttAdicionarItemPedido))))
-                .addGap(34, 34, 34)
+                            .addComponent(bttClientePedidoAdicionarItem)))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(bttFinalizarPedido))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bttClientePedidoFinalizar)
+                        .addComponent(lblClientePedidoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bttAdicionarItemPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttAdicionarItemPedidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bttAdicionarItemPedidoActionPerformed
+    private void bttClientePedidoAdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClientePedidoAdicionarItemActionPerformed
+        int comida_selecionada = tblClientePedidoComida.getSelectedRow();
+        int bebida_selecionada = tblClientePedidoBebida.getSelectedRow();
+        if(comida_selecionada == -1 || bebida_selecionada == -1){
+            JOptionPane.showMessageDialog(this, "Por favor, selecione um item de um dos cardápios");
+        }
+        else{
+            if(comida_selecionada == 1 || bebida_selecionada == 1){
+                JOptionPane.showMessageDialog(this, "Por favor, selecione somente um item dos cardápios");
+            }
+            else{
+                if(Integer.parseInt(txtClientePedidoQuantidade.getText()) != 0)
+                if(comida_selecionada == 1){
+                    DefaultTableModel TabelaClientePedidoComida= (DefaultTableModel) tblClientePedidoComida.getModel();
+                    
+                }
+                if(bebida_selecionada == 1){
+                    DefaultTableModel TabelaClientePedidoBebida = (DefaultTableModel) tblClientePedidoBebida.getModel();
+                    
+                }
+            }
+        }
+        
+    }//GEN-LAST:event_bttClientePedidoAdicionarItemActionPerformed
 
-    private void bttFinalizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttFinalizarPedidoActionPerformed
+    private void bttClientePedidoFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClientePedidoFinalizarActionPerformed
         PanelClientePagamentoConta conta = new PanelClientePagamentoConta(usuarioLogado, BarraTarefas);
         
         BarraTarefas.addTab("Sua conta", conta);
         BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
         
         BarraTarefas.remove(this);
-    }//GEN-LAST:event_bttFinalizarPedidoActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_bttClientePedidoFinalizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bttAdicionarItemPedido;
-    private javax.swing.JButton bttFinalizarPedido;
+    private javax.swing.JButton bttClientePedidoAdicionarItem;
+    private javax.swing.JButton bttClientePedidoFinalizar;
+    private javax.swing.JToggleButton bttClientePedidoVisualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -207,9 +272,11 @@ public class PanelClientePedido extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField txtPedidoQuantidade;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel lblClientePedidoTotal;
+    private javax.swing.JTable tblClientePedidoAtual;
+    private javax.swing.JTable tblClientePedidoBebida;
+    private javax.swing.JTable tblClientePedidoComida;
+    private javax.swing.JTextField txtClientePedidoQuantidade;
     // End of variables declaration//GEN-END:variables
 }
