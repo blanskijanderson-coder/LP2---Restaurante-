@@ -4,6 +4,7 @@
  */
 package restaurante.view;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 import restaurante.Cliente;
 import restaurante.Mesa;
 
@@ -20,10 +21,20 @@ public class PanelClienteMesa extends javax.swing.JPanel {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
+        
+        DefaultTableModel TabelaMesasOcupadas = (DefaultTableModel) tblMesas.getModel();
+        
         if (usuarioLogado != null) {
             TextoEscolhaMesa.setText("Excelente escolha, Cliente " + usuarioLogado.getNome());
-        } else {
+        } 
+        else {
             TextoEscolhaMesa.setText("Excelente escolha, Cliente (Modo de Teste)");
+        }
+        
+        for(String ocupadas : Mesa.getListaMesa()){
+            
+            Object[] novaMesaOcupada = new Object[]{"Mesa " + ocupadas + " ocupada"};
+            TabelaMesasOcupadas.addRow(novaMesaOcupada);
         }
     }
 
@@ -59,10 +70,7 @@ public class PanelClienteMesa extends javax.swing.JPanel {
 
         tblMesas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
                 "Mesas ocupadas"
@@ -116,37 +124,28 @@ public class PanelClienteMesa extends javax.swing.JPanel {
         
         String numero_mesa = txtClienteMesaEscolha.getText();
         
-        DefaultTableModel TabelaMesasOcupadas = (DefaultTableModel) tblMesas.getModel();
-        
         if(Integer.parseInt(numero_mesa) <= Mesa.getQtdMesa()){
-            boolean flag_mesa = false;
+            boolean flag_mesa = true;
             for(String ocupadas : Mesa.getListaMesa()){
                 if(numero_mesa.equals(ocupadas)){
+                    flag_mesa = false;
                     break;
-                }
-                else{
-                    flag_mesa = true;
                 }
             }
             if(flag_mesa == true){
-                Object[] novaMesaOcupada = new Object[]{numero_mesa};
-                    
-                    TabelaMesasOcupadas.addRow(novaMesaOcupada);
-                   
-                    usuarioLogado.getMesa().setMesaNumero(numero_mesa);
-                    Mesa.getListaMesa().add(usuarioLogado.getMesa().getMesaNumero());
+                    usuarioLogado.getMesaAtual().setMesaNumero(numero_mesa);
+                    Mesa.getListaMesa().add(numero_mesa);
                     txtClienteMesaEscolha.setText("");
+                    
+                    BarraTarefas.addTab("Novo pedido", novopedido);
+                    BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+
+                    BarraTarefas.remove(this);
             }
         }
         else{
             //erro numero de mesa excede o existente
         }
-        
-        
-        BarraTarefas.addTab("Novo pedido", novopedido);
-        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
-        
-        BarraTarefas.remove(this);
     }//GEN-LAST:event_bttClienteMesaConfirmarActionPerformed
 
 

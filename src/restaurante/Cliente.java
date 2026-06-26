@@ -108,7 +108,7 @@ public class Cliente extends Cadastrado  { //falta acesso ao historico de contas
     
     public double getBonus(){return bonus;}
 
-    public Mesa getMesa(){return mesa_atual;}
+    public Mesa getMesaAtual(){return mesa_atual;}
 
     public Conta getContaAtual(){return conta_atual;}
 
