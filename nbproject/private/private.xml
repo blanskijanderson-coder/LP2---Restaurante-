@@ -4,13 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/janderson/Trabalhos/NetBeansProjects/Restaurante/src/restaurante/view/Inicio.java</file>
-            <file>file:/home/janderson/Trabalhos/NetBeansProjects/Restaurante/src/restaurante/Cliente.java</file>
-            <file>file:/home/janderson/Trabalhos/NetBeansProjects/Restaurante/src/restaurante/Cadastrado.java</file>
             <file>file:/home/janderson/Trabalhos/NetBeansProjects/Restaurante/src/restaurante/view/Cadastro.java</file>
-            <file>file:/home/janderson/Trabalhos/NetBeansProjects/Restaurante/src/restaurante/view/InterfaceClienteInicio.java</file>
-            <file>file:/home/janderson/Trabalhos/NetBeansProjects/Restaurante/src/restaurante/view/InterfaceADMMesas.java</file>
-            <file>file:/home/janderson/Trabalhos/NetBeansProjects/Restaurante/src/restaurante/view/InterfaceClientePedido.java</file>
-            <file>file:/home/janderson/Trabalhos/NetBeansProjects/Restaurante/src/restaurante/view/InterfaceClienteMesa.java</file>
+            <file>file:/home/janderson/Trabalhos/NetBeansProjects/Restaurante/src/restaurante/view/InterfaceADMInicio.java</file>
+            <file>file:/home/janderson/Trabalhos/NetBeansProjects/Restaurante/src/restaurante/view/PanelADMCozinha.java</file>
+            <file>file:/home/janderson/Trabalhos/NetBeansProjects/Restaurante/src/restaurante/view/PanelADMCardapio.java</file>
+            <file>file:/home/janderson/Trabalhos/NetBeansProjects/Restaurante/src/restaurante/view/PanelADMMesas.java</file>
         </group>
     </open-files>
 </project-private>

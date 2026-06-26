@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package restaurante.view;
+import javax.swing.table.DefaultTableModel;
 import restaurante.Cliente;
+import restaurante.Mesa;
 
 /**
  *
@@ -42,9 +44,9 @@ public class PanelClienteMesa extends javax.swing.JPanel {
         TextoEscolhaMesa = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtClienteMesaEscolha = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         bttClienteMesaConfirmar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblMesas = new javax.swing.JTable();
 
         TextoEscolhaMesa.setFont(new java.awt.Font("Liberation Sans", 1, 30)); // NOI18N
         TextoEscolhaMesa.setText("Excelente escolha, (cliente)!");
@@ -52,23 +54,30 @@ public class PanelClienteMesa extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel3.setText("Selecione sua mesa:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        bttClienteMesaConfirmar.setText("Confirmar");
+        bttClienteMesaConfirmar.addActionListener(this::bttClienteMesaConfirmarActionPerformed);
+
+        tblMesas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null},
+                {null},
+                {null},
                 {null}
             },
             new String [] {
-                "Mesas Ocupadas"
+                "Mesas ocupadas"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
-
-        bttClienteMesaConfirmar.setText("Confirmar");
-        bttClienteMesaConfirmar.addActionListener(this::bttClienteMesaConfirmarActionPerformed);
+        jScrollPane1.setViewportView(tblMesas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(TextoEscolhaMesa)
+                .addContainerGap(167, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,13 +86,9 @@ public class PanelClienteMesa extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(bttClienteMesaConfirmar))
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(TextoEscolhaMesa)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +97,7 @@ public class PanelClienteMesa extends javax.swing.JPanel {
                 .addComponent(TextoEscolhaMesa)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -100,14 +105,38 @@ public class PanelClienteMesa extends javax.swing.JPanel {
                             .addComponent(bttClienteMesaConfirmar))
                         .addGap(125, 125, 125))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(96, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttClienteMesaConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteMesaConfirmarActionPerformed
         PanelClientePedido novopedido = new PanelClientePedido(usuarioLogado, BarraTarefas);
+        
+        String numero_mesa = txtClienteMesaEscolha.getText();
+        
+        Object[] novaMesaOcupada = new Object[]{"Mesa" + numero_mesa + "ocupada"};
+        
+        DefaultTableModel TabelaMesasOcupadas = (DefaultTableModel) tblMesas.getModel();
+        
+        if(Integer.parseInt(numero_mesa) <= Mesa.getQtdMesa()){
+            for(String ocupadas : Mesa.getListaMesa()){
+                if(numero_mesa.equals(ocupadas)){
+                    //erro mesa ja ocupada
+                }
+                else{
+                    TabelaMesasOcupadas.addRow(novaMesaOcupada);
+                    usuarioLogado.getMesa().setMesaNumero(numero_mesa);
+                    Mesa.getListaMesa().add(usuarioLogado.getMesa().getMesaNumero());
+                    txtClienteMesaEscolha.setText("");
+                }
+            }
+        }
+        else{
+            //erro numero de mesa excede o existente
+        }
+        
         
         BarraTarefas.addTab("Novo pedido", novopedido);
         BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
@@ -120,8 +149,8 @@ public class PanelClienteMesa extends javax.swing.JPanel {
     private javax.swing.JLabel TextoEscolhaMesa;
     private javax.swing.JButton bttClienteMesaConfirmar;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblMesas;
     private javax.swing.JTextField txtClienteMesaEscolha;
     // End of variables declaration//GEN-END:variables
 }
