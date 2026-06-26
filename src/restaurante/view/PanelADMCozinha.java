@@ -4,17 +4,21 @@
  */
 package restaurante.view;
 
+import restaurante.Administrador;
+
 /**
  *
  * @author janderson
  */
 public class PanelADMCozinha extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelADMCozinha
-     */
-    public PanelADMCozinha() {
+    private javax.swing.JTabbedPane BarraTarefas;
+    private Administrador usuarioLogado;
+    
+    public PanelADMCozinha(Administrador pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
         initComponents();
+        this.BarraTarefas = BarraTarefas;
+        this.usuarioLogado = pessoaLogada;
     }
 
     /**
@@ -31,7 +35,10 @@ public class PanelADMCozinha extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        bttADMCozinhaVisualizar = new javax.swing.JButton();
+        bttADMCozinhaEncerrar = new javax.swing.JButton();
 
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel2.setText("Lista de pedidos pendentes:");
 
         bttADMCozinhaEntregar.setText("Entregar");
@@ -49,40 +56,60 @@ public class PanelADMCozinha extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        bttADMCozinhaVisualizar.setText("Visualizar");
+
+        bttADMCozinhaEncerrar.setText("Encerrar atividades");
+        bttADMCozinhaEncerrar.addActionListener(this::bttADMCozinhaEncerrarActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
+                .addContainerGap(82, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bttADMCozinhaEncerrar)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(bttADMCozinhaEntregar)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bttADMCozinhaEntregar)
+                            .addComponent(bttADMCozinhaVisualizar))))
                 .addGap(70, 70, 70))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bttADMCozinhaEntregar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(244, 244, 244)
+                        .addComponent(bttADMCozinhaVisualizar)
+                        .addGap(18, 18, 18)
+                        .addComponent(bttADMCozinhaEntregar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(bttADMCozinhaEncerrar)
+                .addContainerGap(212, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bttADMCozinhaEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMCozinhaEncerrarActionPerformed
+        BarraTarefas.remove(this);
+    }//GEN-LAST:event_bttADMCozinhaEncerrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bttADMCozinhaEncerrar;
     private javax.swing.JButton bttADMCozinhaEntregar;
+    private javax.swing.JButton bttADMCozinhaVisualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

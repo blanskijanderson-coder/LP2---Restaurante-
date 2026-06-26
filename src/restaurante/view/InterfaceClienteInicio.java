@@ -90,7 +90,7 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
                 .addComponent(bttClienteInicioHistorico)
                 .addGap(73, 73, 73)
                 .addComponent(bttClienteInicioDeslogar)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         BarraTarefas.addTab("Menu", jPanel1);
@@ -104,7 +104,7 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(BarraTarefas)
+                .addComponent(BarraTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
