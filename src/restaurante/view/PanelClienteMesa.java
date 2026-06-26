@@ -116,21 +116,26 @@ public class PanelClienteMesa extends javax.swing.JPanel {
         
         String numero_mesa = txtClienteMesaEscolha.getText();
         
-        Object[] novaMesaOcupada = new Object[]{"Mesa" + numero_mesa + "ocupada"};
-        
         DefaultTableModel TabelaMesasOcupadas = (DefaultTableModel) tblMesas.getModel();
         
         if(Integer.parseInt(numero_mesa) <= Mesa.getQtdMesa()){
+            boolean flag_mesa = false;
             for(String ocupadas : Mesa.getListaMesa()){
                 if(numero_mesa.equals(ocupadas)){
-                    //erro mesa ja ocupada
+                    break;
                 }
                 else{
+                    flag_mesa = true;
+                }
+            }
+            if(flag_mesa == true){
+                Object[] novaMesaOcupada = new Object[]{numero_mesa};
+                    
                     TabelaMesasOcupadas.addRow(novaMesaOcupada);
+                   
                     usuarioLogado.getMesa().setMesaNumero(numero_mesa);
                     Mesa.getListaMesa().add(usuarioLogado.getMesa().getMesaNumero());
                     txtClienteMesaEscolha.setText("");
-                }
             }
         }
         else{

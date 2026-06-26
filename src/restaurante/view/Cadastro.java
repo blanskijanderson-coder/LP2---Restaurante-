@@ -77,8 +77,8 @@ public class Cadastro extends javax.swing.JFrame {
 
         jLabel7.setText("Digite sua senha:");
 
-        jLabel8.setFont(new java.awt.Font("Liberation Sans", 1, 35)); // NOI18N
-        jLabel8.setText("Restaurante Cleberlícia");
+        jLabel8.setFont(new java.awt.Font("Liberation Sans", 1, 50)); // NOI18N
+        jLabel8.setText(" Cleber Lanches");
 
         bttCadastrarFinalizar.setText("Finalizar cadastro");
         bttCadastrarFinalizar.addActionListener(this::bttCadastrarFinalizarActionPerformed);
@@ -91,8 +91,8 @@ public class Cadastro extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(108, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addGroup(layout.createSequentialGroup()
@@ -121,11 +121,12 @@ public class Cadastro extends javax.swing.JFrame {
                                     .addComponent(txtCadastrarCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(72, 72, 72))))
+                                .addGap(72, 72, 72)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(jLabel1)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGap(105, 105, 105))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +159,7 @@ public class Cadastro extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addGap(13, 13, 13)
                 .addComponent(bttCadastrarFinalizar)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
