@@ -36,31 +36,9 @@ public class Cliente extends Cadastrado  { //falta acesso ao historico de contas
         }
     }
 
-    public void solicitarPedido() {
-        if (this.mesa_atual != null) {
-            if (this.conta_atual != null) {
-                if (this.pedido_novo == null) {
-                    this.pedido_novo = new Pedido(this, this.mesa_atual);
-                } else {
-                    System.out.println("Ja possui um pedido aberto.");
-                }
-            } else {
-                this.conta_atual = new Conta(this);
-                this.pedido_novo = new Pedido(this, this.mesa_atual);
-                this.historico_contasCliente.add(this.conta_atual);
-            }
-        } else {
-            System.out.println("Escolha uma mesa primeiro.");
-        }
-    }
-
-    public void PedirNovosItens(Cardapio item) {
-        Scanner scanner = new Scanner(System.in);
+    public void PedirNovosItens(Cardapio item, String quantidade) {
+        int qtd = Integer.parseInt(quantidade);
         if (this.pedido_novo != null) {
-            System.out.println("insira quantidade do item escolhido");
-            int qtd = 1;
-            qtd = scanner.nextInt();
-            
             this.pedido_novo.produtoSolicitado(item, qtd);
             
         } else {
@@ -104,15 +82,21 @@ public class Cliente extends Cadastrado  { //falta acesso ao historico de contas
         }
     }
     
-    
+    public void addHistoricoCliente(Conta nova){
+        historico_contasCliente.add(nova);
+    }
     
     public double getBonus(){return bonus;}
+    
+    public Pedido getPedidoAtual(){return pedido_novo;}
 
     public Mesa getMesaAtual(){return mesa_atual;}
 
     public Conta getContaAtual(){return conta_atual;}
 
     public void setBonus(double valorBonus){this.bonus = valorBonus;}
+    
+    public void setPedidoAtual(Pedido novo){this.pedido_novo = novo;}
 
     public void setContaAtual(Conta mudada){this.conta_atual = mudada;}
 }

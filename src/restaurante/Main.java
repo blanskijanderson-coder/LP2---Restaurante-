@@ -28,11 +28,6 @@ public class Main {
         c1.solicitarPedido();
 
         // Simulando a escolha de itens do cardápio
-        ArrayList<Cardapio> lista = Cozinha.getListaProduto();
-        if (!lista.isEmpty()) {
-            c1.PedirNovosItens(lista.get(0)); // Lasanha
-            c1.PedirNovosItens(lista.get(2)); // Suco
-        }
 
         c1.enviarPedido();
 

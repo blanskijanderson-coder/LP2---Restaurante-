@@ -11,6 +11,7 @@ import restaurante.Pedido;
 import restaurante.Cardapio;
 import restaurante.Comida;
 import restaurante.Bebida;
+import restaurante.Conta;
 
 /**
  *
@@ -25,6 +26,25 @@ public class PanelClientePedido extends javax.swing.JPanel {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
+        
+        //Lógica de criarr novo pedido:
+        if (this.usuarioLogado.getMesaAtual() != null) {
+            if (this.usuarioLogado.getContaAtual() != null) {
+                if (this.usuarioLogado.getPedidoAtual() == null) {
+                    this.usuarioLogado.setPedidoAtual(new Pedido(usuarioLogado, usuarioLogado.getMesaAtual()));
+                } else {
+                    System.out.println("Ja possui um pedido aberto.");
+                }
+            } else {
+                this.usuarioLogado.setContaAtual(new Conta(usuarioLogado));
+                this.usuarioLogado.setPedidoAtual(new Pedido(usuarioLogado, usuarioLogado.getMesaAtual())); 
+                this.usuarioLogado.addHistoricoCliente(usuarioLogado.getContaAtual());
+            }
+        } 
+        else {
+            System.out.println("Escolha uma mesa primeiro.");
+        }
+        
         new Comida("Filé com Fritas", 38.0, "Carne suculenta", "Carne bovina, batata, sal");
         new Bebida("Suco de Uva", 12.0, "Fazenda Videira");
         
@@ -226,32 +246,69 @@ public class PanelClientePedido extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttClientePedidoAdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClientePedidoAdicionarItemActionPerformed
+        DefaultTableModel TabelaPedidoAtual = (DefaultTableModel) tblClientePedidoAtual.getModel();
         int comida_selecionada = tblClientePedidoComida.getSelectedRow();
         int bebida_selecionada = tblClientePedidoBebida.getSelectedRow();
-        if(comida_selecionada == -1 || bebida_selecionada == -1){
-            JOptionPane.showMessageDialog(this, "Por favor, selecione um item de um dos cardápios");
+        String quantidade = txtClientePedidoQuantidade.getText().trim();
+
+        // 1. Bloqueia se o usuário não clicou em NENHUMA das duas tabelas
+        if (comida_selecionada == -1 && bebida_selecionada == -1) {
+            JOptionPane.showMessageDialog(this, "Por favor, selecione um item de um dos cardápios.");
+            return;
         }
-        else{
-            if(comida_selecionada == 1 || bebida_selecionada == 1){
-                JOptionPane.showMessageDialog(this, "Por favor, selecione somente um item dos cardápios");
-            }
-            else{
-                if(Integer.parseInt(txtClientePedidoQuantidade.getText()) != 0)
-                if(comida_selecionada == 1){
-                    DefaultTableModel TabelaClientePedidoComida= (DefaultTableModel) tblClientePedidoComida.getModel();
-                    
-                }
-                if(bebida_selecionada == 1){
-                    DefaultTableModel TabelaClientePedidoBebida = (DefaultTableModel) tblClientePedidoBebida.getModel();
-                    
-                }
-            }
+
+        // 2. Bloqueia se ele tentou selecionar nas DUAS tabelas ao mesmo tempo
+        if (comida_selecionada != -1 && bebida_selecionada != -1) {
+            JOptionPane.showMessageDialog(this, "Por favor, selecione somente um item por vez (ou comida ou bebida).");
+            tblClientePedidoBebida.clearSelection();
+            tblClientePedidoComida.clearSelection();
+            return;
+        }   
+
+        // 3. Valida se a quantidade é estritamente um número maior que zero
+        if (quantidade.isEmpty() || !quantidade.matches("^[0-9]+$") || quantidade.equals("0")) {
+            JOptionPane.showMessageDialog(this, "Por favor, insira uma quantidade válida (número inteiro maior que 0).");
+            return;
         }
-        
+
+        // --- SE PASSOU PELAS VALIDAÇÕES, O INPUT É 100% SEGURO ---
+        int qtd = Integer.parseInt(quantidade);
+
+        // 4. Processa se foi selecionado uma Comida
+        if (comida_selecionada != -1) {
+            // Pega os dados da linha selecionada na tabela de Comidas (ex: coluna 0 = Nome, coluna 1 = Preço)
+            String nomeComida = tblClientePedidoComida.getValueAt(comida_selecionada, 0).toString();
+            String precoComida = tblClientePedidoComida.getValueAt(comida_selecionada, 1).toString();
+            Object[] itemPedido = new Object[]{nomeComida, precoComida};
+            TabelaPedidoAtual.addRow(itemPedido);
+        }
+        // 5. Processa se foi selecionado uma Bebida
+        else if (bebida_selecionada != -1) {
+            String nomeBebida = tblClientePedidoBebida.getValueAt(bebida_selecionada, 0).toString();
+            String precoBebida = tblClientePedidoBebida.getValueAt(bebida_selecionada, 1).toString();
+            Object[] itemPedido = new Object[]{nomeBebida, precoBebida};
+            TabelaPedidoAtual.addRow(itemPedido);
+        }
+
+        txtClientePedidoQuantidade.setText(""); // Limpa o campo de quantidade
     }//GEN-LAST:event_bttClientePedidoAdicionarItemActionPerformed
 
     private void bttClientePedidoFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClientePedidoFinalizarActionPerformed
         PanelClientePagamentoConta conta = new PanelClientePagamentoConta(usuarioLogado, BarraTarefas);
+        DefaultTableModel TabelaPedidoAtual = (DefaultTableModel) tblClientePedidoAtual.getModel();
+        int itemPedido = tblClientePedidoAtual.getSelectedRow();
+        
+        //pega o nome do item na row, procura na lista de cardápios e adciona em cliente.pedido_atual
+        for(int i = 0; i < tblClientePedidoAtual.getRowCount(); i++){
+            String nomeItem = tblClientePedidoAtual.getValueAt(itemPedido, 0).toString();
+            String quantidadeItem = tblClientePedidoAtual.getValueAt(itemPedido, 0).toString();
+            
+            for(Cardapio item : Cozinha.getListaProduto()){
+                if(nomeItem.equals(item.getNome())){
+                    usuarioLogado.PedirNovosItens(item, quantidadeItem);
+                }
+            }
+        }
         
         BarraTarefas.addTab("Sua conta", conta);
         BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
