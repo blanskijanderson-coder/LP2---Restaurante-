@@ -7,6 +7,7 @@ public class Conta {
     private Cliente cliente;
     private String mesa_conta;
     private double total_conta = 0;
+    private int qtd_pedidos = 0;
     private String status_conta;
     private ArrayList<Pedido> lista_PedidosCliente = new ArrayList<>();
 
@@ -17,11 +18,9 @@ public class Conta {
     }
 
     public void addPedidoCliente(Pedido outro) {
-        this.total_conta = 0;
         lista_PedidosCliente.add(outro);
-        for (Pedido feito : lista_PedidosCliente) {
-            this.total_conta += feito.getTotal();
-        }
+        this.total_conta += outro.getTotal();
+        this.qtd_pedidos += 1;
     }
 
     public double pagarConta() {
@@ -38,13 +37,8 @@ public class Conta {
         Cozinha.addContaHistorico(this);
     }
     
-    public int getQtdPedidos(){
-        int qtdPedidos = 0;
-        for(Pedido numero : this.lista_PedidosCliente){
-            qtdPedidos ++;
-        }
-        return qtdPedidos;
-    }
+    
+    public int getQtdPedidos(){return qtd_pedidos;}
     
     public double getTotalConta(){return total_conta;}
     

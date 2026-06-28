@@ -27,6 +27,14 @@ public class Pedido {
         this.qtdSolicitada.add(qtd);
     }
     
+    public int calcularQtdProdutos(){
+        int qtd = 0;
+        for(String quantidade : this.qtdSolicitada){
+            qtd += Integer.valueOf(quantidade);
+        }        
+        return qtd;
+    }
+    
     public void finalizarPedido(){
         this.setStatusPedido("Em preparo");
         Cozinha.addPedidoGeral(this);

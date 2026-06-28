@@ -45,9 +45,6 @@ public class PanelClientePedido extends javax.swing.JPanel {
             System.out.println("Escolha uma mesa primeiro.");
         }
         
-        new Comida("Filé com Fritas", 38.0, "Carne suculenta", "Carne bovina, batata, sal");
-        new Bebida("Suco de Uva", 12.0, "Fazenda Videira");
-        
         DefaultTableModel TabelaClientePedidoComida= (DefaultTableModel) tblClientePedidoComida.getModel();
         DefaultTableModel TabelaClientePedidoBebida = (DefaultTableModel) tblClientePedidoBebida.getModel();
         

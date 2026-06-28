@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import restaurante.Cadastrado;
 import restaurante.Cliente;
 import restaurante.Administrador;
+import restaurante.Bebida;
+import restaurante.Comida;
 
 /**
  *
@@ -22,6 +24,8 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
+        new Comida("Filé com Fritas", 38.0, "Carne suculenta", "Carne bovina, batata, sal");
+        new Bebida("Suco de Uva", 12.0, "Fazenda Videira");
     }
 
     /**

@@ -16,13 +16,13 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
 
     private javax.swing.JTabbedPane BarraTarefas;
     private Cliente usuarioLogado;
-    
+
     public PanelClienteHistorico(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
         
-        lblVisualizarHistoricoCliente.setText("Historico de atividade de" + pessoaLogada.getNome());
+        lblVisualizarHistoricoCliente.setText("Historico de atividade de " + pessoaLogada.getNome());
         
         DefaultTableModel TabelaVisualizarHistoricoCliente = (DefaultTableModel) tblVisualizarHistoricoCliente.getModel(); 
         //nº mesa da conta, nº de pedidos, Status, Custo Total
@@ -68,6 +68,7 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblVisualizarHistoricoCliente);
 
         bttVisualizaHistoricoVisualizar.setText("Visualizar");
+        bttVisualizaHistoricoVisualizar.addActionListener(this::bttVisualizaHistoricoVisualizarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -104,6 +105,19 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
         BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
         BarraTarefas.remove(this);
     }//GEN-LAST:event_bttHistoricoClienteFecharActionPerformed
+
+    private void bttVisualizaHistoricoVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttVisualizaHistoricoVisualizarActionPerformed
+        int linhaSelecionada = tblVisualizarHistoricoCliente.getSelectedRow();
+        if(linhaSelecionada != -1){
+            Conta vista = (Conta) tblVisualizarHistoricoCliente.getValueAt(linhaSelecionada, 0);
+            PanelVisualizarContaCliente contacliente = new PanelVisualizarContaCliente(usuarioLogado, BarraTarefas, vista);
+            BarraTarefas.addTab("Visualizar conta", contacliente);
+            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        }
+        else{
+            //erro nenhuma conta selecionado
+        }
+    }//GEN-LAST:event_bttVisualizaHistoricoVisualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
