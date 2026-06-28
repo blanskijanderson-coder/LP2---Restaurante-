@@ -23,7 +23,9 @@ public class Cliente extends Cadastrado  { //falta acesso ao historico de contas
         if (this.mesa_atual == null) {
             this.mesa_atual = new Mesa(this);
         } else {
-            System.out.println("você ja possui uma mesa.");
+            Mesa.liberarMesa(mesa_atual.getMesaNumero());
+            this.mesa_atual = null;
+            this.mesa_atual = new Mesa(this);
         }
     }
 

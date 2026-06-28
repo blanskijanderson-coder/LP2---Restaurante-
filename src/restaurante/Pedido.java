@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Pedido {
     private String status_pedido;
-    private double total_individual;
+    private double total;
     private Cliente cliente;
     private Mesa mesa_cliente;
     private ArrayList<Cardapio> itensSolicitados = new ArrayList<>();
@@ -27,20 +27,11 @@ public class Pedido {
         Cozinha.addPedidoGeral(this);
         cliente.getContaAtual().addPedidoCliente(this);
     }    
+     
     
-    public double calcularTotal() {
-        double total = 0;
-        int i = 0;
-        for (Cardapio item : itensSolicitados) {
-            total += item.getCusto() * Integer.parseInt(qtdSolicitada.get(i)); 
-            i++;
-        }
-    return total;
-    }       
+    public void addTotal(double valor){this.total += valor;}
     
-    public void addTotalIndv(double valor){this.total_individual += valor;}
-    
-    public double getTotalIndv(){return this.total_individual;}
+    public double getTotal(){return this.total;}
     
     public String getStatus(){return this.status_pedido;}
 
@@ -66,7 +57,7 @@ public class Pedido {
             resumo += " - " + item.getNome() + " x" + qtd + " (R$ " + (item.getCusto() * qtd) + ")\n";
         }
 
-        resumo += "Total: R$ " + this.calcularTotal() + "\n";
+        resumo += "Total: R$ " + this.getTotal() + "\n";
         return resumo;
     }
 }

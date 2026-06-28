@@ -169,6 +169,7 @@ public class PanelClientePedido extends javax.swing.JPanel {
         jScrollPane4.setViewportView(tblClientePedidoBebida);
 
         bttClientePedidoCancelar.setText("Cancelar");
+        bttClientePedidoCancelar.addActionListener(this::bttClientePedidoCancelarActionPerformed);
 
         bttClientePedidoRemover.setText("Remover");
         bttClientePedidoRemover.addActionListener(this::bttClientePedidoRemoverActionPerformed);
@@ -290,7 +291,7 @@ public class PanelClientePedido extends javax.swing.JPanel {
             // Pega os dados da linha selecionada na tabela de Comidas (ex: coluna 0 = Nome, coluna 1 = Preço)
             String nomeComida = tblClientePedidoComida.getValueAt(comida_selecionada, 0).toString();
             double custoComida = Double.parseDouble(tblClientePedidoComida.getValueAt(comida_selecionada, 1).toString()) * qtd;
-            usuarioLogado.getPedidoAtual().addTotalIndv(custoComida);
+            usuarioLogado.getPedidoAtual().addTotal(custoComida);
             Object[] itemPedido = new Object[]{nomeComida, qtd, custoComida};
             TabelaPedidoAtual.addRow(itemPedido);
             tblClientePedidoComida.clearSelection();
@@ -300,22 +301,20 @@ public class PanelClientePedido extends javax.swing.JPanel {
         else if (bebida_selecionada != -1) {
             String nomeBebida = tblClientePedidoBebida.getValueAt(bebida_selecionada, 0).toString();
             double custoBebida = Double.parseDouble(tblClientePedidoBebida.getValueAt(bebida_selecionada, 1).toString()) * qtd;
-            usuarioLogado.getPedidoAtual().addTotalIndv(custoBebida);
+            usuarioLogado.getPedidoAtual().addTotal(custoBebida);
             Object[] itemPedido = new Object[]{nomeBebida, qtd, custoBebida};
             TabelaPedidoAtual.addRow(itemPedido);
             tblClientePedidoBebida.clearSelection();
         }
         
-        lblClientePedidoTotal.setText("Total: $" + usuarioLogado.getPedidoAtual().getTotalIndv());
+        lblClientePedidoTotal.setText("Total: $" + usuarioLogado.getPedidoAtual().getTotal());
         
         txtClientePedidoQuantidade.setText(""); // Limpa o campo de quantidade
     }//GEN-LAST:event_bttClientePedidoAdicionarItemActionPerformed
 
     private void bttClientePedidoFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClientePedidoFinalizarActionPerformed
+        //pega o nome do item na row, procura na lista de cardápios e adciona em cliente.pedido_atual
         if(tblClientePedidoAtual.getRowCount() != 0){
-            PanelClientePagamentoConta conta = new PanelClientePagamentoConta(usuarioLogado, BarraTarefas);
-            
-            //pega o nome do item na row, procura na lista de cardápios e adciona em cliente.pedido_atual
             for(int i = 0; i < tblClientePedidoAtual.getRowCount(); i++){
                 String nomeItem = tblClientePedidoAtual.getValueAt(i, 0).toString();
                 String quantidadeItem = tblClientePedidoAtual.getValueAt(i, 1).toString();
@@ -328,7 +327,9 @@ public class PanelClientePedido extends javax.swing.JPanel {
             }
             usuarioLogado.getPedidoAtual().setStatusPedido("enviado");
             usuarioLogado.enviarPedido();
-
+            
+            PanelClientePagamentoConta conta = new PanelClientePagamentoConta(usuarioLogado, BarraTarefas);
+            
             BarraTarefas.addTab("Sua conta", conta);
             BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
 
@@ -347,10 +348,9 @@ public class PanelClientePedido extends javax.swing.JPanel {
             
             double valor_retirado = Double.parseDouble(tblClientePedidoAtual.getValueAt(remover, 2).toString());
             
-            usuarioLogado.getPedidoAtual().addTotalIndv(-valor_retirado);
+            usuarioLogado.getPedidoAtual().addTotal(-valor_retirado);
             
-            lblClientePedidoTotal.setText("Total: $" + usuarioLogado.getPedidoAtual().getTotalIndv());
-            
+            lblClientePedidoTotal.setText("Total: $" + usuarioLogado.getPedidoAtual().getTotal());
             tabelaPedidoAtual.removeRow(remover);
             
         }
@@ -358,6 +358,27 @@ public class PanelClientePedido extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "selecione algum item que deseja remover.");
         }
     }//GEN-LAST:event_bttClientePedidoRemoverActionPerformed
+
+    private void bttClientePedidoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClientePedidoCancelarActionPerformed
+        // Checar se existe conta possui pedidos(listapedidos.isEmpty), se existir, apaga o pedido e chama conta, se não, apaga o pedido e a conta e chama inicio.
+        if(this.usuarioLogado.getContaAtual().getListaPedidosCliente().isEmpty()){
+           this.usuarioLogado.setContaAtual(null);
+           this.usuarioLogado.setPedidoAtual(null);
+           
+           BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+
+           BarraTarefas.remove(this);
+        } 
+        else{
+           PanelClientePagamentoConta conta = new PanelClientePagamentoConta(usuarioLogado, BarraTarefas);
+           this.usuarioLogado.setPedidoAtual(null);
+           
+           BarraTarefas.addTab("Sua conta", conta);
+           BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+
+           BarraTarefas.remove(this);
+        }
+    }//GEN-LAST:event_bttClientePedidoCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

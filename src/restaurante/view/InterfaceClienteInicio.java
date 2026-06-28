@@ -113,11 +113,14 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttClienteInicioAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteInicioAtendimentoActionPerformed
-        if(usuarioLogado.getMesaAtual() == null){
+        if(usuarioLogado.getContaAtual() == null){
             usuarioLogado.escolherMesa();
             PanelClienteMesa teste = new PanelClienteMesa(usuarioLogado, BarraTarefas);
             BarraTarefas.addTab("Seleção da mesa", teste);
             BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        }
+        else{
+            //conta em aberto;
         }
     }//GEN-LAST:event_bttClienteInicioAtendimentoActionPerformed
 
