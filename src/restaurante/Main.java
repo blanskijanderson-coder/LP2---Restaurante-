@@ -25,16 +25,8 @@ public class Main {
 
         // 3. Realizando o Pedido
         System.out.println("\n--- Realizando o Pedido ---");
-        c1.solicitarPedido();
 
         // Simulando a escolha de itens do cardápio
-        ArrayList<Cardapio> lista = Cozinha.getListaProduto();
-        if (!lista.isEmpty()) {
-            c1.PedirNovosItens(lista.get(0)); // Lasanha
-            c1.PedirNovosItens(lista.get(2)); // Suco
-        }
-
-        c1.enviarPedido();
 
         // 4. Painel da Cozinha
         System.out.println("\n--- Painel da Cozinha ---");

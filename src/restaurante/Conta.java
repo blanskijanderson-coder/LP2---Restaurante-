@@ -21,23 +21,21 @@ public class Conta {
     public double pagarConta() {
         this.valor = 0;
         for (Pedido feito : lista_PedidosCliente) {
-            this.valor += feito.calcularTotal();
+            this.valor += feito.getTotal();
         }
 
         return this.valor;
     }
 
     public void finalizarConta() {
-        this.setStatusConta("Encerrada");
+        this.setStatusConta("Paga");
         Cozinha.addContaHistorico(this);
     }
 
-    public String getStatusConta() {
-        return this.status_conta;
-    }
+    public String getStatusConta() {return this.status_conta;}
+    
+    public ArrayList<Pedido> getListaPedidosCliente(){return this.lista_PedidosCliente;}
 
-    public void setStatusConta(String status) {
-        this.status_conta = status;
-    }
+    public void setStatusConta(String status) {this.status_conta = status;}
 
 }

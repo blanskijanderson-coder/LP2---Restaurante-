@@ -10,12 +10,12 @@ import restaurante.Cliente;
  *
  * @author janderson
  */
-public class PanelClienteHistorico extends javax.swing.JPanel {
+public class PanelVisualizarCardapioBebidaGenerico extends javax.swing.JPanel {
 
     private javax.swing.JTabbedPane BarraTarefas;
     private Cliente usuarioLogado;
     
-    public PanelClienteHistorico(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
+    public PanelVisualizarCardapioBebidaGenerico(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
@@ -30,26 +30,26 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bttHistoricoClienteFechar = new javax.swing.JButton();
-        lblVisualizarHistoricoCliente = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblVisualizarHistoricoCliente = new javax.swing.JTable();
+        tblVisualizarBebida = new javax.swing.JTable();
+        bttVisualizadorBebidaFechar = new javax.swing.JButton();
+        lblVisualizarBebida = new javax.swing.JLabel();
 
-        bttHistoricoClienteFechar.setText("Fechar");
-        bttHistoricoClienteFechar.addActionListener(this::bttHistoricoClienteFecharActionPerformed);
-
-        lblVisualizarHistoricoCliente.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
-        lblVisualizarHistoricoCliente.setText("Historico de atividade de (nome)");
-
-        tblVisualizarHistoricoCliente.setModel(new javax.swing.table.DefaultTableModel(
+        tblVisualizarBebida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nº da conta", "Nº de pedidos", "Status", "Custo total"
+                "Nome", "Custo", "Fornecedor"
             }
         ));
-        jScrollPane1.setViewportView(tblVisualizarHistoricoCliente);
+        jScrollPane1.setViewportView(tblVisualizarBebida);
+
+        bttVisualizadorBebidaFechar.setText("Fechar");
+        bttVisualizadorBebidaFechar.addActionListener(this::bttVisualizadorBebidaFecharActionPerformed);
+
+        lblVisualizarBebida.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        lblVisualizarBebida.setText("Visualizar (Bebida)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -60,10 +60,10 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80))
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(bttHistoricoClienteFechar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblVisualizarHistoricoCliente)
+                .addGap(43, 43, 43)
+                .addComponent(bttVisualizadorBebidaFechar)
+                .addGap(75, 75, 75)
+                .addComponent(lblVisualizarBebida)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -71,24 +71,24 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bttHistoricoClienteFechar)
-                    .addComponent(lblVisualizarHistoricoCliente))
+                    .addComponent(bttVisualizadorBebidaFechar)
+                    .addComponent(lblVisualizarBebida))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bttHistoricoClienteFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttHistoricoClienteFecharActionPerformed
+    private void bttVisualizadorBebidaFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttVisualizadorBebidaFecharActionPerformed
         BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
         BarraTarefas.remove(this);
-    }//GEN-LAST:event_bttHistoricoClienteFecharActionPerformed
+    }//GEN-LAST:event_bttVisualizadorBebidaFecharActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bttHistoricoClienteFechar;
+    private javax.swing.JButton bttVisualizadorBebidaFechar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblVisualizarHistoricoCliente;
-    private javax.swing.JTable tblVisualizarHistoricoCliente;
+    private javax.swing.JLabel lblVisualizarBebida;
+    private javax.swing.JTable tblVisualizarBebida;
     // End of variables declaration//GEN-END:variables
 }

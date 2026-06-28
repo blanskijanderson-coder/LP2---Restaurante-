@@ -17,7 +17,6 @@ public class Mesa {
     public static void liberarMesa(String numero) {
         if (lista_MesasOcupds.contains(numero)) {
             lista_MesasOcupds.remove(numero);
-            System.out.println("Mesa " + numero + " agora está livre.");
         }
     }
 

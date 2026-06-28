@@ -23,7 +23,9 @@ public class Cliente extends Cadastrado  { //falta acesso ao historico de contas
         if (this.mesa_atual == null) {
             this.mesa_atual = new Mesa(this);
         } else {
-            System.out.println("você ja possui uma mesa.");
+            Mesa.liberarMesa(mesa_atual.getMesaNumero());
+            this.mesa_atual = null;
+            this.mesa_atual = new Mesa(this);
         }
     }
 
@@ -36,32 +38,9 @@ public class Cliente extends Cadastrado  { //falta acesso ao historico de contas
         }
     }
 
-    public void solicitarPedido() {
-        if (this.mesa_atual != null) {
-            if (this.conta_atual != null) {
-                if (this.pedido_novo == null) {
-                    this.pedido_novo = new Pedido(this, this.mesa_atual);
-                } else {
-                    System.out.println("Ja possui um pedido aberto.");
-                }
-            } else {
-                this.conta_atual = new Conta(this);
-                this.pedido_novo = new Pedido(this, this.mesa_atual);
-                this.historico_contasCliente.add(this.conta_atual);
-            }
-        } else {
-            System.out.println("Escolha uma mesa primeiro.");
-        }
-    }
-
-    public void PedirNovosItens(Cardapio item) {
-        Scanner scanner = new Scanner(System.in);
+    public void PedirNovosItens(Cardapio item, String quantidade) {
         if (this.pedido_novo != null) {
-            System.out.println("insira quantidade do item escolhido");
-            int qtd = 1;
-            qtd = scanner.nextInt();
-            
-            this.pedido_novo.produtoSolicitado(item, qtd);
+            this.pedido_novo.produtoSolicitado(item, quantidade);
             
         } else {
             System.out.println("Abra um pedido primeiro");
@@ -71,9 +50,7 @@ public class Cliente extends Cadastrado  { //falta acesso ao historico de contas
     public void enviarPedido() {
         if (this.pedido_novo != null) {
             this.pedido_novo.finalizarPedido();
-
             this.pedido_novo = null;
-
             System.out.println("Pedido enviado para a cozinha!");
         } else {
             System.out.println("Você ainda não adicionou itens ao seu pedido.");
@@ -104,15 +81,21 @@ public class Cliente extends Cadastrado  { //falta acesso ao historico de contas
         }
     }
     
-    
+    public void addHistoricoCliente(Conta nova){
+        historico_contasCliente.add(nova);
+    }
     
     public double getBonus(){return bonus;}
+    
+    public Pedido getPedidoAtual(){return pedido_novo;}
 
     public Mesa getMesaAtual(){return mesa_atual;}
 
     public Conta getContaAtual(){return conta_atual;}
 
     public void setBonus(double valorBonus){this.bonus = valorBonus;}
+    
+    public void setPedidoAtual(Pedido novo){this.pedido_novo = novo;}
 
     public void setContaAtual(Conta mudada){this.conta_atual = mudada;}
 }
