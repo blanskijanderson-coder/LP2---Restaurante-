@@ -325,7 +325,6 @@ public class PanelClientePedido extends javax.swing.JPanel {
                     }
                 }
             }
-            usuarioLogado.getPedidoAtual().setStatusPedido("enviado");
             usuarioLogado.enviarPedido();
             
             PanelClientePagamentoConta conta = new PanelClientePagamentoConta(usuarioLogado, BarraTarefas);
