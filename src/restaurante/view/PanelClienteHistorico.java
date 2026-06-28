@@ -28,7 +28,7 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
         //nº mesa da conta, nº de pedidos, Status, Custo Total
         //vai na lista de contas do cliente, pega os valore da conta
         for(Conta existente : usuarioLogado.getHistoricoCliente()){
-            Object[] contaCliente = new Object[]{existente, existente.getQtdPedidos(), existente.getStatusConta(), existente.getTotalConta()};
+            Object[] contaCliente = new Object[]{existente, existente.getQtdPedidos() + " pedidos", existente.getStatusConta(), "$" + existente.getTotalConta()};
             TabelaVisualizarHistoricoCliente.addRow(contaCliente);
         }
     }
@@ -62,7 +62,7 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Nº da conta", "Nº de pedidos", "Status", "Custo total"
+                "Mesa da conta", "Nº de pedidos", "Status", "Custo total"
             }
         ));
         jScrollPane1.setViewportView(tblVisualizarHistoricoCliente);

@@ -49,12 +49,12 @@ public class PanelClientePedido extends javax.swing.JPanel {
         DefaultTableModel TabelaClientePedidoBebida = (DefaultTableModel) tblClientePedidoBebida.getModel();
         
         for(Comida itens : Comida.getListaComida()){
-            Object[] cardapioComida = new Object[]{itens.getNome(), itens.getCusto()};
+            Object[] cardapioComida = new Object[]{itens.getNome(), "$" + itens.getCusto()};
             TabelaClientePedidoComida.addRow(cardapioComida);
         }
         for(Bebida itens : Bebida.getListaBebida()){
             
-            Object[] cardapioBebida = new Object[]{itens.getNome(), itens.getCusto()};
+            Object[] cardapioBebida = new Object[]{itens.getNome(), "$" + itens.getCusto()};
             TabelaClientePedidoBebida.addRow(cardapioBebida);
         }
     }
@@ -295,7 +295,7 @@ public class PanelClientePedido extends javax.swing.JPanel {
             String nomeComida = tblClientePedidoComida.getValueAt(comida_selecionada, 0).toString();
             double custoComida = Double.parseDouble(tblClientePedidoComida.getValueAt(comida_selecionada, 1).toString()) * qtd;
             usuarioLogado.getPedidoAtual().addTotal(custoComida);
-            Object[] itemPedido = new Object[]{nomeComida, qtd, custoComida};
+            Object[] itemPedido = new Object[]{nomeComida, qtd, "$" + custoComida};
             TabelaPedidoAtual.addRow(itemPedido);
             tblClientePedidoComida.clearSelection();
             
@@ -305,7 +305,7 @@ public class PanelClientePedido extends javax.swing.JPanel {
             String nomeBebida = tblClientePedidoBebida.getValueAt(bebida_selecionada, 0).toString();
             double custoBebida = Double.parseDouble(tblClientePedidoBebida.getValueAt(bebida_selecionada, 1).toString()) * qtd;
             usuarioLogado.getPedidoAtual().addTotal(custoBebida);
-            Object[] itemPedido = new Object[]{nomeBebida, qtd, custoBebida};
+            Object[] itemPedido = new Object[]{nomeBebida, qtd, "$" + custoBebida};
             TabelaPedidoAtual.addRow(itemPedido);
             tblClientePedidoBebida.clearSelection();
         }

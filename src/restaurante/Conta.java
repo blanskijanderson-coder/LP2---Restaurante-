@@ -56,6 +56,6 @@ public class Conta {
      */
     @Override
     public String toString() {
-        return String.valueOf(this.mesa_conta);
+        return String.valueOf("Mesa " + this.mesa_conta);
     }
 }

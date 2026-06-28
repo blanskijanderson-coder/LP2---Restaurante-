@@ -34,8 +34,10 @@ public class PanelVisualizarPedidoGenerico extends javax.swing.JPanel {
         
         int cont = 0;
         for(Cardapio item : visto.getListaItensSolicitados()){
-            System.out.println("a");
-            Object[] itenspedidos = new Object[]{item, visto.getQtdSolicitada().get(cont), visto.getStatus(), visto.getTotal()};
+
+            double custo = item.getCusto() * Integer.parseInt(visto.getQtdSolicitada().get(cont));
+            
+            Object[] itenspedidos = new Object[]{item, visto.getQtdSolicitada().get(cont), visto.getStatus(), "$" + custo};
             TabelaVisualizarPedido.addRow(itenspedidos); 
             cont++;
         }

@@ -25,7 +25,7 @@ public class PanelVisualizarCardapioComidaGenerico extends javax.swing.JPanel {
         
         lblVisualizarComida.setText("Visualizar " + comidaVisualizada.getNome());
         lblVisualizarComidaNome.setText(comidaVisualizada.getNome());
-        lblVisualizarComidaCusto.setText(String.valueOf(comidaVisualizada.getCusto()));
+        lblVisualizarComidaCusto.setText("$" + String.valueOf(comidaVisualizada.getCusto()));
         lblVisualizarComidaIngred.setText(comidaVisualizada.getIngredientes());
         lblVisualizarComidaDesc.setText(comidaVisualizada.getDescricao());
     }

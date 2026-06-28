@@ -25,7 +25,7 @@ public class PanelVisualizarCardapioBebidaGenerico extends javax.swing.JPanel {
         
         lblVisualizarBebida.setText("Visualizar " + bebidaVisualizada.getNome());
         lblVisualizarBebidaNome.setText(bebidaVisualizada.getNome());
-        lblVisualizarBebidaCusto.setText(String.valueOf(bebidaVisualizada.getCusto()));
+        lblVisualizarBebidaCusto.setText("$" + String.valueOf(bebidaVisualizada.getCusto()));
         lblVisualizarBebidaFornecedor.setText(bebidaVisualizada.getFornecedor());
     }
 
