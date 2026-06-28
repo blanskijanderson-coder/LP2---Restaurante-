@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 public class Pedido {
     private String status_pedido;
+    private double total;
     private Cliente cliente;
     private Mesa mesa_cliente;
     private ArrayList<Cardapio> itensSolicitados = new ArrayList<>();
-    private ArrayList<Integer> qtdSolicitada = new ArrayList<>();
+    private ArrayList<String> qtdSolicitada = new ArrayList<>();
 
     public Pedido(Cliente cliente, Mesa mesa_cliente) {
         this.cliente = cliente;
@@ -16,7 +17,7 @@ public class Pedido {
         this.status_pedido = "A fazer";
     }
     
-    public void produtoSolicitado(Cardapio item, int qtd) {
+    public void produtoSolicitado(Cardapio item, String qtd) {
         this.itensSolicitados.add(item);
         this.qtdSolicitada.add(qtd);
     }
@@ -26,21 +27,17 @@ public class Pedido {
         Cozinha.addPedidoGeral(this);
         cliente.getContaAtual().addPedidoCliente(this);
     }    
+     
     
-    public double calcularTotal() {
-        double total = 0;
-        int i = 0;
-        for (Cardapio item : itensSolicitados) {
-            total += item.getCusto() * qtdSolicitada.get(i); 
-            i++;
-        }
-    return total;
-    }       
+    public void addTotal(double valor){this.total += valor;}
     
+    public double getTotal(){return this.total;}
     
     public String getStatus(){return this.status_pedido;}
 
     public Cliente getCliente(){return this.cliente;}
+    
+    public ArrayList<String> getQtdSolicitada(){return this.qtdSolicitada;}
     
     public ArrayList<Cardapio> getListaItensSolicitados(){return this.itensSolicitados;}
     
@@ -56,11 +53,11 @@ public class Pedido {
 
         for (int i = 0; i < itensSolicitados.size(); i++) {
             Cardapio item = itensSolicitados.get(i);
-            int qtd = qtdSolicitada.get(i);
+            int qtd = Integer.parseInt(qtdSolicitada.get(i));
             resumo += " - " + item.getNome() + " x" + qtd + " (R$ " + (item.getCusto() * qtd) + ")\n";
         }
 
-        resumo += "Total: R$ " + this.calcularTotal() + "\n";
+        resumo += "Total: R$ " + this.getTotal() + "\n";
         return resumo;
     }
 }
