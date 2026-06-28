@@ -11,7 +11,7 @@ import restaurante.Administrador;
 
 /**
  *
- * @author janderson
+ * @author janderson e Marcelo Livros né pai
  */
 public class Inicio extends javax.swing.JFrame {
     
@@ -122,7 +122,14 @@ public class Inicio extends javax.swing.JFrame {
 
     private void bttLogarGenericoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttLogarGenericoActionPerformed
         
+        boolean encontrou = false;
+        
+        if(txtLogarNome.getText().isEmpty() || txtLogarSenha.getPassword().length == 0){
+            JOptionPane.showMessageDialog(this, "Preencha o Usuário e senha!");
+            return;
+        }
         for(Cadastrado pessoa : Cadastrado.getListaCadastrados()){
+            
             if(txtLogarNome.getText().equals(pessoa.getNome())){
                 if(Arrays.equals(txtLogarSenha.getPassword(),pessoa.getSenha())){
                     if(pessoa.getPoderesADM() == false){
@@ -135,13 +142,18 @@ public class Inicio extends javax.swing.JFrame {
                         InterfaceADMInicio ADMinicio = new InterfaceADMInicio((Administrador)pessoa);
                         ADMinicio.setVisible(true);
                     }
+                    encontrou = true;
+                    this.dispose();
+                    break;
                 }
                 else{
-                   //senha incorreta 
+                    JOptionPane.showMessageDialog(this, "Senha incorreta!");
+                    encontrou = true;
+                    break;
                 }
             }
-            else{
-                //Conta não cadastrada
+            if(!encontrou){
+                JOptionPane.showMessageDialog(this, "Conta não cadastrada!");
             }
         }
     }//GEN-LAST:event_bttLogarGenericoActionPerformed
@@ -150,11 +162,6 @@ public class Inicio extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
