@@ -124,7 +124,8 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttInicioADMDeslogar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttInicioADMDeslogar1ActionPerformed
-        // TODO add your handling code here:
+        new Inicio().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bttInicioADMDeslogar1ActionPerformed
 
     private void bttInicioADMGerenciarCozinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttInicioADMGerenciarCozinhaActionPerformed
