@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Pedido {
     private String status_pedido;
+    private double total_individual;
     private Cliente cliente;
     private Mesa mesa_cliente;
     private ArrayList<Cardapio> itensSolicitados = new ArrayList<>();
@@ -36,6 +37,10 @@ public class Pedido {
         }
     return total;
     }       
+    
+    public void addTotalIndv(double valor){this.total_individual += valor;}
+    
+    public double getTotalIndv(){return this.total_individual;}
     
     public String getStatus(){return this.status_pedido;}
 

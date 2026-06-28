@@ -32,7 +32,7 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblClienteContaPedidosFeitos = new javax.swing.JTable();
         bttClienteContaVisualizarPedido = new javax.swing.JButton();
         bttClienteContaPagar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -44,7 +44,7 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 22)); // NOI18N
         jLabel1.setText("Sua conta atual:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblClienteContaPedidosFeitos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null}
             },
@@ -52,7 +52,7 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
                 "Pedido", "Status", "Custo"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblClienteContaPedidosFeitos);
 
         bttClienteContaVisualizarPedido.setText("Visualizar");
         bttClienteContaVisualizarPedido.addActionListener(this::bttClienteContaVisualizarPedidoActionPerformed);
@@ -137,7 +137,9 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
         PanelClientePedido novopedido = new PanelClientePedido(usuarioLogado, BarraTarefas);
         
         BarraTarefas.addTab("Novo pedido", novopedido);
+        
         BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        BarraTarefas.remove(this);
         
     }//GEN-LAST:event_bttClienteContaNovoPedidoActionPerformed
 
@@ -152,6 +154,6 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblClienteContaPedidosFeitos;
     // End of variables declaration//GEN-END:variables
 }
