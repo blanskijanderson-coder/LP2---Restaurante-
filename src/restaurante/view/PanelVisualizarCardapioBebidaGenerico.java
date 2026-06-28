@@ -5,7 +5,6 @@
 package restaurante.view;
 
 import restaurante.Cliente;
-import restaurante.Cardapio;
 import restaurante.Bebida;
 
 /**
@@ -24,6 +23,7 @@ public class PanelVisualizarCardapioBebidaGenerico extends javax.swing.JPanel {
         this.usuarioLogado = pessoaLogada;
         this.bebidaVisualizada = vista;
         
+        lblVisualizarBebida.setText("Visualizar " + bebidaVisualizada.getNome());
         lblVisualizarBebidaNome.setText(bebidaVisualizada.getNome());
         lblVisualizarBebidaCusto.setText(String.valueOf(bebidaVisualizada.getCusto()));
         lblVisualizarBebidaFornecedor.setText(bebidaVisualizada.getFornecedor());

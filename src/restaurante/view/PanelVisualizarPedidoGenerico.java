@@ -6,7 +6,6 @@ package restaurante.view;
 
 import javax.swing.table.DefaultTableModel;
 import restaurante.Cliente;
-import restaurante.Conta;
 import restaurante.Pedido;
 import restaurante.Cardapio;
 import restaurante.Comida;
@@ -28,10 +27,14 @@ public class PanelVisualizarPedidoGenerico extends javax.swing.JPanel {
         this.usuarioLogado = pessoaLogada;
         this.pedidoVisto =  visto;
         
+        lblVisualizarPedidoCliente.setText("Visualizar pedido de " + usuarioLogado.getNome());
+        
         DefaultTableModel TabelaVisualizarPedido = (DefaultTableModel)tblVisualizarPedido.getModel();
+        TabelaVisualizarPedido.setRowCount(0);
         
         int cont = 0;
         for(Cardapio item : visto.getListaItensSolicitados()){
+            System.out.println("a");
             Object[] itenspedidos = new Object[]{item, visto.getQtdSolicitada().get(cont), visto.getStatus(), visto.getTotal()};
             TabelaVisualizarPedido.addRow(itenspedidos); 
             cont++;
@@ -116,10 +119,12 @@ public class PanelVisualizarPedidoGenerico extends javax.swing.JPanel {
             if(itemGenerico instanceof Comida){ //item = comida
                 PanelVisualizarCardapioComidaGenerico pn = new PanelVisualizarCardapioComidaGenerico(usuarioLogado, BarraTarefas,(Comida) itemGenerico);
                 BarraTarefas.addTab("Visualizar pedido", pn);
+                BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
             }
             else{ //item = bebida
                 PanelVisualizarCardapioBebidaGenerico pn = new PanelVisualizarCardapioBebidaGenerico(usuarioLogado, BarraTarefas,(Bebida) itemGenerico);
                 BarraTarefas.addTab("Visualizar pedido", pn);
+                BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
             }
         }
         else{

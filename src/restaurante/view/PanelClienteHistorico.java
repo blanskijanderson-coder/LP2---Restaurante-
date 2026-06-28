@@ -4,7 +4,9 @@
  */
 package restaurante.view;
 
+import javax.swing.table.DefaultTableModel;
 import restaurante.Cliente;
+import restaurante.Conta;
 
 /**
  *
@@ -19,6 +21,16 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
+        
+        lblVisualizarHistoricoCliente.setText("Historico de atividade de" + pessoaLogada.getNome());
+        
+        DefaultTableModel TabelaVisualizarHistoricoCliente = (DefaultTableModel) tblVisualizarHistoricoCliente.getModel(); 
+        //nº mesa da conta, nº de pedidos, Status, Custo Total
+        //vai na lista de contas do cliente, pega os valore da conta
+        for(Conta existente : usuarioLogado.getHistoricoCliente()){
+            Object[] contaCliente = new Object[]{existente, existente.getQtdPedidos(), existente.getStatusConta(), existente.getTotalConta()};
+            TabelaVisualizarHistoricoCliente.addRow(contaCliente);
+        }
     }
 
     /**

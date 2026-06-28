@@ -21,6 +21,8 @@ public class PanelVisualizarContaCliente extends javax.swing.JPanel {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
+        
+        lblVisualizarContaCliente.setText("Visualizar conta de " + usuarioLogado.getNome());
     }
 
     /**

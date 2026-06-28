@@ -4,7 +4,6 @@
  */
 package restaurante.view;
 
-import restaurante.Cardapio;
 import restaurante.Comida;
 import restaurante.Cliente;
 
@@ -24,6 +23,7 @@ public class PanelVisualizarCardapioComidaGenerico extends javax.swing.JPanel {
         this.usuarioLogado = pessoaLogada;
         this.comidaVisualizada = vista;
         
+        lblVisualizarComida.setText("Visualizar " + comidaVisualizada.getNome());
         lblVisualizarComidaNome.setText(comidaVisualizada.getNome());
         lblVisualizarComidaCusto.setText(String.valueOf(comidaVisualizada.getCusto()));
         lblVisualizarComidaIngred.setText(comidaVisualizada.getIngredientes());
@@ -93,15 +93,17 @@ public class PanelVisualizarCardapioComidaGenerico extends javax.swing.JPanel {
                     .addComponent(bttVisualizadorComidaFechar)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(lblVisualizarComida))
-                    .addComponent(lblVisualizarComidaCusto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblVisualizarComidaNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3)
+                            .addComponent(lblVisualizarComidaCusto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblVisualizarComidaNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(lblVisualizarComida)))
                 .addGap(119, 178, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

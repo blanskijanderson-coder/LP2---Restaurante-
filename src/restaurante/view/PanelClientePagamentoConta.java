@@ -176,6 +176,7 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
             
             PanelVisualizarPedidoGenerico pn = new PanelVisualizarPedidoGenerico(usuarioLogado, BarraTarefas, pedidovisualizado);
             BarraTarefas.addTab("Visualizar pedido", pn);
+            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
         }
         else{
             //erro nenhum pedido selecionado
