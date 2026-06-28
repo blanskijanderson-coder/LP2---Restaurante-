@@ -37,9 +37,8 @@ public class Cliente extends Cadastrado  { //falta acesso ao historico de contas
     }
 
     public void PedirNovosItens(Cardapio item, String quantidade) {
-        int qtd = Integer.parseInt(quantidade);
         if (this.pedido_novo != null) {
-            this.pedido_novo.produtoSolicitado(item, qtd);
+            this.pedido_novo.produtoSolicitado(item, quantidade);
             
         } else {
             System.out.println("Abra um pedido primeiro");
@@ -49,9 +48,7 @@ public class Cliente extends Cadastrado  { //falta acesso ao historico de contas
     public void enviarPedido() {
         if (this.pedido_novo != null) {
             this.pedido_novo.finalizarPedido();
-
             this.pedido_novo = null;
-
             System.out.println("Pedido enviado para a cozinha!");
         } else {
             System.out.println("Você ainda não adicionou itens ao seu pedido.");

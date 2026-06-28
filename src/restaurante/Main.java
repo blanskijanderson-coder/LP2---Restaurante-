@@ -25,11 +25,8 @@ public class Main {
 
         // 3. Realizando o Pedido
         System.out.println("\n--- Realizando o Pedido ---");
-        c1.solicitarPedido();
 
         // Simulando a escolha de itens do cardápio
-
-        c1.enviarPedido();
 
         // 4. Painel da Cozinha
         System.out.println("\n--- Painel da Cozinha ---");
