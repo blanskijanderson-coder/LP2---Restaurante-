@@ -30,10 +30,14 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bttVisualizarPedidoVisualizar = new javax.swing.JButton();
         bttHistoricoClienteFechar = new javax.swing.JButton();
         lblVisualizarHistoricoCliente = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblVisualizarHistoricoCliente = new javax.swing.JTable();
+        bttVisualizaHistoricoVisualizar = new javax.swing.JButton();
+
+        bttVisualizarPedidoVisualizar.setText("Visualizar");
 
         bttHistoricoClienteFechar.setText("Fechar");
         bttHistoricoClienteFechar.addActionListener(this::bttHistoricoClienteFecharActionPerformed);
@@ -51,6 +55,8 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblVisualizarHistoricoCliente);
 
+        bttVisualizaHistoricoVisualizar.setText("Visualizar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,6 +70,8 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
                 .addComponent(bttHistoricoClienteFechar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblVisualizarHistoricoCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bttVisualizaHistoricoVisualizar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -72,7 +80,8 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bttHistoricoClienteFechar)
-                    .addComponent(lblVisualizarHistoricoCliente))
+                    .addComponent(lblVisualizarHistoricoCliente)
+                    .addComponent(bttVisualizaHistoricoVisualizar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -87,6 +96,8 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttHistoricoClienteFechar;
+    private javax.swing.JButton bttVisualizaHistoricoVisualizar;
+    private javax.swing.JButton bttVisualizarPedidoVisualizar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblVisualizarHistoricoCliente;
     private javax.swing.JTable tblVisualizarHistoricoCliente;

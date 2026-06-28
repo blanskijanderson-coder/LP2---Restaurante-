@@ -4,6 +4,8 @@
  */
 package restaurante.view;
 
+import restaurante.Cardapio;
+import restaurante.Comida;
 import restaurante.Cliente;
 
 /**
@@ -14,11 +16,18 @@ public class PanelVisualizarCardapioComidaGenerico extends javax.swing.JPanel {
 
     private javax.swing.JTabbedPane BarraTarefas;
     private Cliente usuarioLogado;
+    private Comida comidaVisualizada;
     
-    public PanelVisualizarCardapioComidaGenerico(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
+    public PanelVisualizarCardapioComidaGenerico(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas, Comida vista) {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
+        this.comidaVisualizada = vista;
+        
+        lblVisualizarComidaNome.setText(comidaVisualizada.getNome());
+        lblVisualizarComidaCusto.setText(String.valueOf(comidaVisualizada.getCusto()));
+        lblVisualizarComidaIngred.setText(comidaVisualizada.getIngredientes());
+        lblVisualizarComidaDesc.setText(comidaVisualizada.getDescricao());
     }
 
     /**
@@ -30,20 +39,18 @@ public class PanelVisualizarCardapioComidaGenerico extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblVisualizarComida = new javax.swing.JTable();
         bttVisualizadorComidaFechar = new javax.swing.JButton();
         lblVisualizarComida = new javax.swing.JLabel();
-
-        tblVisualizarComida.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nome", "Custo", "Descrição", "Ingredientes"
-            }
-        ));
-        jScrollPane1.setViewportView(tblVisualizarComida);
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lblVisualizarComidaDesc = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lblVisualizarComidaIngred = new javax.swing.JTextArea();
+        lblVisualizarComidaNome = new javax.swing.JLabel();
+        lblVisualizarComidaCusto = new javax.swing.JLabel();
 
         bttVisualizadorComidaFechar.setText("Fechar");
         bttVisualizadorComidaFechar.addActionListener(this::bttVisualizadorComidaFecharActionPerformed);
@@ -51,31 +58,79 @@ public class PanelVisualizarCardapioComidaGenerico extends javax.swing.JPanel {
         lblVisualizarComida.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         lblVisualizarComida.setText("Visualizar (Comida)");
 
+        jLabel1.setText("Nome:");
+
+        jLabel2.setText("Custo:");
+
+        jLabel3.setText("Ingredientes:");
+
+        jLabel4.setText("Descrição:");
+
+        lblVisualizarComidaDesc.setColumns(20);
+        lblVisualizarComidaDesc.setRows(5);
+        lblVisualizarComidaDesc.setEnabled(false);
+        jScrollPane2.setViewportView(lblVisualizarComidaDesc);
+
+        lblVisualizarComidaIngred.setColumns(20);
+        lblVisualizarComidaIngred.setRows(5);
+        lblVisualizarComidaIngred.setEnabled(false);
+        lblVisualizarComidaIngred.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                lblVisualizarComidaIngredComponentResized(evt);
+            }
+        });
+        jScrollPane3.setViewportView(lblVisualizarComidaIngred);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(bttVisualizadorComidaFechar)
-                .addGap(75, 75, 75)
-                .addComponent(lblVisualizarComida)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(bttVisualizadorComidaFechar)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(lblVisualizarComida))
+                    .addComponent(lblVisualizarComidaCusto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblVisualizarComidaNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(119, 178, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
+                .addContainerGap(10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bttVisualizadorComidaFechar)
                     .addComponent(lblVisualizarComida))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblVisualizarComidaNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(lblVisualizarComidaCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(99, 99, 99)
+                        .addComponent(jLabel4)
+                        .addGap(141, 141, 141))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -84,11 +139,23 @@ public class PanelVisualizarCardapioComidaGenerico extends javax.swing.JPanel {
         BarraTarefas.remove(this);
     }//GEN-LAST:event_bttVisualizadorComidaFecharActionPerformed
 
+    private void lblVisualizarComidaIngredComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_lblVisualizarComidaIngredComponentResized
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblVisualizarComidaIngredComponentResized
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttVisualizadorComidaFechar;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblVisualizarComida;
-    private javax.swing.JTable tblVisualizarComida;
+    private javax.swing.JLabel lblVisualizarComidaCusto;
+    private javax.swing.JTextArea lblVisualizarComidaDesc;
+    private javax.swing.JTextArea lblVisualizarComidaIngred;
+    private javax.swing.JLabel lblVisualizarComidaNome;
     // End of variables declaration//GEN-END:variables
 }

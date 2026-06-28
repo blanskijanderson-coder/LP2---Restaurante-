@@ -18,8 +18,12 @@ public class Comida extends Cardapio{
     
     public static ArrayList<Comida> getListaComida(){return lista_comida;}
     
+    public String getIngredientes(){return this.ingred;}
+    
+    public String getDescricao(){return this.desc;}
+    
     @Override
     public String getDetalhes() {
-        return "Ingredientes: " + this.ingred;
+        return this.nome;
     }
 }

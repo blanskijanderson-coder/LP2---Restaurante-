@@ -4,8 +4,10 @@
  */
 package restaurante.view;
 
+import javax.swing.table.DefaultTableModel;
+import restaurante.Cardapio;
 import restaurante.Cliente;
-
+import restaurante.Conta;
 /**
  *
  * @author janderson
@@ -15,7 +17,7 @@ public class PanelVisualizarContaCliente extends javax.swing.JPanel {
     private javax.swing.JTabbedPane BarraTarefas;
     private Cliente usuarioLogado;
     
-    public PanelVisualizarContaCliente(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
+    public PanelVisualizarContaCliente(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas, Conta vista) {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
@@ -34,6 +36,7 @@ public class PanelVisualizarContaCliente extends javax.swing.JPanel {
         tblVisualizarContaCliente = new javax.swing.JTable();
         bttVisualizadorContaFechar = new javax.swing.JButton();
         lblVisualizarContaCliente = new javax.swing.JLabel();
+        bttVisualizarContaVisualizar = new javax.swing.JButton();
 
         tblVisualizarContaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -51,6 +54,8 @@ public class PanelVisualizarContaCliente extends javax.swing.JPanel {
         lblVisualizarContaCliente.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         lblVisualizarContaCliente.setText("Visualizar conta de (nome)");
 
+        bttVisualizarContaVisualizar.setText("Visualizar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,6 +69,8 @@ public class PanelVisualizarContaCliente extends javax.swing.JPanel {
                 .addComponent(bttVisualizadorContaFechar)
                 .addGap(32, 32, 32)
                 .addComponent(lblVisualizarContaCliente)
+                .addGap(18, 18, 18)
+                .addComponent(bttVisualizarContaVisualizar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -72,7 +79,8 @@ public class PanelVisualizarContaCliente extends javax.swing.JPanel {
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bttVisualizadorContaFechar)
-                    .addComponent(lblVisualizarContaCliente))
+                    .addComponent(lblVisualizarContaCliente)
+                    .addComponent(bttVisualizarContaVisualizar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -87,6 +95,7 @@ public class PanelVisualizarContaCliente extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttVisualizadorContaFechar;
+    private javax.swing.JButton bttVisualizarContaVisualizar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblVisualizarContaCliente;
     private javax.swing.JTable tblVisualizarContaCliente;

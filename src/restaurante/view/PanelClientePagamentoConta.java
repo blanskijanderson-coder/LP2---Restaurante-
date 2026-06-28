@@ -32,7 +32,7 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
             cont ++;
             itens.setOrdem(cont);
             
-            Object[] listaPedidos = new Object[]{"pedido numero " + cont, itens.getStatus(), itens.getTotal()};
+            Object[] listaPedidos = new Object[]{itens, itens.getStatus(), itens.getTotal()};
             TabelaClienteContaPedidosFeitos.addRow(listaPedidos);
         }
     }
@@ -170,7 +170,16 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttClienteContaVisualizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteContaVisualizarPedidoActionPerformed
-        // TODO add your handling code here:
+        int linhaSelecionada =tblClienteContaPedidosFeitos.getSelectedRow();
+        if(linhaSelecionada != -1){
+            Pedido pedidovisualizado = (Pedido) tblClienteContaPedidosFeitos.getValueAt(linhaSelecionada, 0);
+            
+            PanelVisualizarPedidoGenerico pn = new PanelVisualizarPedidoGenerico(usuarioLogado, BarraTarefas, pedidovisualizado);
+            BarraTarefas.addTab("Visualizar pedido", pn);
+        }
+        else{
+            //erro nenhum pedido selecionado
+        }
     }//GEN-LAST:event_bttClienteContaVisualizarPedidoActionPerformed
 
     private void bttClienteContaNovoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteContaNovoPedidoActionPerformed

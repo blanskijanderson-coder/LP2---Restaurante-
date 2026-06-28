@@ -26,6 +26,8 @@
               <Component id="bttVisualizadorPedidoFechar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="lblVisualizarPedidoCliente" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="bttVisualizarPedidoVisualizar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -37,6 +39,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="bttVisualizadorPedidoFechar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblVisualizarPedidoCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bttVisualizarPedidoVisualizar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="321" max="-2" attributes="0"/>
@@ -82,6 +85,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Visualizar pedido de (nome)"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="bttVisualizarPedidoVisualizar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Visualizar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttVisualizarPedidoVisualizarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

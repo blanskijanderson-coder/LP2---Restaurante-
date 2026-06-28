@@ -4,9 +4,14 @@
  */
 package restaurante.view;
 
+import javax.swing.table.DefaultTableModel;
 import restaurante.Cliente;
 import restaurante.Conta;
-
+import restaurante.Pedido;
+import restaurante.Cardapio;
+import restaurante.Comida;
+import restaurante.Bebida;
+        
 /**
  *
  * @author janderson
@@ -15,28 +20,22 @@ public class PanelVisualizarPedidoGenerico extends javax.swing.JPanel {
 
     private javax.swing.JTabbedPane BarraTarefas;
     private Cliente usuarioLogado;
+    private Pedido pedidoVisto;
     
-    public PanelVisualizarPedidoGenerico(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
+    public PanelVisualizarPedidoGenerico(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas, Pedido visto) {
         initComponents();
- 
-        
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
+        this.pedidoVisto =  visto;
         
-        //for(Pedido item : )} vai ter que ser um for utilizando 
-        //uma lista de contas que será criada em cozinha, já que 
-        //não podemos pegar a conta diretamente por usuarioLogado.getContaAtual, 
-        //uma vez que ele pode não estar mais apontando para a conta.
-        //portanto, é necessário:
-        //1. criar uma lista de contas na cozinha
-        //2. fazer as contas serem adicionadas nela
-        //3. criar uma metodo que procure e retorne contas de um cliente 
-        //especifico        
-        //4.achar a conta especifica que se está analisando
-        //pera, esse visualizador será sempre aberto a partir de 
-        //alguma tabela.
-        //é só pegar o Pedido da tabela e receber pelo construtor
-        //mas e quanto a conta ? para conta, teremos que fazer o esquema
+        DefaultTableModel TabelaVisualizarPedido = (DefaultTableModel)tblVisualizarPedido.getModel();
+        
+        int cont = 0;
+        for(Cardapio item : visto.getListaItensSolicitados()){
+            Object[] itenspedidos = new Object[]{item, visto.getQtdSolicitada().get(cont), visto.getStatus(), visto.getTotal()};
+            TabelaVisualizarPedido.addRow(itenspedidos); 
+            cont++;
+        }
     }
         
 
@@ -53,6 +52,7 @@ public class PanelVisualizarPedidoGenerico extends javax.swing.JPanel {
         tblVisualizarPedido = new javax.swing.JTable();
         bttVisualizadorPedidoFechar = new javax.swing.JButton();
         lblVisualizarPedidoCliente = new javax.swing.JLabel();
+        bttVisualizarPedidoVisualizar = new javax.swing.JButton();
 
         tblVisualizarPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -70,6 +70,9 @@ public class PanelVisualizarPedidoGenerico extends javax.swing.JPanel {
         lblVisualizarPedidoCliente.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         lblVisualizarPedidoCliente.setText("Visualizar pedido de (nome)");
 
+        bttVisualizarPedidoVisualizar.setText("Visualizar");
+        bttVisualizarPedidoVisualizar.addActionListener(this::bttVisualizarPedidoVisualizarActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,6 +86,8 @@ public class PanelVisualizarPedidoGenerico extends javax.swing.JPanel {
                 .addComponent(bttVisualizadorPedidoFechar)
                 .addGap(18, 18, 18)
                 .addComponent(lblVisualizarPedidoCliente)
+                .addGap(18, 18, 18)
+                .addComponent(bttVisualizarPedidoVisualizar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -91,7 +96,8 @@ public class PanelVisualizarPedidoGenerico extends javax.swing.JPanel {
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bttVisualizadorPedidoFechar)
-                    .addComponent(lblVisualizarPedidoCliente))
+                    .addComponent(lblVisualizarPedidoCliente)
+                    .addComponent(bttVisualizarPedidoVisualizar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -103,9 +109,28 @@ public class PanelVisualizarPedidoGenerico extends javax.swing.JPanel {
         BarraTarefas.remove(this);
     }//GEN-LAST:event_bttVisualizadorPedidoFecharActionPerformed
 
+    private void bttVisualizarPedidoVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttVisualizarPedidoVisualizarActionPerformed
+        int linhaSelecionada = tblVisualizarPedido.getSelectedRow();
+        if(linhaSelecionada != -1){
+            Cardapio itemGenerico = (Cardapio) tblVisualizarPedido.getValueAt(linhaSelecionada, 0);
+            if(itemGenerico instanceof Comida){ //item = comida
+                PanelVisualizarCardapioComidaGenerico pn = new PanelVisualizarCardapioComidaGenerico(usuarioLogado, BarraTarefas,(Comida) itemGenerico);
+                BarraTarefas.addTab("Visualizar pedido", pn);
+            }
+            else{ //item = bebida
+                PanelVisualizarCardapioBebidaGenerico pn = new PanelVisualizarCardapioBebidaGenerico(usuarioLogado, BarraTarefas,(Bebida) itemGenerico);
+                BarraTarefas.addTab("Visualizar pedido", pn);
+            }
+        }
+        else{
+            //erro nenhum pedido selecionado
+        }
+    }//GEN-LAST:event_bttVisualizarPedidoVisualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttVisualizadorPedidoFechar;
+    private javax.swing.JButton bttVisualizarPedidoVisualizar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblVisualizarPedidoCliente;
     private javax.swing.JTable tblVisualizarPedido;
