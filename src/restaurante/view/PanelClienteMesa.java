@@ -120,8 +120,7 @@ public class PanelClienteMesa extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttClienteMesaConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteMesaConfirmarActionPerformed
-        PanelClientePedido novopedido = new PanelClientePedido(usuarioLogado, BarraTarefas);
-        
+
         String numero_mesa = txtClienteMesaEscolha.getText();
         
         if(Integer.parseInt(numero_mesa) <= Mesa.getQtdMesa()){
@@ -136,6 +135,8 @@ public class PanelClienteMesa extends javax.swing.JPanel {
                     usuarioLogado.getMesaAtual().setMesaNumero(numero_mesa);
                     Mesa.getListaMesa().add(numero_mesa);
                     txtClienteMesaEscolha.setText("");
+                    
+                    PanelClientePedido novopedido = new PanelClientePedido(usuarioLogado, BarraTarefas);
                     
                     BarraTarefas.addTab("Novo pedido", novopedido);
                     BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);

@@ -5,6 +5,7 @@
 package restaurante.view;
 
 import restaurante.Cliente;
+import restaurante.Bebida;
 
 /**
  *
@@ -14,11 +15,18 @@ public class PanelVisualizarCardapioBebidaGenerico extends javax.swing.JPanel {
 
     private javax.swing.JTabbedPane BarraTarefas;
     private Cliente usuarioLogado;
+    private Bebida bebidaVisualizada;
     
-    public PanelVisualizarCardapioBebidaGenerico(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
+    public PanelVisualizarCardapioBebidaGenerico(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas, Bebida vista) {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
+        this.bebidaVisualizada = vista;
+        
+        lblVisualizarBebida.setText("Visualizar " + bebidaVisualizada.getNome());
+        lblVisualizarBebidaNome.setText(bebidaVisualizada.getNome());
+        lblVisualizarBebidaCusto.setText("$" + String.valueOf(bebidaVisualizada.getCusto()));
+        lblVisualizarBebidaFornecedor.setText(bebidaVisualizada.getFornecedor());
     }
 
     /**
@@ -30,20 +38,15 @@ public class PanelVisualizarCardapioBebidaGenerico extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblVisualizarBebida = new javax.swing.JTable();
         bttVisualizadorBebidaFechar = new javax.swing.JButton();
         lblVisualizarBebida = new javax.swing.JLabel();
-
-        tblVisualizarBebida.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nome", "Custo", "Fornecedor"
-            }
-        ));
-        jScrollPane1.setViewportView(tblVisualizarBebida);
+        lblVisualizarBebidaNome = new javax.swing.JLabel();
+        lblVisualizarBebidaCusto = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lblVisualizarBebidaFornecedor = new javax.swing.JTextArea();
 
         bttVisualizadorBebidaFechar.setText("Fechar");
         bttVisualizadorBebidaFechar.addActionListener(this::bttVisualizadorBebidaFecharActionPerformed);
@@ -51,20 +54,45 @@ public class PanelVisualizarCardapioBebidaGenerico extends javax.swing.JPanel {
         lblVisualizarBebida.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         lblVisualizarBebida.setText("Visualizar (Bebida)");
 
+        jLabel1.setText("Nome:");
+
+        jLabel2.setText("Custo:");
+
+        jLabel3.setText("Fornecedor:");
+
+        lblVisualizarBebidaFornecedor.setColumns(20);
+        lblVisualizarBebidaFornecedor.setRows(5);
+        lblVisualizarBebidaFornecedor.setEnabled(false);
+        lblVisualizarBebidaFornecedor.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                lblVisualizarBebidaFornecedorComponentResized(evt);
+            }
+        });
+        jScrollPane3.setViewportView(lblVisualizarBebidaFornecedor);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(bttVisualizadorBebidaFechar)
-                .addGap(75, 75, 75)
-                .addComponent(lblVisualizarBebida)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(bttVisualizadorBebidaFechar)
+                        .addGap(75, 75, 75)
+                        .addComponent(lblVisualizarBebida))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane3)
+                            .addComponent(lblVisualizarBebidaCusto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblVisualizarBebidaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -73,9 +101,19 @@ public class PanelVisualizarCardapioBebidaGenerico extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bttVisualizadorBebidaFechar)
                     .addComponent(lblVisualizarBebida))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(lblVisualizarBebidaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(lblVisualizarBebidaCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(120, 120, 120))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -84,11 +122,20 @@ public class PanelVisualizarCardapioBebidaGenerico extends javax.swing.JPanel {
         BarraTarefas.remove(this);
     }//GEN-LAST:event_bttVisualizadorBebidaFecharActionPerformed
 
+    private void lblVisualizarBebidaFornecedorComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_lblVisualizarBebidaFornecedorComponentResized
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblVisualizarBebidaFornecedorComponentResized
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttVisualizadorBebidaFechar;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblVisualizarBebida;
-    private javax.swing.JTable tblVisualizarBebida;
+    private javax.swing.JLabel lblVisualizarBebidaCusto;
+    private javax.swing.JTextArea lblVisualizarBebidaFornecedor;
+    private javax.swing.JLabel lblVisualizarBebidaNome;
     // End of variables declaration//GEN-END:variables
 }
