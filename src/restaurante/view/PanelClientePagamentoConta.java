@@ -28,7 +28,10 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
         int cont = 0;
         
         for(Pedido itens : usuarioLogado.getContaAtual().getListaPedidosCliente()){
+           
             cont ++;
+            itens.setOrdem(cont);
+            
             Object[] listaPedidos = new Object[]{"pedido numero " + cont, itens.getStatus(), itens.getTotal()};
             TabelaClienteContaPedidosFeitos.addRow(listaPedidos);
         }
@@ -180,7 +183,20 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
     }//GEN-LAST:event_bttClienteContaNovoPedidoActionPerformed
 
     private void bttClienteContaDesfazerPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteContaDesfazerPedidoActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel TabelaClienteContaPedidosFeitos = (DefaultTableModel) tblClienteContaPedidosFeitos.getModel();
+        int remove = tblClienteContaPedidosFeitos.getSelectedRow();
+        String statusAtual = tblClienteContaPedidosFeitos.getValueAt(remove, 1).toString();
+        if(tblClienteContaPedidosFeitos.getSelectedRow() != -1){
+            if(statusAtual.equals("Em preparo")){
+                TabelaClienteContaPedidosFeitos.removeRow(remove);
+            }
+            else{
+                //erro pedido ja foi entregue
+            }
+        }
+        else{
+            //erro nenhum pedido selecionado
+        }
     }//GEN-LAST:event_bttClienteContaDesfazerPedidoActionPerformed
 
     private void bttClienteContaAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteContaAtualizarActionPerformed

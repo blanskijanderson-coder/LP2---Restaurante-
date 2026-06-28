@@ -3,8 +3,10 @@ package restaurante;
 import java.util.ArrayList;
 
 public class Pedido {
-    private String status_pedido;
+    
+    private int ordem;
     private double total;
+    private String status_pedido;
     private Cliente cliente;
     private Mesa mesa_cliente;
     private ArrayList<Cardapio> itensSolicitados = new ArrayList<>();
@@ -31,6 +33,8 @@ public class Pedido {
     
     public void addTotal(double valor){this.total += valor;}
     
+    public int getOrdem(){return this.ordem;}
+    
     public double getTotal(){return this.total;}
     
     public String getStatus(){return this.status_pedido;}
@@ -41,23 +45,14 @@ public class Pedido {
     
     public ArrayList<Cardapio> getListaItensSolicitados(){return this.itensSolicitados;}
     
+    public void setOrdem(int numero){this.ordem = numero;}
+    
     public void setStatusPedido(String status){this.status_pedido = status;}
     
     
     
     @Override
     public String toString() {
-        String resumo = "Pedido do Cliente: " + this.cliente.getNome() + "\n";
-        resumo += "Status: " + this.status_pedido + "\n";
-        resumo += "Itens:\n";
-
-        for (int i = 0; i < itensSolicitados.size(); i++) {
-            Cardapio item = itensSolicitados.get(i);
-            int qtd = Integer.parseInt(qtdSolicitada.get(i));
-            resumo += " - " + item.getNome() + " x" + qtd + " (R$ " + (item.getCusto() * qtd) + ")\n";
-        }
-
-        resumo += "Total: R$ " + this.getTotal() + "\n";
-        return resumo;
+        return "Pedido nº" + this.ordem;
     }
 }

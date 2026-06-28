@@ -28,7 +28,7 @@ public class Conta {
     }
 
     public void finalizarConta() {
-        this.setStatusConta("Encerrada");
+        this.setStatusConta("Paga");
         Cozinha.addContaHistorico(this);
     }
 
