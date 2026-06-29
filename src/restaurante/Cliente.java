@@ -100,4 +100,6 @@ public class Cliente extends Cadastrado  { //falta acesso ao historico de contas
     public void setPedidoAtual(Pedido novo){this.pedido_novo = novo;}
 
     public void setContaAtual(Conta mudada){this.conta_atual = mudada;}
+    
+    public void setMesaAtual(Mesa mesa){ this.mesa_atual = mesa; } //somente usado para resetar mesa ao pagar conta.
 }
