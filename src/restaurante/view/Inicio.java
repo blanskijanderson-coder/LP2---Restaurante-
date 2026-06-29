@@ -147,7 +147,7 @@ public class Inicio extends javax.swing.JFrame {
                         ADMinicio.setVisible(true);
                     }
                     encontrou = true;
-                    this.dispose();
+                    //this.dispose();
                     break;
                 }
                 else{

@@ -25,7 +25,8 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
         if (usuarioLogado != null) {
             TextoMenuInicial.setText("Bem vindo, Cliente " + usuarioLogado.getNome() + "!");
         } else {
-            TextoMenuInicial.setText("Bem vindo, Cliente (Modo de Teste)!");
+            JOptionPane.showMessageDialog(this, "essa classe não funfa sem login");
+            return;
         }
     }
     
@@ -89,9 +90,9 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
                 .addComponent(bttClienteInicioAtendimento)
                 .addGap(18, 18, 18)
                 .addComponent(bttClienteInicioHistorico)
-                .addGap(73, 73, 73)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addComponent(bttClienteInicioDeslogar)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
         );
 
         BarraTarefas.addTab("Menu", jPanel1);
@@ -105,7 +106,7 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(BarraTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+                .addComponent(BarraTarefas)
                 .addContainerGap())
         );
 
@@ -119,9 +120,9 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
             BarraTarefas.addTab("Seleção da mesa", clientemesa);
             BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
         }
-        else{
-            //conta em aberto;
-        }
+//        else{
+//            //conta em aberto;
+//        }
     }//GEN-LAST:event_bttClienteInicioAtendimentoActionPerformed
 
     private void bttClienteInicioDeslogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteInicioDeslogarActionPerformed
