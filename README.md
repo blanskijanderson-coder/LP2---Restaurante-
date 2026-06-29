@@ -85,5 +85,7 @@ Mesa           — controla ocupação e liberação de mesas
 ## Equipe
 
 Trabalho desenvolvido em grupo para o semestre 2026.1.
+
 CODERS: Marcelo Livros, Janderson Blanski e João Cleber.
+
 "O vencedor comemora, o perdedor justifica"
