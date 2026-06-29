@@ -19,7 +19,7 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
     public InterfaceADMInicio(Administrador pessoaLogada) {
         initComponents();
         this.usuarioLogado = pessoaLogada;
-        
+        lblADMInicio.setText("Bem vindo, Administrador" + usuarioLogado.getNome());
     }
 
     /**
@@ -39,7 +39,7 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
         bttInicioADMHistoricos = new javax.swing.JButton();
         bttInicioADMAtualizarQtdMesas = new javax.swing.JButton();
         bttInicioADMDeslogar1 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        lblADMInicio = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ADM - Interface inicial");
@@ -63,8 +63,8 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
         bttInicioADMDeslogar1.setText("Deslogar");
         bttInicioADMDeslogar1.addActionListener(this::bttInicioADMDeslogar1ActionPerformed);
 
-        jLabel5.setFont(new java.awt.Font("Liberation Sans", 1, 22)); // NOI18N
-        jLabel5.setText("Bem vindo, Administrador (Nome)");
+        lblADMInicio.setFont(new java.awt.Font("Liberation Sans", 1, 22)); // NOI18N
+        lblADMInicio.setText("Bem vindo, Administrador (Nome)");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,7 +78,7 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
                     .addComponent(bttInicioADMMudarCardapio)
                     .addComponent(bttInicioADMGerenciarCozinha)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblADMInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(73, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -89,7 +89,7 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(79, 79, 79)
-                .addComponent(jLabel5)
+                .addComponent(lblADMInicio)
                 .addGap(43, 43, 43)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -187,7 +187,7 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
     private javax.swing.JButton bttInicioADMHistoricos;
     private javax.swing.JButton bttInicioADMMudarCardapio;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblADMInicio;
     // End of variables declaration//GEN-END:variables
 }
