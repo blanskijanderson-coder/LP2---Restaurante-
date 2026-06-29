@@ -13,15 +13,26 @@ public class Pedido {
     private ArrayList<String> qtdSolicitada = new ArrayList<>();
 
     public Pedido(Cliente cliente, Mesa mesa_cliente) {
-        this.cliente = cliente;
-        this.mesa_cliente = mesa_cliente;
-        this.itensSolicitados = new ArrayList<>();
-        this.status_pedido = "A fazer";
-    }
+    this.cliente = cliente;
+    this.mesa_cliente = mesa_cliente;
+    this.status_pedido = "A fazer";
+    
+    // CORRIGIDO: Força ambas as listas a nascerem limpas e isoladas em cada instância
+    this.itensSolicitados = new ArrayList<>();
+    this.qtdSolicitada = new ArrayList<>(); 
+}
     
     public void produtoSolicitado(Cardapio item, String qtd) {
         this.itensSolicitados.add(item);
         this.qtdSolicitada.add(qtd);
+    }
+    
+    public int calcularQtdProdutos(){
+        int qtd = 0;
+        for(String quantidade : this.qtdSolicitada){
+            qtd += Integer.valueOf(quantidade);
+        }        
+        return qtd;
     }
     
     public void finalizarPedido(){

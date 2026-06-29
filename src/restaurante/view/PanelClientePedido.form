@@ -47,6 +47,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="bttClientePedidoCancelar" min="-2" max="-2" attributes="0"/>
                                       <Component id="bttClientePedidoAdicionarItem" min="-2" max="-2" attributes="0"/>
+                                      <Component id="bttClientePedidoAtualizar" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -81,7 +82,10 @@
                   <Component id="bttClientePedidoCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bttClientePedidoAtualizar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -90,7 +94,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="bttClientePedidoVisualizar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="30" max="32767" attributes="0"/>
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtClientePedidoQuantidade" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -274,6 +278,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttClientePedidoRemoverActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bttClientePedidoAtualizar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Atualizar"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

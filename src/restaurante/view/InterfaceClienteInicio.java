@@ -115,8 +115,8 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
     private void bttClienteInicioAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteInicioAtendimentoActionPerformed
         if(usuarioLogado.getContaAtual() == null){
             usuarioLogado.escolherMesa();
-            PanelClienteMesa teste = new PanelClienteMesa(usuarioLogado, BarraTarefas);
-            BarraTarefas.addTab("Seleção da mesa", teste);
+            PanelClienteMesa clientemesa = new PanelClienteMesa(usuarioLogado, BarraTarefas);
+            BarraTarefas.addTab("Seleção da mesa", clientemesa);
             BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
         }
         else{
@@ -134,7 +134,9 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_bttClienteInicioDeslogarActionPerformed
 
     private void bttClienteInicioHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteInicioHistoricoActionPerformed
-        // TODO add your handling code here:
+        PanelClienteHistorico clientehistorico = new PanelClienteHistorico(usuarioLogado, BarraTarefas);
+            BarraTarefas.addTab("Historico cliente", clientehistorico);
+            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
     }//GEN-LAST:event_bttClienteInicioHistoricoActionPerformed
 
     /**

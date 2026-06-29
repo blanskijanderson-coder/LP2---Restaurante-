@@ -15,9 +15,11 @@ public class Bebida extends Cardapio{
     
     public static ArrayList<Bebida> getListaBebida(){return lista_bebida;}
     
+    public String getFornecedor(){return this.fornecedor;}
+    
     @Override
     public String getDetalhes() {
-        return "Fornecedor: " + this.fornecedor;
-   }
+        return this.nome;
+    }
     
 }

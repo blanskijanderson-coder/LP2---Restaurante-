@@ -92,6 +92,8 @@ public class Cliente extends Cadastrado  { //falta acesso ao historico de contas
     public Mesa getMesaAtual(){return mesa_atual;}
 
     public Conta getContaAtual(){return conta_atual;}
+    
+    public ArrayList<Conta> getHistoricoCliente(){return historico_contasCliente;}
 
     public void setBonus(double valorBonus){this.bonus = valorBonus;}
     

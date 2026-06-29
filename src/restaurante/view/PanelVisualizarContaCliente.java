@@ -4,8 +4,11 @@
  */
 package restaurante.view;
 
+import javax.swing.table.DefaultTableModel;
+import restaurante.Cardapio;
 import restaurante.Cliente;
-
+import restaurante.Conta;
+import restaurante.Pedido;
 /**
  *
  * @author janderson
@@ -14,11 +17,25 @@ public class PanelVisualizarContaCliente extends javax.swing.JPanel {
 
     private javax.swing.JTabbedPane BarraTarefas;
     private Cliente usuarioLogado;
+    private Conta contaCliente;
     
-    public PanelVisualizarContaCliente(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
+    public PanelVisualizarContaCliente(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas, Conta vista) {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
+        this.contaCliente = vista;
+        
+        lblVisualizarContaCliente.setText("Visualizar conta de " + usuarioLogado.getNome());
+        //objeto tem que ter n pedido, n pedidos feitos, status atual e Custo total
+        DefaultTableModel TabelaVisualizarContaCliente = (DefaultTableModel) tblVisualizarContaCliente.getModel();
+        int cont = 0;
+        for(Pedido item : contaCliente.getListaPedidosCliente()){
+            cont ++;
+            item.setOrdem(cont);
+            
+            Object[] contaVista = new Object[]{item, item.calcularQtdProdutos(), item.getStatus(), "$" + item.getTotal()};
+            TabelaVisualizarContaCliente.addRow(contaVista);
+        } 
     }
 
     /**
@@ -34,13 +51,14 @@ public class PanelVisualizarContaCliente extends javax.swing.JPanel {
         tblVisualizarContaCliente = new javax.swing.JTable();
         bttVisualizadorContaFechar = new javax.swing.JButton();
         lblVisualizarContaCliente = new javax.swing.JLabel();
+        bttVisualizarContaVisualizar = new javax.swing.JButton();
 
         tblVisualizarContaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nº da mesa", "Itens do pedido", "Status", "Custo total"
+                "Nº do pedido", "Itens no pedido", "Status", "Custo total"
             }
         ));
         jScrollPane1.setViewportView(tblVisualizarContaCliente);
@@ -50,6 +68,9 @@ public class PanelVisualizarContaCliente extends javax.swing.JPanel {
 
         lblVisualizarContaCliente.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         lblVisualizarContaCliente.setText("Visualizar conta de (nome)");
+
+        bttVisualizarContaVisualizar.setText("Visualizar");
+        bttVisualizarContaVisualizar.addActionListener(this::bttVisualizarContaVisualizarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -64,6 +85,8 @@ public class PanelVisualizarContaCliente extends javax.swing.JPanel {
                 .addComponent(bttVisualizadorContaFechar)
                 .addGap(32, 32, 32)
                 .addComponent(lblVisualizarContaCliente)
+                .addGap(18, 18, 18)
+                .addComponent(bttVisualizarContaVisualizar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -72,7 +95,8 @@ public class PanelVisualizarContaCliente extends javax.swing.JPanel {
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bttVisualizadorContaFechar)
-                    .addComponent(lblVisualizarContaCliente))
+                    .addComponent(lblVisualizarContaCliente)
+                    .addComponent(bttVisualizarContaVisualizar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -84,9 +108,23 @@ public class PanelVisualizarContaCliente extends javax.swing.JPanel {
         BarraTarefas.remove(this);
     }//GEN-LAST:event_bttVisualizadorContaFecharActionPerformed
 
+    private void bttVisualizarContaVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttVisualizarContaVisualizarActionPerformed
+        int linhaSelecionada = tblVisualizarContaCliente.getSelectedRow();
+        if(linhaSelecionada != -1){
+            Pedido visto = (Pedido) tblVisualizarContaCliente.getValueAt(linhaSelecionada, 0);
+            PanelVisualizarPedidoGenerico pedidocliente = new PanelVisualizarPedidoGenerico(usuarioLogado, BarraTarefas, visto);
+            BarraTarefas.addTab("Visualizar pedido", pedidocliente);
+            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        }
+        else{
+            //erro nenhum pedido selecionado
+        }
+    }//GEN-LAST:event_bttVisualizarContaVisualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttVisualizadorContaFechar;
+    private javax.swing.JButton bttVisualizarContaVisualizar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblVisualizarContaCliente;
     private javax.swing.JTable tblVisualizarContaCliente;

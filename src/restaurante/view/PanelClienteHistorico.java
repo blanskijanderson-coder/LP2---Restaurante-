@@ -4,7 +4,9 @@
  */
 package restaurante.view;
 
+import javax.swing.table.DefaultTableModel;
 import restaurante.Cliente;
+import restaurante.Conta;
 
 /**
  *
@@ -14,11 +16,21 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
 
     private javax.swing.JTabbedPane BarraTarefas;
     private Cliente usuarioLogado;
-    
+
     public PanelClienteHistorico(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
+        
+        lblVisualizarHistoricoCliente.setText("Historico de atividade de " + pessoaLogada.getNome());
+        
+        DefaultTableModel TabelaVisualizarHistoricoCliente = (DefaultTableModel) tblVisualizarHistoricoCliente.getModel(); 
+        //nº mesa da conta, nº de pedidos, Status, Custo Total
+        //vai na lista de contas do cliente, pega os valore da conta
+        for(Conta existente : usuarioLogado.getHistoricoCliente()){
+            Object[] contaCliente = new Object[]{existente, existente.getQtdPedidos() + " pedidos", existente.getStatusConta(), "$" + existente.getTotalConta()};
+            TabelaVisualizarHistoricoCliente.addRow(contaCliente);
+        }
     }
 
     /**
@@ -30,10 +42,14 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bttVisualizarPedidoVisualizar = new javax.swing.JButton();
         bttHistoricoClienteFechar = new javax.swing.JButton();
         lblVisualizarHistoricoCliente = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblVisualizarHistoricoCliente = new javax.swing.JTable();
+        bttVisualizaHistoricoVisualizar = new javax.swing.JButton();
+
+        bttVisualizarPedidoVisualizar.setText("Visualizar");
 
         bttHistoricoClienteFechar.setText("Fechar");
         bttHistoricoClienteFechar.addActionListener(this::bttHistoricoClienteFecharActionPerformed);
@@ -46,10 +62,13 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Nº da conta", "Nº de pedidos", "Status", "Custo total"
+                "Mesa da conta", "Nº de pedidos", "Status", "Custo total"
             }
         ));
         jScrollPane1.setViewportView(tblVisualizarHistoricoCliente);
+
+        bttVisualizaHistoricoVisualizar.setText("Visualizar");
+        bttVisualizaHistoricoVisualizar.addActionListener(this::bttVisualizaHistoricoVisualizarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -64,6 +83,8 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
                 .addComponent(bttHistoricoClienteFechar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblVisualizarHistoricoCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bttVisualizaHistoricoVisualizar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -72,7 +93,8 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bttHistoricoClienteFechar)
-                    .addComponent(lblVisualizarHistoricoCliente))
+                    .addComponent(lblVisualizarHistoricoCliente)
+                    .addComponent(bttVisualizaHistoricoVisualizar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -84,9 +106,24 @@ public class PanelClienteHistorico extends javax.swing.JPanel {
         BarraTarefas.remove(this);
     }//GEN-LAST:event_bttHistoricoClienteFecharActionPerformed
 
+    private void bttVisualizaHistoricoVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttVisualizaHistoricoVisualizarActionPerformed
+        int linhaSelecionada = tblVisualizarHistoricoCliente.getSelectedRow();
+        if(linhaSelecionada != -1){
+            Conta vista = (Conta) tblVisualizarHistoricoCliente.getValueAt(linhaSelecionada, 0);
+            PanelVisualizarContaCliente contacliente = new PanelVisualizarContaCliente(usuarioLogado, BarraTarefas, vista);
+            BarraTarefas.addTab("Visualizar conta", contacliente);
+            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        }
+        else{
+            //erro nenhuma conta selecionado
+        }
+    }//GEN-LAST:event_bttVisualizaHistoricoVisualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttHistoricoClienteFechar;
+    private javax.swing.JButton bttVisualizaHistoricoVisualizar;
+    private javax.swing.JButton bttVisualizarPedidoVisualizar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblVisualizarHistoricoCliente;
     private javax.swing.JTable tblVisualizarHistoricoCliente;
