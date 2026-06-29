@@ -4,9 +4,11 @@
  */
 package restaurante.view;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import restaurante.Cliente;
 import restaurante.Conta;
+import restaurante.Mesa;
 import restaurante.Pedido;
 
 /**
@@ -36,7 +38,13 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
             TabelaClienteContaPedidosFeitos.addRow(listaPedidos);
         }
         
-        lblClientePagarContaTotal.setText("Total: $" + usuarioLogado.getContaAtual().getTotalConta());
+        double totalConta = usuarioLogado.getContaAtual().getTotalConta();
+        double bonus = usuarioLogado.getBonus();
+        double totalComDesconto = totalConta - bonus;
+        if(totalComDesconto < 0){ totalComDesconto = 0; }
+
+        lblClientePagarContaTotal.setText("Total: $" + totalComDesconto);
+        txtBonusInfo.setText("Bônus de compra abatido do pagamento: R$ " + bonus);
     }
 
     /**
@@ -61,6 +69,8 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
         bttClienteContaDesfazerPedido = new javax.swing.JButton();
         bttClienteContaAtualizar = new javax.swing.JButton();
         bttClienteContaCancelar = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        txtBonusInfo = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 22)); // NOI18N
         jLabel1.setText("Sua conta atual:");
@@ -105,12 +115,18 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
         bttClienteContaCancelar.setText("Cancelar");
         bttClienteContaCancelar.addActionListener(this::bttClienteContaCancelarActionPerformed);
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione...", "Credito", "Debito", "Pix", "Dinheiro" }));
+        jComboBox1.addActionListener(this::jComboBox1ActionPerformed);
+
+        txtBonusInfo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtBonusInfo.setText("Bônus de compra abatido do pagamento: (bônus)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblClientePagarContaTotal)
@@ -128,12 +144,16 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel2)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(bttClienteContaNovoPedido)))))
-                                .addGap(9, 9, 9)))
+                                                .addComponent(bttClienteContaNovoPedido))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtBonusInfo))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bttClienteContaCancelar)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -164,21 +184,20 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bttClienteContaNovoPedido)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bttClienteContaPagar)
-                            .addComponent(lblClientePagarContaTotal))
-                        .addGap(26, 26, 26))))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bttClienteContaNovoPedido)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addComponent(txtBonusInfo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bttClienteContaPagar)
+                    .addComponent(lblClientePagarContaTotal)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -234,33 +253,52 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
     }//GEN-LAST:event_bttClienteContaAtualizarActionPerformed
 
     private void bttClienteContaPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteContaPagarActionPerformed
-        //futuramente adicionar if pra checar se um metodo de pagamento foi selecionado
-        //erro ao cancelar todos os pedidos
+
         if(!usuarioLogado.getContaAtual().getListaPedidosCliente().isEmpty()){
+            
             if(usuarioLogado.getPedidoAtual() == null){
+                if(jComboBox1.getSelectedIndex() == 0){
+                JOptionPane.showMessageDialog(this, "Selecione uma forma de pagamento.");
+                return;
+                }
+                
                 boolean flag_status = true;
                 for(Pedido feito : usuarioLogado.getContaAtual().getListaPedidosCliente()){
-                    if(!feito.getStatus().equals("Entregue")){
+                    if(!feito.getStatus().equals("Entregue")){ //se os pedidos nao tiverem sido entregues, não dá pra pagar a conta
                         flag_status = false;
                     }
                 }
-                if(flag_status == true){
-                    usuarioLogado.getContaAtual().setStatusConta("Paga");
+                
+                if(flag_status == true){ // CASO QUEIRA TESTAR SEM DEPENDER DA COZINHA ENCERRAR PEDIDO, TROQUE PRA != SOMENTE ENQUANTO TESTA
+                    String formaPagamento = jComboBox1.getSelectedItem().toString();
+                    double valorConta = usuarioLogado.getContaAtual().pagarConta();
+                    
+                    double bonusAnterior = usuarioLogado.getBonus();
+                    double valorComDesconto = valorConta - bonusAnterior;
+                    
+                    if(valorComDesconto < 0){ valorComDesconto = 0; }
+                    double novoBonus = valorConta / 10;
+                    usuarioLogado.setBonus(novoBonus);
+                    usuarioLogado.getContaAtual().finalizarConta();
+                    
+                    Mesa.liberarMesa(usuarioLogado.getMesaAtual().getMesaNumero());
                     usuarioLogado.setContaAtual(null);
-
+                    usuarioLogado.setMesaAtual(null);
+                    PagamentoFim fim = new PagamentoFim(formaPagamento, bonusAnterior, novoBonus, BarraTarefas);
+                    BarraTarefas.addTab("Pagamento", fim);
                     BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
                     BarraTarefas.remove(this);
                 }
                 else{
-                    //erro ainda há pedidos para serem entregues
+                    JOptionPane.showMessageDialog(this, "Ainda há pedidos aguardando entrega.");
                 }
             }
             else{
-                //erro ainda possui contas em aberto
+                JOptionPane.showMessageDialog(this, "Você ainda possui um pedido em aberto.");
             }
         }
         else{
-            //erro nenhum pedido feito
+            JOptionPane.showMessageDialog(this, "Nenhum pedido foi feito.");
         }
     }//GEN-LAST:event_bttClienteContaPagarActionPerformed
 
@@ -283,6 +321,10 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_bttClienteContaCancelarActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttClienteContaAtualizar;
@@ -291,6 +333,7 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
     private javax.swing.JButton bttClienteContaNovoPedido;
     private javax.swing.JButton bttClienteContaPagar;
     private javax.swing.JButton bttClienteContaVisualizarPedido;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -298,5 +341,6 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblClientePagarContaTotal;
     private javax.swing.JTable tblClienteContaPedidosFeitos;
+    private javax.swing.JLabel txtBonusInfo;
     // End of variables declaration//GEN-END:variables
 }
