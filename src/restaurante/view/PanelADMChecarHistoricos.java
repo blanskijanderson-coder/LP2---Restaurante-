@@ -4,17 +4,21 @@
  */
 package restaurante.view;
 
+import restaurante.Administrador;
+
 /**
  *
  * @author janderson
  */
 public class PanelADMChecarHistoricos extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelADMChecarHistoricos
-     */
-    public PanelADMChecarHistoricos() {
+    private javax.swing.JTabbedPane BarraTarefas;
+    private Administrador usuarioLogado;
+    
+    public PanelADMChecarHistoricos(Administrador pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
         initComponents();
+        this.BarraTarefas = BarraTarefas;
+        this.usuarioLogado = pessoaLogada;
     }
 
     /**
@@ -27,25 +31,29 @@ public class PanelADMChecarHistoricos extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        bttADMHistoricosUsuarios = new javax.swing.JButton();
+        bttADMHistoricosGeralContas = new javax.swing.JButton();
+        bttADMHistoricosGeralPedidos = new javax.swing.JButton();
+        bttADMHistoricosClientes = new javax.swing.JButton();
+        bttADMHistoricosVoltar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         jLabel1.setText("Que histórico deseja checar hoje ?");
 
-        jButton1.setText("Historico de usuários");
+        bttADMHistoricosUsuarios.setText("Historico de usuários");
+        bttADMHistoricosUsuarios.addActionListener(this::bttADMHistoricosUsuariosActionPerformed);
 
-        jButton2.setText("Historico geral de contas");
+        bttADMHistoricosGeralContas.setText("Historico geral de contas");
+        bttADMHistoricosGeralContas.addActionListener(this::bttADMHistoricosGeralContasActionPerformed);
 
-        jButton3.setText("Historico geral de pedidos");
+        bttADMHistoricosGeralPedidos.setText("Historico geral de pedidos");
+        bttADMHistoricosGeralPedidos.addActionListener(this::bttADMHistoricosGeralPedidosActionPerformed);
 
-        jButton4.setText("Histórico de um cliente");
+        bttADMHistoricosClientes.setText("Histórico de um cliente");
+        bttADMHistoricosClientes.addActionListener(this::bttADMHistoricosClientesActionPerformed);
 
-        jButton5.setText("Voltar");
-        jButton5.addActionListener(this::jButton5ActionPerformed);
+        bttADMHistoricosVoltar.setText("Voltar");
+        bttADMHistoricosVoltar.addActionListener(this::bttADMHistoricosVoltarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -59,15 +67,14 @@ public class PanelADMChecarHistoricos extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton3)
-                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jButton4))))
+                            .addComponent(bttADMHistoricosGeralContas)
+                            .addComponent(bttADMHistoricosUsuarios)
+                            .addComponent(bttADMHistoricosGeralPedidos)
+                            .addComponent(bttADMHistoricosClientes))))
                 .addContainerGap(153, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton5)
+                .addComponent(bttADMHistoricosVoltar)
                 .addGap(44, 44, 44))
         );
         layout.setVerticalGroup(
@@ -76,30 +83,63 @@ public class PanelADMChecarHistoricos extends javax.swing.JPanel {
                 .addGap(55, 55, 55)
                 .addComponent(jLabel1)
                 .addGap(27, 27, 27)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                .addComponent(jButton5)
+                .addComponent(bttADMHistoricosUsuarios)
+                .addGap(57, 57, 57)
+                .addComponent(bttADMHistoricosGeralContas)
+                .addGap(52, 52, 52)
+                .addComponent(bttADMHistoricosGeralPedidos)
+                .addGap(59, 59, 59)
+                .addComponent(bttADMHistoricosClientes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                .addComponent(bttADMHistoricosVoltar)
                 .addGap(17, 17, 17))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void bttADMHistoricosVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMHistoricosVoltarActionPerformed
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        BarraTarefas.remove(this);
+    }//GEN-LAST:event_bttADMHistoricosVoltarActionPerformed
+
+    private void bttADMHistoricosUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMHistoricosUsuariosActionPerformed
+        PanelADMHistoricoUsuarios historico = new PanelADMHistoricoUsuarios(usuarioLogado, BarraTarefas);
+        
+        BarraTarefas.addTab("Usuários", historico);
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        BarraTarefas.remove(this);
+    }//GEN-LAST:event_bttADMHistoricosUsuariosActionPerformed
+
+    private void bttADMHistoricosClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMHistoricosClientesActionPerformed
+        PanelADMHistoricoCliente historico = new PanelADMHistoricoCliente(usuarioLogado, BarraTarefas);
+        
+        BarraTarefas.addTab("Históricos de clientes", historico);
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        BarraTarefas.remove(this);
+    }//GEN-LAST:event_bttADMHistoricosClientesActionPerformed
+
+    private void bttADMHistoricosGeralContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMHistoricosGeralContasActionPerformed
+        PanelADMHistoricoContas historico = new PanelADMHistoricoContas(usuarioLogado, BarraTarefas);
+        
+        BarraTarefas.addTab("Históricos gerais de conta", historico);
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        BarraTarefas.remove(this);
+    }//GEN-LAST:event_bttADMHistoricosGeralContasActionPerformed
+
+    private void bttADMHistoricosGeralPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMHistoricosGeralPedidosActionPerformed
+        PanelADMHistoricoPedidos historico = new PanelADMHistoricoPedidos(usuarioLogado, BarraTarefas);
+        
+        BarraTarefas.addTab("Históricos gerais de pedido", historico);
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        BarraTarefas.remove(this);
+    }//GEN-LAST:event_bttADMHistoricosGeralPedidosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton bttADMHistoricosClientes;
+    private javax.swing.JButton bttADMHistoricosGeralContas;
+    private javax.swing.JButton bttADMHistoricosGeralPedidos;
+    private javax.swing.JButton bttADMHistoricosUsuarios;
+    private javax.swing.JButton bttADMHistoricosVoltar;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

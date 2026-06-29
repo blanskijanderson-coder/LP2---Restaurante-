@@ -42,6 +42,8 @@ public class Conta {
     
     public double getTotalConta(){return total_conta;}
     
+    public Cliente getCliente(){return cliente;}
+    
     public String getMesaConta(){return mesa_conta;}
     
     public String getStatusConta(){return status_conta;}

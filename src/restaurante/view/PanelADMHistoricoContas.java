@@ -1,8 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package restaurante.view;
+
+import javax.swing.table.DefaultTableModel;
+import restaurante.Conta;
+import restaurante.Cozinha;
+import restaurante.Cliente;
+import restaurante.Administrador;
+import restaurante.view.PanelADMChecarHistoricos;
 
 /**
  *
@@ -10,11 +13,20 @@ package restaurante.view;
  */
 public class PanelADMHistoricoContas extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelADMHistoricoContas
-     */
-    public PanelADMHistoricoContas() {
+    private javax.swing.JTabbedPane BarraTarefas;
+    private Administrador usuarioLogado;
+     
+    public PanelADMHistoricoContas(Administrador pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
         initComponents();
+        this.BarraTarefas = BarraTarefas;
+        this.usuarioLogado = pessoaLogada;
+        
+        DefaultTableModel TabelaVisualizarHistoricoGeralContas = (DefaultTableModel) tblADMHistoricoContas.getModel(); 
+
+        for(Conta existente : Cozinha.getHistoricoContasGerais()){
+            Object[] conta = new Object[]{existente.getCliente(),existente, existente.getQtdPedidos() + " pedidos", existente.getStatusConta(), "$" + existente.getTotalConta()};
+            TabelaVisualizarHistoricoGeralContas.addRow(conta);
+        }
     }
 
     /**
@@ -26,19 +38,90 @@ public class PanelADMHistoricoContas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblADMHistoricoContas = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblADMHistoricoContas = new javax.swing.JTable();
+        bttADMHistoricoContas = new javax.swing.JButton();
+        bttADMHistoricoContasVisualizar = new javax.swing.JButton();
+
+        lblADMHistoricoContas.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        lblADMHistoricoContas.setText("Historico geral de contas");
+
+        tblADMHistoricoContas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cliente", "Mesa da conta", "Status", "Nº de pedidos", "Custo total"
+            }
+        ));
+        jScrollPane1.setViewportView(tblADMHistoricoContas);
+
+        bttADMHistoricoContas.setText("Voltar");
+        bttADMHistoricoContas.addActionListener(this::bttADMHistoricoContasActionPerformed);
+
+        bttADMHistoricoContasVisualizar.setText("Visualizar");
+        bttADMHistoricoContasVisualizar.addActionListener(this::bttADMHistoricoContasVisualizarActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bttADMHistoricoContas)
+                        .addGap(44, 44, 44)
+                        .addComponent(lblADMHistoricoContas)
+                        .addGap(42, 42, 42)
+                        .addComponent(bttADMHistoricoContasVisualizar)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblADMHistoricoContas)
+                    .addComponent(bttADMHistoricoContas)
+                    .addComponent(bttADMHistoricoContasVisualizar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bttADMHistoricoContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMHistoricoContasActionPerformed
+        PanelADMChecarHistoricos historico = new PanelADMChecarHistoricos(usuarioLogado, BarraTarefas);
+        
+        BarraTarefas.addTab("Históricos", historico);
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        BarraTarefas.remove(this);
+    }//GEN-LAST:event_bttADMHistoricoContasActionPerformed
+
+    private void bttADMHistoricoContasVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMHistoricoContasVisualizarActionPerformed
+        int linhaSelecionada = tblADMHistoricoContas.getSelectedRow();
+        if(linhaSelecionada != -1){
+            Cliente atual = (Cliente) tblADMHistoricoContas.getValueAt(linhaSelecionada, 0);
+            Conta vista = (Conta) tblADMHistoricoContas.getValueAt(linhaSelecionada, 1);
+            
+            PanelVisualizarContaCliente contacliente = new PanelVisualizarContaCliente(atual, BarraTarefas, vista);
+            BarraTarefas.addTab("Visualizar conta", contacliente);
+            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        }
+        else{
+            //erro nenhuma conta selecionado
+        }
+    }//GEN-LAST:event_bttADMHistoricoContasVisualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bttADMHistoricoContas;
+    private javax.swing.JButton bttADMHistoricoContasVisualizar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblADMHistoricoContas;
+    private javax.swing.JTable tblADMHistoricoContas;
     // End of variables declaration//GEN-END:variables
 }

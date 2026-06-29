@@ -4,6 +4,7 @@ package restaurante;
 
 import java.util.ArrayList;
 
+
 public class Cozinha {
     private static ArrayList<Cardapio> lista_produto = new ArrayList<>();
     private static ArrayList<Pedido> lista_pedidosGerais = new ArrayList<>();
@@ -48,5 +49,7 @@ public class Cozinha {
     public static ArrayList<Cardapio> getListaProduto(){return lista_produto;}
     
     public static ArrayList<Pedido> getListaPedido(){return lista_pedidosGerais;}
+    
+    public static ArrayList<Conta> getHistoricoContasGerais(){return historico_contasGerais;}
 
 }

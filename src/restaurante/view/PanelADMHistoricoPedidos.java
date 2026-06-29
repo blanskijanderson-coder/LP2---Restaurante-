@@ -4,17 +4,36 @@
  */
 package restaurante.view;
 
+import javax.swing.table.DefaultTableModel;
+import restaurante.Administrador;
+import restaurante.Cliente;
+import restaurante.Cozinha;
+import restaurante.Pedido;
+
 /**
  *
  * @author janderson
  */
 public class PanelADMHistoricoPedidos extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelADMHistoricoPedidos
-     */
-    public PanelADMHistoricoPedidos() {
+    private javax.swing.JTabbedPane BarraTarefas;
+    private Administrador usuarioLogado;
+    
+    public PanelADMHistoricoPedidos(Administrador pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
         initComponents();
+        this.BarraTarefas = BarraTarefas;
+        this.usuarioLogado = pessoaLogada;
+        
+        DefaultTableModel TabelaADMHistoricoPedidos = (DefaultTableModel) tblADMHistoricoPedidos.getModel();
+        int cont = 0;
+        
+        for(Pedido item : Cozinha.getListaPedido()){
+            cont ++;
+            item.setOrdem(cont);
+            
+            Object[] contaVista = new Object[]{item.getCliente(), item, item.calcularQtdProdutos(), item.getStatus(), "$" + item.getTotal()};
+            TabelaADMHistoricoPedidos.addRow(contaVista);
+        } 
     }
 
     /**
@@ -26,19 +45,91 @@ public class PanelADMHistoricoPedidos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblADMHistoricoPedidos = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblADMHistoricoPedidos = new javax.swing.JTable();
+        bttADMHistoricoPedidosVoltar = new javax.swing.JButton();
+        bttADMHistoricoPedidosVisualizar = new javax.swing.JButton();
+
+        lblADMHistoricoPedidos.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        lblADMHistoricoPedidos.setText("Historico geral de pedidos");
+
+        tblADMHistoricoPedidos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Item pedido", "Quantidade", "Status", "Custo total"
+            }
+        ));
+        jScrollPane1.setViewportView(tblADMHistoricoPedidos);
+
+        bttADMHistoricoPedidosVoltar.setText("Voltar");
+        bttADMHistoricoPedidosVoltar.addActionListener(this::bttADMHistoricoPedidosVoltarActionPerformed);
+
+        bttADMHistoricoPedidosVisualizar.setText("Visualizar");
+        bttADMHistoricoPedidosVisualizar.addActionListener(this::bttADMHistoricoPedidosVisualizarActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(bttADMHistoricoPedidosVoltar)
+                        .addGap(37, 37, 37)
+                        .addComponent(lblADMHistoricoPedidos)
+                        .addGap(30, 30, 30)
+                        .addComponent(bttADMHistoricoPedidosVisualizar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bttADMHistoricoPedidosVoltar)
+                    .addComponent(lblADMHistoricoPedidos)
+                    .addComponent(bttADMHistoricoPedidosVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bttADMHistoricoPedidosVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMHistoricoPedidosVisualizarActionPerformed
+        int linhaSelecionada = tblADMHistoricoPedidos.getSelectedRow();
+        if(linhaSelecionada != -1){
+            Cliente atual = (Cliente) tblADMHistoricoPedidos.getValueAt(linhaSelecionada, 0);
+            Pedido visto = (Pedido) tblADMHistoricoPedidos.getValueAt(linhaSelecionada, 1);
+            PanelVisualizarPedidoGenerico pedidocliente = new PanelVisualizarPedidoGenerico(atual, BarraTarefas, visto);
+            BarraTarefas.addTab("Visualizar pedido", pedidocliente);
+            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        }
+        else{
+            //erro nenhum pedido selecionado
+        }       
+    }//GEN-LAST:event_bttADMHistoricoPedidosVisualizarActionPerformed
+
+    private void bttADMHistoricoPedidosVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMHistoricoPedidosVoltarActionPerformed
+        PanelADMChecarHistoricos historico = new PanelADMChecarHistoricos(usuarioLogado, BarraTarefas);
+        
+        BarraTarefas.addTab("Históricos", historico);
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        BarraTarefas.remove(this);
+    }//GEN-LAST:event_bttADMHistoricoPedidosVoltarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bttADMHistoricoPedidosVisualizar;
+    private javax.swing.JButton bttADMHistoricoPedidosVoltar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblADMHistoricoPedidos;
+    private javax.swing.JTable tblADMHistoricoPedidos;
     // End of variables declaration//GEN-END:variables
 }

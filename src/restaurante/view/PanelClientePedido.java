@@ -49,12 +49,12 @@ public class PanelClientePedido extends javax.swing.JPanel {
         DefaultTableModel TabelaClientePedidoBebida = (DefaultTableModel) tblClientePedidoBebida.getModel();
         
         for(Comida itens : Comida.getListaComida()){
-            Object[] cardapioComida = new Object[]{itens.getNome(), "$" + itens.getCusto()};
+            Object[] cardapioComida = new Object[]{itens.getNome(), itens.getCusto()};
             TabelaClientePedidoComida.addRow(cardapioComida);
         }
         for(Bebida itens : Bebida.getListaBebida()){
             
-            Object[] cardapioBebida = new Object[]{itens.getNome(), "$" + itens.getCusto()};
+            Object[] cardapioBebida = new Object[]{itens.getNome(), itens.getCusto()};
             TabelaClientePedidoBebida.addRow(cardapioBebida);
         }
     }

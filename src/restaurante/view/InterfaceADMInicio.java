@@ -56,6 +56,7 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
         bttInicioADMMudarCardapio.addActionListener(this::bttInicioADMMudarCardapioActionPerformed);
 
         bttInicioADMHistoricos.setText("Checar históricos do restaurante");
+        bttInicioADMHistoricos.addActionListener(this::bttInicioADMHistoricosActionPerformed);
 
         bttInicioADMAtualizarQtdMesas.setText("Atualizar quantidade de mesas");
         bttInicioADMAtualizarQtdMesas.addActionListener(this::bttInicioADMAtualizarQtdMesasActionPerformed);
@@ -100,9 +101,9 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
                 .addComponent(bttInicioADMAtualizarQtdMesas)
                 .addGap(18, 18, 18)
                 .addComponent(bttInicioADMHistoricos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bttInicioADMDeslogar1)
-                .addGap(171, 171, 171))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         BarraTarefas.addTab("Menu", jPanel1);
@@ -132,8 +133,6 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
         
         BarraTarefas.addTab("Cozinha", cozinha);
         BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
-        
-        BarraTarefas.remove(this);
     }//GEN-LAST:event_bttInicioADMGerenciarCozinhaActionPerformed
 
     private void bttInicioADMMudarCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttInicioADMMudarCardapioActionPerformed
@@ -141,8 +140,6 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
         
         BarraTarefas.addTab("Cardápio", cardapio);
         BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
-        
-        BarraTarefas.remove(this);
     }//GEN-LAST:event_bttInicioADMMudarCardapioActionPerformed
 
     private void bttInicioADMAtualizarQtdMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttInicioADMAtualizarQtdMesasActionPerformed
@@ -151,8 +148,14 @@ public class InterfaceADMInicio extends javax.swing.JFrame {
         BarraTarefas.addTab("Mudar mesa", mesa);
         BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
         
-        BarraTarefas.remove(this);
     }//GEN-LAST:event_bttInicioADMAtualizarQtdMesasActionPerformed
+
+    private void bttInicioADMHistoricosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttInicioADMHistoricosActionPerformed
+        PanelADMChecarHistoricos historico = new PanelADMChecarHistoricos(usuarioLogado, BarraTarefas);
+        
+        BarraTarefas.addTab("Históricos", historico);
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+    }//GEN-LAST:event_bttInicioADMHistoricosActionPerformed
 
     /**
      * @param args the command line arguments

@@ -92,9 +92,9 @@
                       <Component id="bttInicioADMAtualizarQtdMesas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="bttInicioADMHistoricos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="bttInicioADMDeslogar1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
+                      <EmptySpace pref="38" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -128,6 +128,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Checar hist&#xf3;ricos do restaurante"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bttInicioADMHistoricosActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="bttInicioADMAtualizarQtdMesas">
               <Properties>

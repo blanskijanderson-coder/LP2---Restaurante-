@@ -4,17 +4,22 @@
  */
 package restaurante.view;
 
+import restaurante.Administrador;
+import restaurante.Cadastrado;
 /**
  *
  * @author janderson
  */
 public class PanelADMHistoricoUsuarios extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelADMHistoricoUsuarios
-     */
-    public PanelADMHistoricoUsuarios() {
+    private javax.swing.JTabbedPane BarraTarefas;
+    private Administrador usuarioLogado;
+    public PanelADMHistoricoUsuarios(Administrador pessoaLogada, javax.swing.JTabbedPane BarraTarefas) {
         initComponents();
+        this.BarraTarefas = BarraTarefas;
+        this.usuarioLogado = pessoaLogada;
+        
+        
     }
 
     /**
@@ -26,19 +31,86 @@ public class PanelADMHistoricoUsuarios extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblADMHistoricoUsuarioCliente = new javax.swing.JTable();
+        bttADMHistoricoUsuarioVoltar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblADMHistoricoUsuarioADM = new javax.swing.JTable();
+
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
+        jLabel1.setText("Historico geral de usuarios");
+
+        tblADMHistoricoUsuarioCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Administradores"
+            }
+        ));
+        jScrollPane1.setViewportView(tblADMHistoricoUsuarioCliente);
+
+        bttADMHistoricoUsuarioVoltar.setText("Voltar");
+        bttADMHistoricoUsuarioVoltar.addActionListener(this::bttADMHistoricoUsuarioVoltarActionPerformed);
+
+        tblADMHistoricoUsuarioADM.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Clientes"
+            }
+        ));
+        jScrollPane2.setViewportView(tblADMHistoricoUsuarioADM);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(bttADMHistoricoUsuarioVoltar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(152, 152, 152))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(bttADMHistoricoUsuarioVoltar))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bttADMHistoricoUsuarioVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMHistoricoUsuarioVoltarActionPerformed
+        PanelADMChecarHistoricos historico = new PanelADMChecarHistoricos(usuarioLogado, BarraTarefas);
+        
+        BarraTarefas.addTab("Históricos", historico);
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        BarraTarefas.remove(this);
+    }//GEN-LAST:event_bttADMHistoricoUsuarioVoltarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bttADMHistoricoUsuarioVoltar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblADMHistoricoUsuarioADM;
+    private javax.swing.JTable tblADMHistoricoUsuarioCliente;
     // End of variables declaration//GEN-END:variables
 }
