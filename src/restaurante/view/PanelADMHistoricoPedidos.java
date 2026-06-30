@@ -59,7 +59,7 @@ public class PanelADMHistoricoPedidos extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Nome", "Item pedido", "Quantidade", "Status", "Custo total"
+                "Nome", "Item pedido", "Status", "Quantidade", "Custo total"
             }
         ));
         jScrollPane1.setViewportView(tblADMHistoricoPedidos);

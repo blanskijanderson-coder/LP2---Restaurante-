@@ -7,7 +7,7 @@ package restaurante.view;
 import javax.swing.JOptionPane;
 import restaurante.Cliente;
 import restaurante.Administrador;
-
+import restaurante.Cadastrado;
 /**
  *
  * @author janderson
@@ -186,27 +186,39 @@ public class Cadastro extends javax.swing.JFrame {
         if(txtCadastrarNome.getText().trim().isEmpty() ||
            txtCadastrarCpf.getText().trim().isEmpty() ||
            txtCadastrarEmail.getText().trim().isEmpty() ||
-           txtCadastrarSenha.getPassword().length == 0){ 
-            System.out.println("Preencha todos os campos antes de prosseguir");
+           txtCadastrarSenha.getPassword().length == 0){
+        //erro: preencha todos os campos
         }
         else{
-            if(bttCadastrarBooleanADM.isSelected() == false){
-                Cliente c1 = new Cliente(txtCadastrarNome.getText(),
-                                    txtCadastrarEmail.getText(), 
-                                    txtCadastrarCpf.getText(), 
-                                    txtCadastrarSenha.getPassword(),
-                                    false);
-                this.dispose();
+            boolean flag_repetido = false;
+            for(Cadastrado usuario : Cadastrado.getListaCadastrados()){
+                if(txtCadastrarNome.getText().equals(usuario.getNome())){
+                    flag_repetido = true;
+                }
+            }
+            if(flag_repetido == false){
+                if(bttCadastrarBooleanADM.isSelected() == false){
+                    Cliente c1 = new Cliente(txtCadastrarNome.getText(),
+                                        txtCadastrarEmail.getText(), 
+                                        txtCadastrarCpf.getText(), 
+                                        txtCadastrarSenha.getPassword(),
+                                        false);
+                    this.dispose();
+                }
+                else{
+                    Administrador ADM1 = new Administrador(txtCadastrarNome.getText(),
+                                        txtCadastrarEmail.getText(), 
+                                        txtCadastrarCpf.getText(), 
+                                        txtCadastrarSenha.getPassword(),
+                                        true);
+                    this.dispose();
+                }
             }
             else{
-                Administrador ADM1 = new Administrador(txtCadastrarNome.getText(),
-                                    txtCadastrarEmail.getText(), 
-                                    txtCadastrarCpf.getText(), 
-                                    txtCadastrarSenha.getPassword(),
-                                    true);
-                this.dispose();
+                //erro: nome ja utilizado
             }
         }
+
     }//GEN-LAST:event_bttCadastrarFinalizarActionPerformed
 
     /**

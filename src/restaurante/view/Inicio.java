@@ -147,7 +147,6 @@ public class Inicio extends javax.swing.JFrame {
                         ADMinicio.setVisible(true);
                     }
                     encontrou = true;
-                    //this.dispose();
                     break;
                 }
                 else{
@@ -156,10 +155,10 @@ public class Inicio extends javax.swing.JFrame {
                     break;
                 }
             }
-            if(!encontrou){
+        }
+        if(!encontrou){
                 JOptionPane.showMessageDialog(this, "Conta não cadastrada!");
             }
-        }
     }//GEN-LAST:event_bttLogarGenericoActionPerformed
 
     /**
