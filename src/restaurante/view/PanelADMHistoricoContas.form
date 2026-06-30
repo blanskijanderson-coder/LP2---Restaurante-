@@ -70,8 +70,8 @@
               <Table columnCount="5" rowCount="0">
                 <Column editable="true" title="Cliente" type="java.lang.Object"/>
                 <Column editable="true" title="Mesa da conta" type="java.lang.Object"/>
-                <Column editable="true" title="Status" type="java.lang.Object"/>
                 <Column editable="true" title="N&#xba; de pedidos" type="java.lang.Object"/>
+                <Column editable="true" title="Status" type="java.lang.Object"/>
                 <Column editable="true" title="Custo total" type="java.lang.Object"/>
               </Table>
             </Property>
