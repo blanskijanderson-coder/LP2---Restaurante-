@@ -294,7 +294,7 @@ public class PanelClientePedido extends javax.swing.JPanel {
         if (comida_selecionada != -1) {
             // Pega os dados da linha selecionada na tabela de Comidas (ex: coluna 0 = Nome, coluna 1 = Preço)
             String nomeComida = tblClientePedidoComida.getValueAt(comida_selecionada, 0).toString();
-            double custoComida = Double.parseDouble(tblClientePedidoComida.getValueAt(comida_selecionada, 1).toString()) * qtd;
+            double custoComida = Double.parseDouble(tblClientePedidoComida.getValueAt(comida_selecionada, 1).toString().replace("$", "")) * qtd;
             usuarioLogado.getPedidoAtual().addTotal(custoComida);
             Object[] itemPedido = new Object[]{nomeComida, qtd, custoComida};
             TabelaPedidoAtual.addRow(itemPedido);
@@ -304,7 +304,7 @@ public class PanelClientePedido extends javax.swing.JPanel {
         // 5. Processa se foi selecionado uma Bebida
         else if (bebida_selecionada != -1) {
             String nomeBebida = tblClientePedidoBebida.getValueAt(bebida_selecionada, 0).toString();
-            double custoBebida = Double.parseDouble(tblClientePedidoBebida.getValueAt(bebida_selecionada, 1).toString()) * qtd;
+            double custoBebida = Double.parseDouble(tblClientePedidoBebida.getValueAt(bebida_selecionada, 1).toString().replace("$", "")) * qtd;
             usuarioLogado.getPedidoAtual().addTotal(custoBebida);
             Object[] itemPedido = new Object[]{nomeBebida, qtd, custoBebida};
             TabelaPedidoAtual.addRow(itemPedido);
@@ -350,7 +350,7 @@ public class PanelClientePedido extends javax.swing.JPanel {
             DefaultTableModel tabelaPedidoAtual = (DefaultTableModel) tblClientePedidoAtual.getModel();
             
             
-            double valor_retirado = Double.parseDouble(tblClientePedidoAtual.getValueAt(remover, 2).toString());
+            double valor_retirado = Double.parseDouble(tblClientePedidoAtual.getValueAt(remover, 2).toString().replace("$", ""));
             
             usuarioLogado.getPedidoAtual().addTotal(-valor_retirado);
             

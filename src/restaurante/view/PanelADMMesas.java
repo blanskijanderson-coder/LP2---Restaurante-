@@ -4,7 +4,10 @@
  */
 package restaurante.view;
 
+import java.util.Arrays;
+import javax.swing.JOptionPane;
 import restaurante.Administrador;
+import restaurante.Mesa;
 
 /**
  *
@@ -98,11 +101,24 @@ public class PanelADMMesas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtADMMesasAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtADMMesasAtualizarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtADMMesasAtualizarActionPerformed
 
     private void bttADMMesaConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMMesaConfirmarActionPerformed
+        if(txtADMMesasAtualizar.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Preencha número de mesas");
+            return;
+        }
+        if (!txtADMMesasAtualizar.getText().matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "Digite apenas números.");
+            return;
+        }
         
+        String mesasString = txtADMMesasAtualizar.getText();
+        int nMesas = Integer.parseInt(mesasString);
+        Mesa.setQtdMesa(nMesas);
+        JOptionPane.showMessageDialog(this, "Atualizado número de mesas: " + nMesas);
+        System.out.println("Quantidade de mesas: " + Mesa.getQtdMesa());
     }//GEN-LAST:event_bttADMMesaConfirmarActionPerformed
 
     private void bttADMMesaEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMMesaEncerrarActionPerformed
