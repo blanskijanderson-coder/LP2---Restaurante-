@@ -2,6 +2,8 @@
 package restaurante.view;
 
 import restaurante.Administrador;
+import restaurante.Cadastrado;
+import restaurante.Cliente;
 
 /**
  *
@@ -16,6 +18,12 @@ public class PanelADMHistoricoCliente extends javax.swing.JPanel {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
+        
+        for(Cadastrado usuario : Cadastrado.getListaCadastrados()){
+            if(usuario instanceof Cliente){
+                cbxADMHistoricoCliente.addItem(usuario);
+            }
+        }
     }
 
     /**
@@ -38,10 +46,10 @@ public class PanelADMHistoricoCliente extends javax.swing.JPanel {
         lblADMHistoricoClienteCpf = new javax.swing.JLabel();
         bttADMHistoricoClienteVoltar = new javax.swing.JButton();
 
-        cbxADMHistoricoCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbxADMHistoricoCliente.addActionListener(this::cbxADMHistoricoClienteActionPerformed);
 
         bttADMHistoricoClienteConfirmar.setText("Confirmar");
+        bttADMHistoricoClienteConfirmar.addActionListener(this::bttADMHistoricoClienteConfirmarActionPerformed);
 
         jLabel1.setText("Nome:");
 
@@ -50,6 +58,7 @@ public class PanelADMHistoricoCliente extends javax.swing.JPanel {
         jLabel3.setText("CPF:");
 
         bttADMHistoricoClienteContas.setText("Visualizar Historico de contas");
+        bttADMHistoricoClienteContas.addActionListener(this::bttADMHistoricoClienteContasActionPerformed);
 
         bttADMHistoricoClienteVoltar.setText("Voltar");
         bttADMHistoricoClienteVoltar.addActionListener(this::bttADMHistoricoClienteVoltarActionPerformed);
@@ -68,23 +77,19 @@ public class PanelADMHistoricoCliente extends javax.swing.JPanel {
                             .addGap(26, 26, 26)
                             .addComponent(bttADMHistoricoClienteConfirmar))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(2, 2, 2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
+                            .addGap(4, 4, 4)
+                            .addComponent(bttADMHistoricoClienteContas))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel3)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
-                                    .addGap(31, 31, 31)
-                                    .addComponent(lblADMHistoricoClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(2, 2, 2)
-                                    .addComponent(bttADMHistoricoClienteContas))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3))
-                                    .addGap(31, 31, 31)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(lblADMHistoricoClienteEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblADMHistoricoClienteCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                    .addComponent(jLabel2)))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblADMHistoricoClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblADMHistoricoClienteEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblADMHistoricoClienteCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
@@ -94,15 +99,19 @@ public class PanelADMHistoricoCliente extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxADMHistoricoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bttADMHistoricoClienteConfirmar))
-                .addGap(126, 126, 126)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblADMHistoricoClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblADMHistoricoClienteEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                        .addGap(64, 64, 64))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(lblADMHistoricoClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(96, 96, 96)
+                        .addComponent(lblADMHistoricoClienteEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblADMHistoricoClienteCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -115,7 +124,7 @@ public class PanelADMHistoricoCliente extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbxADMHistoricoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxADMHistoricoClienteActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_cbxADMHistoricoClienteActionPerformed
 
     private void bttADMHistoricoClienteVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMHistoricoClienteVoltarActionPerformed
@@ -126,12 +135,29 @@ public class PanelADMHistoricoCliente extends javax.swing.JPanel {
         BarraTarefas.remove(this);
     }//GEN-LAST:event_bttADMHistoricoClienteVoltarActionPerformed
 
+    private void bttADMHistoricoClienteConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMHistoricoClienteConfirmarActionPerformed
+        Cliente pesquisado = (Cliente) cbxADMHistoricoCliente.getSelectedItem();
+        
+        lblADMHistoricoClienteNome.setText(pesquisado.getNome());
+        lblADMHistoricoClienteEmail.setText(pesquisado.getEmail());
+        lblADMHistoricoClienteCpf.setText(pesquisado.getCpf());
+    }//GEN-LAST:event_bttADMHistoricoClienteConfirmarActionPerformed
+
+    private void bttADMHistoricoClienteContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMHistoricoClienteContasActionPerformed
+        Cliente pesquisado = (Cliente) cbxADMHistoricoCliente.getSelectedItem();
+        PanelClienteHistorico historico = new PanelClienteHistorico(pesquisado, BarraTarefas);
+        
+        BarraTarefas.addTab("Historico " + pesquisado.getNome(), historico);
+        BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        BarraTarefas.remove(this);
+    }//GEN-LAST:event_bttADMHistoricoClienteContasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttADMHistoricoClienteConfirmar;
     private javax.swing.JButton bttADMHistoricoClienteContas;
     private javax.swing.JButton bttADMHistoricoClienteVoltar;
-    private javax.swing.JComboBox<String> cbxADMHistoricoCliente;
+    private javax.swing.JComboBox<Cadastrado> cbxADMHistoricoCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
