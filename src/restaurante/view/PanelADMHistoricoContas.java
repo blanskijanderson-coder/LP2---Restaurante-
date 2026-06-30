@@ -5,7 +5,6 @@ import restaurante.Conta;
 import restaurante.Cozinha;
 import restaurante.Cliente;
 import restaurante.Administrador;
-import restaurante.view.PanelADMChecarHistoricos;
 
 /**
  *

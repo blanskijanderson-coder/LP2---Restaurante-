@@ -32,7 +32,7 @@ public class PanelVisualizarContaCliente extends javax.swing.JPanel {
         for(Pedido item : contaCliente.getListaPedidosCliente()){
             cont ++;
             item.setOrdem(cont);
-            
+
             Object[] contaVista = new Object[]{item, item.calcularQtdProdutos(), item.getStatus(), "$" + item.getTotal()};
             TabelaVisualizarContaCliente.addRow(contaVista);
         } 

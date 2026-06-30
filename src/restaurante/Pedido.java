@@ -52,6 +52,8 @@ public class Pedido {
 
     public Cliente getCliente(){return this.cliente;}
     
+    public Mesa getMesa(){return this.mesa_cliente;}
+    
     public ArrayList<String> getQtdSolicitada(){return this.qtdSolicitada;}
     
     public ArrayList<Cardapio> getListaItensSolicitados(){return this.itensSolicitados;}

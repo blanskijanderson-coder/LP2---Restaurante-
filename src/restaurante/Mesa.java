@@ -30,4 +30,8 @@ public class Mesa {
     public void setMesaNumero(String numero){this.mesa_numero = numero;}
 
     public static void setQtdMesa(int quantidade){qtd_mesa = quantidade;}
+    
+    public String toString() {
+        return getMesaNumero();
+    }
 }

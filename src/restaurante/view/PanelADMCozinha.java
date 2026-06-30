@@ -4,7 +4,11 @@
  */
 package restaurante.view;
 
+import javax.swing.table.DefaultTableModel;
 import restaurante.Administrador;
+import restaurante.Cozinha;
+import restaurante.Pedido;
+import restaurante.Cliente;
 
 /**
  *
@@ -19,6 +23,19 @@ public class PanelADMCozinha extends javax.swing.JPanel {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
+        
+        DefaultTableModel TabelaADMCozinha = (DefaultTableModel) tblADMCozinha.getModel();
+        int cont = 0;
+        
+        for(Pedido pendente : Cozinha.getListaPedido()){
+            if(!pendente.getStatus().equals("Entregue")){
+                cont ++;
+                pendente.setOrdem(cont);
+                Object[] feito = new Object[]{pendente.getCliente(), pendente, pendente.calcularQtdProdutos(), pendente.getStatus(), pendente.getMesa()};
+
+                TabelaADMCozinha.addRow(feito);
+            }
+        }
     }
 
     /**
@@ -34,85 +51,137 @@ public class PanelADMCozinha extends javax.swing.JPanel {
         bttADMCozinhaEntregar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblADMCozinha = new javax.swing.JTable();
         bttADMCozinhaVisualizar = new javax.swing.JButton();
         bttADMCozinhaEncerrar = new javax.swing.JButton();
+        bttADMCozinhaAtualizar = new javax.swing.JButton();
 
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel2.setText("Lista de pedidos pendentes:");
 
         bttADMCozinhaEntregar.setText("Entregar");
+        bttADMCozinhaEntregar.addActionListener(this::bttADMCozinhaEntregarActionPerformed);
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 22)); // NOI18N
         jLabel1.setText("Gerenciamento da cozinha");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblADMCozinha.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null}
+
             },
             new String [] {
-                "Status", "Cliente", "Mesa"
+                "Cliente", "Itens pedidos", "Quantidade", "Status", "Mesa"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblADMCozinha);
 
         bttADMCozinhaVisualizar.setText("Visualizar");
+        bttADMCozinhaVisualizar.addActionListener(this::bttADMCozinhaVisualizarActionPerformed);
 
         bttADMCozinhaEncerrar.setText("Encerrar atividades");
         bttADMCozinhaEncerrar.addActionListener(this::bttADMCozinhaEncerrarActionPerformed);
+
+        bttADMCozinhaAtualizar.setText("Atualizar");
+        bttADMCozinhaAtualizar.addActionListener(this::bttADMCozinhaAtualizarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
+                .addGap(0, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bttADMCozinhaEncerrar)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bttADMCozinhaEntregar)
-                            .addComponent(bttADMCozinhaVisualizar))))
-                .addGap(70, 70, 70))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(141, 141, 141)
+                                .addComponent(bttADMCozinhaEncerrar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bttADMCozinhaAtualizar)
+                                .addGap(87, 87, 87)
+                                .addComponent(bttADMCozinhaVisualizar)
+                                .addGap(88, 88, 88)
+                                .addComponent(bttADMCozinhaEntregar)))
+                        .addGap(73, 73, 73))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(244, 244, 244)
-                        .addComponent(bttADMCozinhaVisualizar)
-                        .addGap(18, 18, 18)
-                        .addComponent(bttADMCozinhaEntregar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(42, 42, 42)
+                .addGap(69, 69, 69)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bttADMCozinhaVisualizar)
+                    .addComponent(bttADMCozinhaAtualizar)
+                    .addComponent(bttADMCozinhaEntregar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(bttADMCozinhaEncerrar)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addGap(87, 87, 87))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttADMCozinhaEncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMCozinhaEncerrarActionPerformed
         BarraTarefas.remove(this);
+        
     }//GEN-LAST:event_bttADMCozinhaEncerrarActionPerformed
+
+    private void bttADMCozinhaAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMCozinhaAtualizarActionPerformed
+            PanelADMCozinha atualizar = new PanelADMCozinha(usuarioLogado, BarraTarefas);
+        
+            BarraTarefas.addTab("Cozinha", atualizar);
+
+            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+            BarraTarefas.remove(this);
+    }//GEN-LAST:event_bttADMCozinhaAtualizarActionPerformed
+
+    private void bttADMCozinhaVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMCozinhaVisualizarActionPerformed
+        int linhaSelecionada = tblADMCozinha.getSelectedRow();
+        if(linhaSelecionada != -1){
+            Cliente visto = (Cliente) tblADMCozinha.getValueAt(linhaSelecionada, 0);
+            Pedido visualizado = (Pedido) tblADMCozinha.getValueAt(linhaSelecionada, 1);
+            
+            PanelVisualizarPedidoGenerico pedidocliente = new PanelVisualizarPedidoGenerico(visto, BarraTarefas, visualizado);
+            BarraTarefas.addTab("Visualizar pedido", pedidocliente);
+            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        }
+    }//GEN-LAST:event_bttADMCozinhaVisualizarActionPerformed
+
+    private void bttADMCozinhaEntregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMCozinhaEntregarActionPerformed
+        DefaultTableModel TabelaADMCozinha = (DefaultTableModel) tblADMCozinha.getModel();
+
+        int linhaSelecionada = tblADMCozinha.getSelectedRow();
+        if(linhaSelecionada != -1){
+            Pedido entregue = (Pedido) TabelaADMCozinha.getValueAt(linhaSelecionada, 1);
+            entregue.setStatusPedido("Entregue");
+            TabelaADMCozinha.removeRow(linhaSelecionada);
+        }
+    }//GEN-LAST:event_bttADMCozinhaEntregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bttADMCozinhaAtualizar;
     private javax.swing.JButton bttADMCozinhaEncerrar;
     private javax.swing.JButton bttADMCozinhaEntregar;
     private javax.swing.JButton bttADMCozinhaVisualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblADMCozinha;
     // End of variables declaration//GEN-END:variables
 }

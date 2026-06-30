@@ -174,6 +174,7 @@ public class PanelClientePedido extends javax.swing.JPanel {
         bttClientePedidoAtualizar.addActionListener(this::bttClientePedidoAtualizarActionPerformed);
 
         bttClientePedidoVisualizarCardapio.setText("Visualizar");
+        bttClientePedidoVisualizarCardapio.addActionListener(this::bttClientePedidoVisualizarCardapioActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -387,12 +388,51 @@ public class PanelClientePedido extends javax.swing.JPanel {
 
     private void bttClientePedidoAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClientePedidoAtualizarActionPerformed
         if(tblClientePedidoAtual.getRowCount() == 0){
-            
+            PanelClientePedido atualizar = new PanelClientePedido(usuarioLogado, BarraTarefas);
+        
+            BarraTarefas.addTab("Novo pedido", atualizar);
+
+            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+            BarraTarefas.remove(this);
         }
         else{
             //erro, remova items do pedido primeiro
         }
     }//GEN-LAST:event_bttClientePedidoAtualizarActionPerformed
+
+    private void bttClientePedidoVisualizarCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClientePedidoVisualizarCardapioActionPerformed
+        int comida_selecionada = tblClientePedidoComida.getSelectedRow();
+        int bebida_selecionada = tblClientePedidoBebida.getSelectedRow();
+        
+        if (comida_selecionada != -1) {
+            // Pega os dados da linha selecionada na tabela de Comidas (ex: coluna 0 = Nome, coluna 1 = Preço)
+            Comida vista = (Comida) tblClientePedidoComida.getValueAt(comida_selecionada, 0);
+            
+            
+            tblClientePedidoComida.clearSelection();
+            
+            PanelVisualizarCardapioComidaGenerico visualizar = new PanelVisualizarCardapioComidaGenerico(usuarioLogado, BarraTarefas, vista);
+            
+            BarraTarefas.addTab("Comida", visualizar);
+            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+
+            BarraTarefas.remove(this);
+            
+        }
+        // 5. Processa se foi selecionado uma Bebida
+        else if (bebida_selecionada != -1) {
+            Bebida vista = (Bebida)tblClientePedidoBebida.getValueAt(bebida_selecionada, 0);
+
+            tblClientePedidoBebida.clearSelection();
+            
+            PanelVisualizarCardapioBebidaGenerico visualizar = new PanelVisualizarCardapioBebidaGenerico(usuarioLogado, BarraTarefas, vista);
+            
+            BarraTarefas.addTab("Bebida", visualizar);
+            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+
+            BarraTarefas.remove(this);
+        }
+    }//GEN-LAST:event_bttClientePedidoVisualizarCardapioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

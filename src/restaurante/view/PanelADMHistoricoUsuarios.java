@@ -4,8 +4,10 @@
  */
 package restaurante.view;
 
+import javax.swing.table.DefaultTableModel;
 import restaurante.Administrador;
 import restaurante.Cadastrado;
+import restaurante.Cliente;
 /**
  *
  * @author janderson
@@ -19,7 +21,20 @@ public class PanelADMHistoricoUsuarios extends javax.swing.JPanel {
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
         
-        
+        for(Cadastrado pessoa : Cadastrado.getListaCadastrados()){
+            if(pessoa instanceof Cliente){
+                DefaultTableModel TabelaADMHistoricoUsuarioCliente = (DefaultTableModel) tblADMHistoricoUsuarioCliente.getModel();
+                
+                Object[] usuario = new Object[]{pessoa};
+                TabelaADMHistoricoUsuarioCliente.addRow(usuario);
+            }
+            else{
+                DefaultTableModel TabelaADMHistoricoUsuarioADM = (DefaultTableModel) tblADMHistoricoUsuarioADM.getModel();
+                
+                Object[] usuario = new Object[]{pessoa};
+                TabelaADMHistoricoUsuarioADM.addRow(usuario);
+            }
+        }
     }
 
     /**
@@ -33,15 +48,15 @@ public class PanelADMHistoricoUsuarios extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblADMHistoricoUsuarioCliente = new javax.swing.JTable();
+        tblADMHistoricoUsuarioADM = new javax.swing.JTable();
         bttADMHistoricoUsuarioVoltar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblADMHistoricoUsuarioADM = new javax.swing.JTable();
+        tblADMHistoricoUsuarioCliente = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         jLabel1.setText("Historico geral de usuarios");
 
-        tblADMHistoricoUsuarioCliente.setModel(new javax.swing.table.DefaultTableModel(
+        tblADMHistoricoUsuarioADM.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -49,12 +64,12 @@ public class PanelADMHistoricoUsuarios extends javax.swing.JPanel {
                 "Administradores"
             }
         ));
-        jScrollPane1.setViewportView(tblADMHistoricoUsuarioCliente);
+        jScrollPane1.setViewportView(tblADMHistoricoUsuarioADM);
 
         bttADMHistoricoUsuarioVoltar.setText("Voltar");
         bttADMHistoricoUsuarioVoltar.addActionListener(this::bttADMHistoricoUsuarioVoltarActionPerformed);
 
-        tblADMHistoricoUsuarioADM.setModel(new javax.swing.table.DefaultTableModel(
+        tblADMHistoricoUsuarioCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -62,7 +77,7 @@ public class PanelADMHistoricoUsuarios extends javax.swing.JPanel {
                 "Clientes"
             }
         ));
-        jScrollPane2.setViewportView(tblADMHistoricoUsuarioADM);
+        jScrollPane2.setViewportView(tblADMHistoricoUsuarioCliente);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
