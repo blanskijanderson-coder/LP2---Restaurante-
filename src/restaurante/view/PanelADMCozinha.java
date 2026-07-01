@@ -12,7 +12,7 @@ import restaurante.Cliente;
 
 /**
  *
- * @author janderson
+ * @author janderson 
  */
 public class PanelADMCozinha extends javax.swing.JPanel {
 

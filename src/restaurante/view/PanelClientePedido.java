@@ -403,34 +403,37 @@ public class PanelClientePedido extends javax.swing.JPanel {
     private void bttClientePedidoVisualizarCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClientePedidoVisualizarCardapioActionPerformed
         int comida_selecionada = tblClientePedidoComida.getSelectedRow();
         int bebida_selecionada = tblClientePedidoBebida.getSelectedRow();
-        
-        if (comida_selecionada != -1) {
-            // Pega os dados da linha selecionada na tabela de Comidas (ex: coluna 0 = Nome, coluna 1 = Preço)
-            Comida vista = (Comida) tblClientePedidoComida.getValueAt(comida_selecionada, 0);
-            
-            
-            tblClientePedidoComida.clearSelection();
-            
-            PanelVisualizarCardapioComidaGenerico visualizar = new PanelVisualizarCardapioComidaGenerico(usuarioLogado, BarraTarefas, vista);
-            
-            BarraTarefas.addTab("Comida", visualizar);
-            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
 
-            BarraTarefas.remove(this);
-            
+        if(comida_selecionada == -1 && bebida_selecionada == -1){
+            JOptionPane.showMessageDialog(this, "Selecione um item primeiro.");
+            return;
         }
-        // 5. Processa se foi selecionado uma Bebida
-        else if (bebida_selecionada != -1) {
-            Bebida vista = (Bebida)tblClientePedidoBebida.getValueAt(bebida_selecionada, 0);
 
-            tblClientePedidoBebida.clearSelection();
+        if(comida_selecionada != -1){
             
-            PanelVisualizarCardapioBebidaGenerico visualizar = new PanelVisualizarCardapioBebidaGenerico(usuarioLogado, BarraTarefas, vista);
+            String nomeComida = tblClientePedidoComida.getValueAt(comida_selecionada, 0).toString();
             
-            BarraTarefas.addTab("Bebida", visualizar);
-            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
-
-            BarraTarefas.remove(this);
+            for(Cardapio item : Cozinha.getListaProduto()){
+                if(item.getNome().equals(nomeComida)){
+                    PanelVisualizarCardapioComidaGenerico painel = new PanelVisualizarCardapioComidaGenerico(usuarioLogado, BarraTarefas, (Comida) item);
+                    BarraTarefas.addTab("Ver " + nomeComida, painel);
+                    BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+                    return;
+                }
+            }
+        }
+        else{
+            
+            String nomeBebida = tblClientePedidoBebida.getValueAt(bebida_selecionada, 0).toString();
+            
+            for(Cardapio item : Cozinha.getListaProduto()){
+                if(item.getNome().equals(nomeBebida)){
+                    PanelVisualizarCardapioBebidaGenerico painel = new PanelVisualizarCardapioBebidaGenerico(usuarioLogado, BarraTarefas, (Bebida) item);
+                    BarraTarefas.addTab("Ver " + nomeBebida, painel);
+                    BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+                    return;
+                }
+            }
         }
     }//GEN-LAST:event_bttClientePedidoVisualizarCardapioActionPerformed
 

@@ -13,7 +13,7 @@ import restaurante.Pedido;
 
 /**
  *
- * @author janderson
+ * @author janderson e marcelo livros
  */
 public class PanelClientePagamentoConta extends javax.swing.JPanel {
 
@@ -203,7 +203,7 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttClienteContaVisualizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteContaVisualizarPedidoActionPerformed
-        int linhaSelecionada =tblClienteContaPedidosFeitos.getSelectedRow();
+        int linhaSelecionada = tblClienteContaPedidosFeitos.getSelectedRow();
         if(linhaSelecionada != -1){
             Pedido pedidovisualizado = (Pedido) tblClienteContaPedidosFeitos.getValueAt(linhaSelecionada, 0);
             
@@ -212,7 +212,7 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
             BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
         }
         else{
-            //erro nenhum pedido selecionado
+            JOptionPane.showMessageDialog(this, "Selecione um pedido primeiro.");
         }
     }//GEN-LAST:event_bttClienteContaVisualizarPedidoActionPerformed
 
@@ -236,11 +236,11 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
                 TabelaClienteContaPedidosFeitos.removeRow(remove);
             }
             else{
-                //erro pedido ja foi entregue
+                JOptionPane.showMessageDialog(this, "Pedido já foi entregue, não é possível desfazê-lo.");
             }
         }
         else{
-            //erro nenhum pedido selecionado
+            JOptionPane.showMessageDialog(this, "Selecione um pedido primeiro.");
         }
     }//GEN-LAST:event_bttClienteContaDesfazerPedidoActionPerformed
 
@@ -314,11 +314,11 @@ public class PanelClientePagamentoConta extends javax.swing.JPanel {
                 BarraTarefas.remove(this);
             }
             else{
-            //erro o pedido ainda possui contas em andamento
+                JOptionPane.showMessageDialog(this, "O pedido ainda possui contas em andamento.");
             }
         }
         else{
-            //erro o pedido ainda possui contas em aberto
+            JOptionPane.showMessageDialog(this, "O pedido ainda possui contas em aberto.");
         }
     }//GEN-LAST:event_bttClienteContaCancelarActionPerformed
 

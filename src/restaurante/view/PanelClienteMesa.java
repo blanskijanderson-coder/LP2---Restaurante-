@@ -38,11 +38,9 @@ public class PanelClienteMesa extends javax.swing.JPanel {
         }
     }
 
-    // O 'this' representa a própria classe InterfaceMesaTeste.
-// O Java vai caçar onde essa classe está guardada nas abas e vai fechá-la.
+    //O 'this' representa a própria classe InterfaceMesaTeste.
+//O Java vai caçar onde essa classe está guardada nas abas e vai fechá-la.
 
-//jTabbedPane1.remove(this);
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -122,6 +120,16 @@ public class PanelClienteMesa extends javax.swing.JPanel {
     private void bttClienteMesaConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteMesaConfirmarActionPerformed
 
         String numero_mesa = txtClienteMesaEscolha.getText();
+        
+        if(numero_mesa.isEmpty() || !numero_mesa.matches("\\d+")){
+            JOptionPane.showMessageDialog(this, "Digite um número de mesa válido.");
+            return;
+        }
+
+        if(Integer.parseInt(numero_mesa) > Mesa.getQtdMesa() || Integer.parseInt(numero_mesa) <= 0){
+            JOptionPane.showMessageDialog(this, "Mesa inválida. Escolha entre 1 e " + Mesa.getQtdMesa() + ".");
+            return;
+        }
         
         if(Integer.parseInt(numero_mesa) <= Mesa.getQtdMesa()){
             boolean flag_mesa = true;

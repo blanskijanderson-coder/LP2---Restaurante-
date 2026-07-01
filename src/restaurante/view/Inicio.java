@@ -26,8 +26,24 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
-        new Comida("Filé com Fritas", 38.0, "Carne suculenta", "Carne bovina, batata, sal");
-        new Bebida("Suco de Uva", 12.0, "Fazenda Videira");
+        //cardápio inicial
+        new Comida("Filé com Fritas C-hud", 38.0, "Carne suculenta", "Carne bovina, batata frita, sal");
+        new Comida("RU especial de segunda-feira", 25.0, "Prato clássico e lendário da uneb. Somente às segundas.", "Jardineira, arroz, feijão carioca, farinha");
+        new Comida("Lasanha à la Blanski", 42.0, "Massa artesanal", "Trigo, carne, queijo, molho branco");
+        new Comida("Salada Claeber", 17.0, "Salada refrescante", "Alface, crouton, parmesão, molho caesar");
+        new Comida("Pichorrinho-Burguer", 22.0, "Hambúrguer artesanal do melhor chefe", "Pão, carne, queijo, alface, tomate");
+        new Comida("Livros-Burguer", 28.0, "Hambúrguer artesanal do chef livros maçados", "Pão, carne dupla, bacon, cebola caramelizada");
+        new Comida("Tung Tung Triplur", 39.0, "Hambúrguer artesanal com assinatura do chef Blanski", "Pão, carne tripla, bacon, cheddar da casa, molho especial");
+        new Comida("Ego Supremo", 67.0, "Só pede quem confia no próprio potencial", "Costela bovina, barbecue, fritas, cebola crispy");
+        new Comida("Skibidi Carbonara", 37.0, "Receita autoral proibida na Itália", "Espaguete, bacon, parmesão, molho branco");
+        new Comida("Sigma Steak", 47.0, "Não segue o cardápio, o cardápio segue ele", "Filé mignon, purê de batata, legumes");
+        
+        new Bebida("Coca-Cola 350ml", 7.0, "Distribuidora Regional");
+        new Bebida("Suco de Uva 500ml", 12.0, "Fazenda Líryo");
+        new Bebida("Suco de Laranja 500ml", 12.0, "Fazenda Líryo");
+        new Bebida("Energético Monster Branco", 15.0, "Monster");
+        new Bebida("Água Mineral 500ml", 4.0, "Rivers Mouth Crystal");
+        
         ImageIcon imagem = new ImageIcon(getClass().getResource("/restaurante/images/pichefesResized.png"));
         LabelImage.setIcon(imagem);
         LabelImage.setText("");
