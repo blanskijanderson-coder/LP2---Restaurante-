@@ -4,6 +4,7 @@
  */
 package restaurante.view;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel; 
 import restaurante.Administrador;
 import restaurante.Cozinha;
@@ -256,11 +257,14 @@ public class PanelADMCardapio extends javax.swing.JPanel {
         String custo = txtCustoBebidaADM.getText();
         String forn = txtFornBebidaADM.getText(); 
         
-        if(!nome.isEmpty() || !custo.isEmpty() || !forn.isEmpty()){
+        if(!nome.isEmpty() && !custo.isEmpty() && !forn.isEmpty()){
                 new Bebida(nome, Double.parseDouble(custo), forn);
+                txtNomeBebidaADM.setText("");
+                txtCustoBebidaADM.setText("");
+                txtFornBebidaADM.setText("");
             }
             else{
-                 //erro: campos vazios
+                JOptionPane.showMessageDialog(this, "Preencha todos os campos da bebida.");
             }
     }//GEN-LAST:event_bttADMBebidaADDActionPerformed
 
@@ -296,11 +300,15 @@ public class PanelADMCardapio extends javax.swing.JPanel {
         String ingred = txtIngredComidaADM.getText();
         String desc = txtDescComidaADM.getText();
         
-        if(!nome.isEmpty() || !custo.isEmpty() || !ingred.isEmpty() || !desc.isEmpty()){
+        if(!nome.isEmpty() && !custo.isEmpty() && !ingred.isEmpty() && !desc.isEmpty()){
                 new Comida(nome, Double.parseDouble(custo), ingred, desc);
+                txtNomeComidaADM.setText("");
+                txtCustoComidaADM.setText("");
+                txtIngredComidaADM.setText("");
+                txtDescComidaADM.setText("");
             }
             else{
-                 //erro: campos vazios
+                JOptionPane.showMessageDialog(this, "Preencha todos os campos da comida.");
             }
     }//GEN-LAST:event_bttADMComidaADDActionPerformed
 

@@ -26,6 +26,10 @@ public class PanelClientePedido extends javax.swing.JPanel {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
+        tblClientePedidoComida.getColumnModel().getColumn(0).setPreferredWidth(200);
+        tblClientePedidoComida.getColumnModel().getColumn(1).setPreferredWidth(50);
+        tblClientePedidoBebida.getColumnModel().getColumn(0).setPreferredWidth(200);
+        tblClientePedidoBebida.getColumnModel().getColumn(1).setPreferredWidth(50);
         
         //Lógica de criarr novo pedido:
         if (this.usuarioLogado.getMesaAtual() != null) {
@@ -182,82 +186,87 @@ public class PanelClientePedido extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(12, 12, 12)
-                            .addComponent(jLabel4))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(6, 6, 6)
-                            .addComponent(jLabel1))
-                        .addComponent(jLabel3)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel6)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtClientePedidoQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(bttClientePedidoCancelar)
-                                        .addComponent(bttClientePedidoAdicionarItem)
-                                        .addComponent(bttClientePedidoAtualizar)))
-                                .addComponent(bttClientePedidoVisualizarCardapio))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(81, 81, 81)
+                                .addComponent(jLabel6)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(lblClientePedidoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(bttClientePedidoFinalizar))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(13, 13, 13)
+                                        .addComponent(lblClientePedidoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(bttClientePedidoFinalizar))
+                                    .addComponent(bttClientePedidoRemover))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(bttClientePedidoRemover)))))
-                .addGap(0, 64, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtClientePedidoQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(bttClientePedidoAdicionarItem))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(bttClientePedidoCancelar)
+                                            .addComponent(bttClientePedidoAtualizar))
+                                        .addComponent(bttClientePedidoVisualizarCardapio)))
+                                .addGap(25, 25, 25))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(bttClientePedidoCancelar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(bttClientePedidoAtualizar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bttClientePedidoCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bttClientePedidoAtualizar)
+                        .addGap(56, 56, 56)
                         .addComponent(bttClientePedidoVisualizarCardapio)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtClientePedidoQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
-                            .addComponent(bttClientePedidoAdicionarItem)))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(bttClientePedidoAdicionarItem))))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(bttClientePedidoRemover)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblClientePedidoTotal)
-                            .addComponent(bttClientePedidoFinalizar)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(bttClientePedidoFinalizar))))
                 .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -403,34 +412,45 @@ public class PanelClientePedido extends javax.swing.JPanel {
     private void bttClientePedidoVisualizarCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClientePedidoVisualizarCardapioActionPerformed
         int comida_selecionada = tblClientePedidoComida.getSelectedRow();
         int bebida_selecionada = tblClientePedidoBebida.getSelectedRow();
-        
-        if (comida_selecionada != -1) {
-            // Pega os dados da linha selecionada na tabela de Comidas (ex: coluna 0 = Nome, coluna 1 = Preço)
-            Comida vista = (Comida) tblClientePedidoComida.getValueAt(comida_selecionada, 0);
-            
-            
-            tblClientePedidoComida.clearSelection();
-            
-            PanelVisualizarCardapioComidaGenerico visualizar = new PanelVisualizarCardapioComidaGenerico(usuarioLogado, BarraTarefas, vista);
-            
-            BarraTarefas.addTab("Comida", visualizar);
-            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
 
-            BarraTarefas.remove(this);
-            
+        if(comida_selecionada == -1 && bebida_selecionada == -1){
+            JOptionPane.showMessageDialog(this, "Selecione um item primeiro.");
+            return;
         }
-        // 5. Processa se foi selecionado uma Bebida
-        else if (bebida_selecionada != -1) {
-            Bebida vista = (Bebida)tblClientePedidoBebida.getValueAt(bebida_selecionada, 0);
-
+        if(comida_selecionada != -1 && bebida_selecionada != -1){
+            JOptionPane.showMessageDialog(this, "Selecione apenas um item por vez.");
+            tblClientePedidoComida.clearSelection();
             tblClientePedidoBebida.clearSelection();
-            
-            PanelVisualizarCardapioBebidaGenerico visualizar = new PanelVisualizarCardapioBebidaGenerico(usuarioLogado, BarraTarefas, vista);
-            
-            BarraTarefas.addTab("Bebida", visualizar);
-            BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+            return;
+        }
 
-            BarraTarefas.remove(this);
+        if(comida_selecionada != -1){
+            
+            String nomeComida = tblClientePedidoComida.getValueAt(comida_selecionada, 0).toString();
+            //System.out.println("Nome capturado da tabela: " + nomeComida); //teste tirar dps
+            
+            for(Cardapio item : Cozinha.getListaProduto()){
+                //System.out.println("Comparando com: " + item.getNome()); //teste tirar dps
+                if(item.getNome().equals(nomeComida)){
+                    PanelVisualizarCardapioComidaGenerico painel = new PanelVisualizarCardapioComidaGenerico(usuarioLogado, BarraTarefas, (Comida) item);
+                    BarraTarefas.addTab("Ver " + nomeComida, painel);
+                    BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+                    return;
+                }
+            }
+        }
+        else{
+            
+            String nomeBebida = tblClientePedidoBebida.getValueAt(bebida_selecionada, 0).toString();
+            
+            for(Cardapio item : Cozinha.getListaProduto()){
+                if(item.getNome().equals(nomeBebida)){
+                    PanelVisualizarCardapioBebidaGenerico painel = new PanelVisualizarCardapioBebidaGenerico(usuarioLogado, BarraTarefas, (Bebida) item);
+                    BarraTarefas.addTab("Ver " + nomeBebida, painel);
+                    BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+                    return;
+                }
+            }
         }
     }//GEN-LAST:event_bttClientePedidoVisualizarCardapioActionPerformed
 

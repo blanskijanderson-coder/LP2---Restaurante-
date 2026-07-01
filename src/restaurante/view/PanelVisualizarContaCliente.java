@@ -11,7 +11,7 @@ import restaurante.Conta;
 import restaurante.Pedido;
 /**
  *
- * @author janderson
+ * @author janderson e marcelo livros
  */
 public class PanelVisualizarContaCliente extends javax.swing.JPanel {
 

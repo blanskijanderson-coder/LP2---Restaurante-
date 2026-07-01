@@ -38,11 +38,9 @@ public class PanelClienteMesa extends javax.swing.JPanel {
         }
     }
 
-    // O 'this' representa a própria classe InterfaceMesaTeste.
-// O Java vai caçar onde essa classe está guardada nas abas e vai fechá-la.
+    //O 'this' representa a própria classe InterfaceMesaTeste.
+//O Java vai caçar onde essa classe está guardada nas abas e vai fechá-la.
 
-//jTabbedPane1.remove(this);
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,7 +83,7 @@ public class PanelClienteMesa extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(TextoEscolhaMesa)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,34 +92,43 @@ public class PanelClienteMesa extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(bttClienteMesaConfirmar))
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(TextoEscolhaMesa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtClienteMesaEscolha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bttClienteMesaConfirmar))
                         .addGap(125, 125, 125))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(31, 31, 31))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttClienteMesaConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttClienteMesaConfirmarActionPerformed
 
         String numero_mesa = txtClienteMesaEscolha.getText();
+        
+        if(numero_mesa.isEmpty() || !numero_mesa.matches("\\d+")){
+            JOptionPane.showMessageDialog(this, "Digite um número de mesa válido.");
+            return;
+        }
+
+        if(Integer.parseInt(numero_mesa) > Mesa.getQtdMesa() || Integer.parseInt(numero_mesa) <= 0){
+            JOptionPane.showMessageDialog(this, "Mesa inválida. Escolha entre 1 e " + Mesa.getQtdMesa() + ".");
+            return;
+        }
         
         if(Integer.parseInt(numero_mesa) <= Mesa.getQtdMesa()){
             boolean flag_mesa = true;

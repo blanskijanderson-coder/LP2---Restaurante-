@@ -4,6 +4,8 @@
  */
 package restaurante.view;
 import java.util.Arrays;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import restaurante.Cadastrado;
 import restaurante.Cliente;
@@ -24,8 +26,27 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
-        new Comida("Filé com Fritas", 38.0, "Carne suculenta", "Carne bovina, batata, sal");
-        new Bebida("Suco de Uva", 12.0, "Fazenda Videira");
+        //cardápio inicial
+        new Comida("Filé com Fritas C-hud", 38.0, "Carne suculenta", "Carne bovina, batata frita, sal");
+        new Comida("RU especial de segunda-feira", 25.0, "Prato clássico e lendário da uneb. Somente às segundas.", "Jardineira, arroz, feijão carioca, farinha");
+        new Comida("Lasanha à la Blanski", 42.0, "Massa artesanal", "Trigo, carne, queijo, molho branco");
+        new Comida("Salada Claeber", 17.0, "Salada refrescante", "Alface, crouton, parmesão, molho caesar");
+        new Comida("Pichorrinho-Burguer", 22.0, "Hambúrguer artesanal do melhor chefe", "Pão, carne, queijo, alface, tomate");
+        new Comida("Livros-Burguer", 28.0, "Hambúrguer artesanal do chef livros maçados", "Pão, carne dupla, bacon, cebola caramelizada");
+        new Comida("Tung Tung Triplur", 39.0, "Hambúrguer artesanal com assinatura do chef Blanski", "Pão, carne tripla, bacon, cheddar da casa, molho especial");
+        new Comida("Ego Supremo", 67.0, "Só pede quem confia no próprio potencial", "Costela bovina, barbecue, fritas, cebola crispy");
+        new Comida("Skibidi Carbonara", 37.0, "Receita autoral proibida na Itália", "Espaguete, bacon, parmesão, molho branco");
+        new Comida("Sigma Steak", 47.0, "Não segue o cardápio, o cardápio segue ele", "Filé mignon, purê de batata, legumes");
+        
+        new Bebida("Coca-Cola 350ml", 7.0, "Distribuidora Regional");
+        new Bebida("Suco de Uva 500ml", 12.0, "Fazenda Líryo");
+        new Bebida("Suco de Laranja 500ml", 12.0, "Fazenda Líryo");
+        new Bebida("Energético Monster Branco", 15.0, "Monster");
+        new Bebida("Água Mineral 500ml", 4.0, "Rivers Mouth Crystal");
+        
+        ImageIcon imagem = new ImageIcon(getClass().getResource("/restaurante/images/pichefesResized.png"));
+        LabelImage.setIcon(imagem);
+        LabelImage.setText("");
     }
 
     /**
@@ -45,6 +66,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         bttLogarGenerico = new javax.swing.JButton();
         txtLogarSenha = new javax.swing.JPasswordField();
+        LabelImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cleber Lanches - Interface de login");
@@ -52,7 +74,8 @@ public class Inicio extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Liberation Sans", 1, 40)); // NOI18N
         jLabel8.setText("Restaurante Cleberlícia");
 
-        jLabel1.setText("Bem vindo ao Restaurante");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("Bem vindo ao");
 
         jLabel3.setText("Senha:");
 
@@ -64,56 +87,68 @@ public class Inicio extends javax.swing.JFrame {
         bttLogarGenerico.setText("Login");
         bttLogarGenerico.addActionListener(this::bttLogarGenericoActionPerformed);
 
+        LabelImage.setText("LabelImage");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 82, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(79, 79, 79))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(212, 212, 212)
-                        .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bttLogarCadastrar)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtLogarNome)
+                                            .addComponent(txtLogarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(34, 34, 34))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(bttLogarGenerico)
+                                .addGap(69, 69, 69)))
+                        .addComponent(LabelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(263, 263, 263)
-                        .addComponent(bttLogarGenerico))
+                        .addGap(77, 77, 77)
+                        .addComponent(jLabel8))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addComponent(bttLogarCadastrar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(224, 224, 224)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtLogarNome)
-                            .addComponent(txtLogarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(265, 265, 265)
+                        .addComponent(jLabel1)))
+                .addGap(26, 49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtLogarNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtLogarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addComponent(bttLogarGenerico)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bttLogarCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtLogarNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtLogarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addComponent(bttLogarGenerico)
+                        .addGap(36, 36, 36)
+                        .addComponent(bttLogarCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(LabelImage, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(98, 98, 98))))
         );
 
         pack();
@@ -182,6 +217,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelImage;
     private javax.swing.JButton bttLogarCadastrar;
     private javax.swing.JButton bttLogarGenerico;
     private javax.swing.JLabel jLabel1;
