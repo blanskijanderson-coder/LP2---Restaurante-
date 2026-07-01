@@ -4,7 +4,12 @@
  */
 package restaurante.view;
 
+import javax.swing.table.DefaultTableModel; 
 import restaurante.Administrador;
+import restaurante.Cozinha;
+import restaurante.Cardapio;
+import restaurante.Comida;
+import restaurante.Bebida;
 
 /**
  *
@@ -19,6 +24,23 @@ public class PanelADMCardapio extends javax.swing.JPanel {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;
+        
+        for(Cardapio item : Cozinha.getListaProduto()){
+            if(item instanceof Comida){
+                DefaultTableModel TabelaADMCardapioComida = (DefaultTableModel) tblADMCardapioComida.getModel();
+                Comida listada = (Comida) item;
+                
+                Object[] produto = new Object[]{listada, listada.getCusto(), listada.getDescricao(), listada.getIngredientes()};
+                TabelaADMCardapioComida.addRow(produto);
+            }
+            else{
+                DefaultTableModel TabelaADMCardapioBebida = (DefaultTableModel) tblADMCardapioBebida.getModel();
+                Bebida listada = (Bebida) item;
+                
+                Object[] produto = new Object[]{listada, listada.getCusto(), listada.getFornecedor()};
+                TabelaADMCardapioBebida.addRow(produto);
+            }
+        }
     }
 
     /**
@@ -45,14 +67,15 @@ public class PanelADMCardapio extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblADMCardapioComida = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         bttADMComidaADD = new javax.swing.JButton();
         txtNomeComidaADM = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblADMCardapioBebida = new javax.swing.JTable();
         bttADMCardapioEncerrar = new javax.swing.JButton();
+        bttADMVisualizarGenerico = new javax.swing.JButton();
 
         txtCustoComidaADM.addActionListener(this::txtCustoComidaADMActionPerformed);
 
@@ -75,7 +98,7 @@ public class PanelADMCardapio extends javax.swing.JPanel {
 
         jLabel6.setText("Nome:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblADMCardapioComida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
             },
@@ -83,7 +106,7 @@ public class PanelADMCardapio extends javax.swing.JPanel {
                 "Comida", "Custo", "Desc", "ingred"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblADMCardapioComida);
 
         jLabel7.setText("Custo:");
 
@@ -94,7 +117,7 @@ public class PanelADMCardapio extends javax.swing.JPanel {
 
         txtNomeComidaADM.addActionListener(this::txtNomeComidaADMActionPerformed);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblADMCardapioBebida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null}
             },
@@ -102,10 +125,13 @@ public class PanelADMCardapio extends javax.swing.JPanel {
                 "Bebidas", "Custo", "Forn"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblADMCardapioBebida);
 
         bttADMCardapioEncerrar.setText("Encerrar atividades");
         bttADMCardapioEncerrar.addActionListener(this::bttADMCardapioEncerrarActionPerformed);
+
+        bttADMVisualizarGenerico.setText("Visualizar item");
+        bttADMVisualizarGenerico.addActionListener(this::bttADMVisualizarGenericoActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -150,14 +176,17 @@ public class PanelADMCardapio extends javax.swing.JPanel {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bttADMCardapioEncerrar))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(48, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(bttADMRemoverGenerico)
-                .addGap(238, 238, 238))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(bttADMRemoverGenerico)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(14, 14, 14)
+                                    .addComponent(bttADMVisualizarGenerico))))))
+                .addContainerGap(54, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(96, 96, 96)
                 .addComponent(bttADMComidaADD)
@@ -177,12 +206,13 @@ public class PanelADMCardapio extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(bttADMRemoverGenerico)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bttADMRemoverGenerico)
+                    .addComponent(bttADMVisualizarGenerico))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bttADMComidaADD)
                     .addComponent(bttADMBebidaADD))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -213,7 +243,7 @@ public class PanelADMCardapio extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtFornBebidaADM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))))
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -222,15 +252,56 @@ public class PanelADMCardapio extends javax.swing.JPanel {
     }//GEN-LAST:event_txtCustoComidaADMActionPerformed
 
     private void bttADMBebidaADDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMBebidaADDActionPerformed
-        // TODO add your handling code here:
+        String nome = txtNomeBebidaADM.getText();
+        String custo = txtCustoBebidaADM.getText();
+        String forn = txtFornBebidaADM.getText(); 
+        
+        if(!nome.isEmpty() || !custo.isEmpty() || !forn.isEmpty()){
+                new Bebida(nome, Double.parseDouble(custo), forn);
+            }
+            else{
+                 //erro: campos vazios
+            }
     }//GEN-LAST:event_bttADMBebidaADDActionPerformed
 
     private void bttADMRemoverGenericoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMRemoverGenericoActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel TabelaADMCardapioBebida = (DefaultTableModel) tblADMCardapioBebida.getModel();
+        DefaultTableModel TabelaADMCardapioComida = (DefaultTableModel) tblADMCardapioComida.getModel();
+        int linhaSelecionadaBebida = tblADMCardapioBebida.getSelectedRow(); 
+        int linhaSelecionadaComida = tblADMCardapioComida.getSelectedRow(); 
+        
+        if(linhaSelecionadaBebida == -1 && linhaSelecionadaComida == -1){
+            //erro nenhuma linha selecionada
+        }
+        if(linhaSelecionadaBebida != -1){
+            Bebida apagada = (Bebida) TabelaADMCardapioBebida.getValueAt(linhaSelecionadaBebida, 0);
+            Cozinha.getListaProduto().remove(apagada);
+            Bebida.getListaBebida().remove(apagada);
+            apagada = null;
+            TabelaADMCardapioBebida.removeRow(linhaSelecionadaBebida);
+        }
+        if(linhaSelecionadaComida != -1){
+            Comida apagada = (Comida) TabelaADMCardapioComida.getValueAt(linhaSelecionadaComida, 0);
+            Cozinha.getListaProduto().remove(apagada);
+            Comida.getListaComida().remove(apagada);
+            apagada = null;
+            
+            TabelaADMCardapioComida.removeRow(linhaSelecionadaComida);
+        }
     }//GEN-LAST:event_bttADMRemoverGenericoActionPerformed
 
     private void bttADMComidaADDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMComidaADDActionPerformed
-        // TODO add your handling code here:
+        String nome = txtNomeComidaADM.getText();
+        String custo = txtCustoComidaADM.getText();
+        String ingred = txtIngredComidaADM.getText();
+        String desc = txtDescComidaADM.getText();
+        
+        if(!nome.isEmpty() || !custo.isEmpty() || !ingred.isEmpty() || !desc.isEmpty()){
+                new Comida(nome, Double.parseDouble(custo), ingred, desc);
+            }
+            else{
+                 //erro: campos vazios
+            }
     }//GEN-LAST:event_bttADMComidaADDActionPerformed
 
     private void txtNomeComidaADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeComidaADMActionPerformed
@@ -241,12 +312,36 @@ public class PanelADMCardapio extends javax.swing.JPanel {
         BarraTarefas.remove(this);
     }//GEN-LAST:event_bttADMCardapioEncerrarActionPerformed
 
+    private void bttADMVisualizarGenericoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttADMVisualizarGenericoActionPerformed
+        DefaultTableModel TabelaADMCardapioBebida = (DefaultTableModel) tblADMCardapioBebida.getModel();
+        DefaultTableModel TabelaADMCardapioComida = (DefaultTableModel) tblADMCardapioComida.getModel();
+        int linhaSelecionadaBebida = tblADMCardapioBebida.getSelectedRow(); 
+        int linhaSelecionadaComida = tblADMCardapioComida.getSelectedRow(); 
+        
+        if(linhaSelecionadaBebida == -1 && linhaSelecionadaComida == -1){
+            //erro nenhuma linha selecionada
+        }
+        if(linhaSelecionadaBebida != -1){
+            Bebida vista = (Bebida) TabelaADMCardapioBebida.getValueAt(linhaSelecionadaBebida, 0);
+            PanelVisualizarCardapioBebidaGenerico pn = new PanelVisualizarCardapioBebidaGenerico(usuarioLogado, BarraTarefas, vista);
+                 BarraTarefas.addTab("Visualizar Bebida", pn);
+                 BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        }
+        if(linhaSelecionadaComida != -1){
+            Comida vista = (Comida) TabelaADMCardapioComida.getValueAt(linhaSelecionadaComida, 0);
+            PanelVisualizarCardapioComidaGenerico pn = new PanelVisualizarCardapioComidaGenerico(usuarioLogado, BarraTarefas, vista);
+                BarraTarefas.addTab("Visualizar Comida", pn);
+                BarraTarefas.setSelectedIndex(BarraTarefas.getTabCount() - 1);
+        }
+    }//GEN-LAST:event_bttADMVisualizarGenericoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttADMBebidaADD;
     private javax.swing.JButton bttADMCardapioEncerrar;
     private javax.swing.JButton bttADMComidaADD;
     private javax.swing.JButton bttADMRemoverGenerico;
+    private javax.swing.JButton bttADMVisualizarGenerico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -257,8 +352,8 @@ public class PanelADMCardapio extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tblADMCardapioBebida;
+    private javax.swing.JTable tblADMCardapioComida;
     private javax.swing.JTextField txtCustoBebidaADM;
     private javax.swing.JTextField txtCustoComidaADM;
     private javax.swing.JTextField txtDescComidaADM;

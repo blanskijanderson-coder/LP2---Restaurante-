@@ -5,7 +5,7 @@
 package restaurante.view;
 
 import restaurante.Comida;
-import restaurante.Cliente;
+import restaurante.Cadastrado;
 
 /**
  *
@@ -14,10 +14,10 @@ import restaurante.Cliente;
 public class PanelVisualizarCardapioComidaGenerico extends javax.swing.JPanel {
 
     private javax.swing.JTabbedPane BarraTarefas;
-    private Cliente usuarioLogado;
+    private Cadastrado usuarioLogado;
     private Comida comidaVisualizada;
     
-    public PanelVisualizarCardapioComidaGenerico(Cliente pessoaLogada, javax.swing.JTabbedPane BarraTarefas, Comida vista) {
+    public PanelVisualizarCardapioComidaGenerico(Cadastrado pessoaLogada, javax.swing.JTabbedPane BarraTarefas, Comida vista) {
         initComponents();
         this.BarraTarefas = BarraTarefas;
         this.usuarioLogado = pessoaLogada;

@@ -51,7 +51,7 @@ public class PanelADMHistoricoContas extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Cliente", "Mesa da conta", "Status", "Nº de pedidos", "Custo total"
+                "Cliente", "Mesa da conta", "Nº de pedidos", "Status", "Custo total"
             }
         ));
         jScrollPane1.setViewportView(tblADMHistoricoContas);
