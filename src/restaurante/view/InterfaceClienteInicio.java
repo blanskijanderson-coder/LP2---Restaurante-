@@ -77,7 +77,7 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(bttClienteInicioAtendimento)
                     .addComponent(bttClienteInicioHistorico))
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(364, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,7 +90,7 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
                 .addComponent(bttClienteInicioAtendimento)
                 .addGap(18, 18, 18)
                 .addComponent(bttClienteInicioHistorico)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
                 .addComponent(bttClienteInicioDeslogar)
                 .addGap(40, 40, 40))
         );
@@ -101,12 +101,12 @@ public class InterfaceClienteInicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BarraTarefas)
+            .addComponent(BarraTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(BarraTarefas)
+                .addComponent(BarraTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
