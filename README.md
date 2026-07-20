@@ -76,7 +76,7 @@ Mesa           — controla ocupação e liberação de mesas
 ## Como executar
 
 1. Abra o projeto no **NetBeans**
-2. Execute a classe `Inicio.java` (tela de login)
+2. Execute a classe `Inicio.java` (tela de login) ou `Main.java` 
 3. Cadastre um usuário ou use um administrador para popular o cardápio
 4. Realize o fluxo completo: login → mesa → pedido → pagamento
 
